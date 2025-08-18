@@ -19,6 +19,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "crc.h"
+#include "sdio.h"
 #include "tim.h"
 #include "usart.h"
 #include "gpio.h"
@@ -61,6 +62,7 @@ static uint8_t uart_wait_command(uint8_t *cmd, uint32_t timeout);
 static uint8_t app_is_valid(void);
 static void jump_to_app(void);
 static void led_control_task(void);
+static void power_on_check(void);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -99,6 +101,126 @@ static void jump_to_app(void)
   jump_fn();
 }
 
+void show_sdcard_info(void)
+{
+  uint64_t CardCap; // SD卡容量
+  HAL_SD_CardCIDTypeDef SDCard_CID;
+  HAL_SD_CardInfoTypeDef SDCardInfo;
+  HAL_StatusTypeDef status;
+
+  // 获取SD卡状态
+  HAL_SD_CardStateTypeDef ret = HAL_SD_GetCardState(&hsd);
+  printf("SD Card State:%d\r\n", ret);
+
+  // 检查SD卡是否处于可传输状态
+  if (ret != HAL_SD_CARD_TRANSFER)
+  {
+    printf("SD card not ready for transfer\r\n");
+    return;
+  }
+
+  // 获取SD卡CID信息（卡识别信息）
+  status = HAL_SD_GetCardCID(&hsd, &SDCard_CID);
+  if (status != HAL_OK)
+  {
+    printf("Failed to get SD card CID, error: %d\r\n", status);
+    return;
+  }
+
+  // 获取SD卡基本信息
+  status = HAL_SD_GetCardInfo(&hsd, &SDCardInfo);
+  if (status != HAL_OK)
+  {
+    printf("Failed to get SD card info, error: %d\r\n", status);
+    return;
+  }
+
+  // 根据卡类型显示相关信息
+  switch (SDCardInfo.CardType)
+  {
+  case CARD_SDSC:
+  {
+    if (SDCardInfo.CardVersion == CARD_V1_X)
+      printf("Card Type:SDSC V1\r\n");
+    else if (SDCardInfo.CardVersion == CARD_V2_X)
+      printf("Card Type:SDSC V2\r\n");
+  }
+  break;
+  case CARD_SDHC_SDXC:
+    printf("Card Type:SDHC\r\n");
+    break;
+  }
+
+  // 计算SD卡总容量
+  CardCap = (uint64_t)(SDCardInfo.LogBlockNbr) * (uint64_t)(SDCardInfo.LogBlockSize);
+
+  // 显示详细信息
+  printf("Card ManufacturerID:%d\r\n", SDCard_CID.ManufacturerID);     // 制造商ID
+  printf("Card RCA:%d\r\n", SDCardInfo.RelCardAdd);                    // 相对卡地址
+  printf("LogBlockNbr:%d \r\n", (uint32_t)(SDCardInfo.LogBlockNbr));   // 逻辑块数量
+  printf("LogBlockSize:%d \r\n", (uint32_t)(SDCardInfo.LogBlockSize)); // 逻辑块大小
+  printf("Card Capacity:%d MB\r\n", (uint32_t)(CardCap >> 20));        // 容量（MB）
+  printf("Card BlockSize:%d\r\n\r\n", SDCardInfo.BlockSize);           // 物理块大小
+}
+
+static void power_on_check(void)
+{
+  uint8_t cmd = 0;
+
+  // 安全检查TF卡是否存在并读取
+  printf("Checking TF card...\r\n");
+
+  // 使用超时机制检查SD卡状态
+  HAL_SD_CardStateTypeDef sd_state;
+  uint32_t timeout = 100; // 100ms超时
+  uint32_t start_tick = HAL_GetTick();
+
+  do
+  {
+    sd_state = HAL_SD_GetCardState(&hsd);
+    if (HAL_GetTick() - start_tick > timeout)
+    {
+      printf("TF card detection timeout\r\n");
+      sd_state = HAL_SD_CARD_ERROR; // 设置为错误状态
+      break;
+    }
+    HAL_Delay(1);
+  } while (sd_state == HAL_SD_CARD_PROGRAMMING || sd_state == HAL_SD_CARD_RECEIVING);
+
+  if (sd_state == HAL_SD_CARD_TRANSFER)
+  {
+    printf("TF card detected and ready\r\n");
+    show_sdcard_info(); // 显示SD卡信息
+
+    // 这里可以添加从TF卡读取应用程序的逻辑
+    // 例如：read_app_from_sdcard();
+  }
+  else
+  {
+    printf("No TF card detected or card error (state: %d)\r\n", sd_state);
+  }
+
+  // 检查串口命令
+  if (uart_wait_command(&cmd, UART_TIMEOUT) && cmd == 'M')
+  {
+    printf("Enter Bootloader Menu...\r\n");
+    Main_Menu();
+  }
+  else
+  {
+    if (app_is_valid())
+    {
+      printf("Jumping to application...\r\n");
+      jump_to_app();
+    }
+    else
+    {
+      printf("No valid app, entering Bootloader Menu...\r\n");
+      Main_Menu();
+    }
+  }
+}
+
 /* USER CODE END 0 */
 
 /**
@@ -132,6 +254,7 @@ int main(void)
   MX_UART4_Init();
   MX_CRC_Init();
   MX_TIM1_Init();
+  MX_SDIO_SD_Init();
   /* USER CODE BEGIN 2 */
   dwt_delay_init();
   printf("Bootloader started...\r\n");
@@ -141,25 +264,7 @@ int main(void)
   // 启动定时器1
   HAL_TIM_Base_Start_IT(&htim1);
 
-  uint8_t cmd = 0;
-  if (uart_wait_command(&cmd, UART_TIMEOUT) && cmd == 'M')
-  {
-    printf("Enter Bootloader Menu...\r\n");
-    Main_Menu();
-  }
-  else
-  {
-    if (app_is_valid())
-    {
-      printf("Jumping to application...\r\n");
-      jump_to_app();
-    }
-    else
-    {
-      printf("No valid app, entering Bootloader Menu...\r\n");
-      Main_Menu();
-    }
-  }
+  power_on_check();
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -200,7 +305,7 @@ void SystemClock_Config(void)
   RCC_OscInitStruct.PLL.PLLM = 4;
   RCC_OscInitStruct.PLL.PLLN = 168;
   RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
-  RCC_OscInitStruct.PLL.PLLQ = 4;
+  RCC_OscInitStruct.PLL.PLLQ = 7;
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
   {
     Error_Handler();
