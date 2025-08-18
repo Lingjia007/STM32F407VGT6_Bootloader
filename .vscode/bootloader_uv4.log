@@ -1,0 +1,4 @@
+Load "bootloader\\bootloader.axf" 
+Full Chip Erase Done.Programming Done.Verify OK.Application running ...
+RDDI-DAP Error
+Flash Load finished at 16:31:47
