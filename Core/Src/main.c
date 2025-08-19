@@ -158,21 +158,20 @@ static void jump_to_app(void)
     if (header->ih_load >= 0x20000000U && header->ih_load <= 0x2002FFFFU)
     {
       printf("Loading application to RAM...\r\n");
-
+      printf("Jumping to application in RAM at 0x%08lX\r\n", (header->ih_load + 4));
       // 复制应用程序数据到指定的RAM地址
       memcpy((void *)header->ih_load, (void *)app_addr, header->ih_size);
 
       // 设置向量表偏移地址到RAM地址
-      SCB->VTOR = *(uint32_t *)(app_addr);
+      SCB->VTOR = header->ih_load;
       __DSB(); // 数据同步屏障
       __ISB(); // 指令同步屏障
 
       // 设置MSP为RAM中应用程序的栈指针
-      __set_MSP(*(uint32_t *)app_addr);
+      __set_MSP(*(uint32_t *)header->ih_load);
 
       // 设置跳转函数为入口地址
-      jump_fn = (pFunction)(app_addr + 4);
-      printf("Jumping to application in RAM at 0x%08lX\r\n", header->ih_ep);
+      jump_fn = (pFunction)(*(uint32_t *)(header->ih_load + 4));
     }
     else
     {

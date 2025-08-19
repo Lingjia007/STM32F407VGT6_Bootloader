@@ -1755,14 +1755,14 @@ Image Symbol Table
     i.dwt_delay_init                         0x08003f54   Section        0  dwt_delay.o(i.dwt_delay_init)
     i.fputc                                  0x08003f78   Section        0  main.o(i.fputc)
     i.jump_to_app                            0x08003f98   Section        0  main.o(i.jump_to_app)
-    jump_to_app                              0x08003f99   Thumb Code   154  main.o(i.jump_to_app)
-    i.main                                   0x08004110   Section        0  main.o(i.main)
-    i.power_on_check                         0x08004168   Section        0  main.o(i.power_on_check)
-    power_on_check                           0x08004169   Thumb Code   148  main.o(i.power_on_check)
-    i.show_sdcard_info                       0x080042ec   Section        0  main.o(i.show_sdcard_info)
-    .constdata                               0x080044dc   Section       16  system_stm32f4xx.o(.constdata)
-    .constdata                               0x080044ec   Section        8  system_stm32f4xx.o(.constdata)
-    .conststring                             0x080044f4   Section      461  menu.o(.conststring)
+    jump_to_app                              0x08003f99   Thumb Code   158  main.o(i.jump_to_app)
+    i.main                                   0x08004114   Section        0  main.o(i.main)
+    i.power_on_check                         0x0800416c   Section        0  main.o(i.power_on_check)
+    power_on_check                           0x0800416d   Thumb Code   148  main.o(i.power_on_check)
+    i.show_sdcard_info                       0x080042f0   Section        0  main.o(i.show_sdcard_info)
+    .constdata                               0x080044e0   Section       16  system_stm32f4xx.o(.constdata)
+    .constdata                               0x080044f0   Section        8  system_stm32f4xx.o(.constdata)
+    .conststring                             0x080044f8   Section      461  menu.o(.conststring)
     .data                                    0x20000000   Section        4  main.o(.data)
     led_timer_counter                        0x20000000   Data           4  main.o(.data)
     .data                                    0x20000004   Section        8  crc.o(.data)
@@ -2070,12 +2070,12 @@ Image Symbol Table
     __scatterload_zeroinit                   0x0800393d   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
     dwt_delay_init                           0x08003f55   Thumb Code    26  dwt_delay.o(i.dwt_delay_init)
     fputc                                    0x08003f79   Thumb Code    26  main.o(i.fputc)
-    main                                     0x08004111   Thumb Code    58  main.o(i.main)
-    show_sdcard_info                         0x080042ed   Thumb Code   164  main.o(i.show_sdcard_info)
-    AHBPrescTable                            0x080044dc   Data          16  system_stm32f4xx.o(.constdata)
-    APBPrescTable                            0x080044ec   Data           8  system_stm32f4xx.o(.constdata)
-    Region$$Table$$Base                      0x080046c4   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x080046e4   Number         0  anon$$obj.o(Region$$Table)
+    main                                     0x08004115   Thumb Code    58  main.o(i.main)
+    show_sdcard_info                         0x080042f1   Thumb Code   164  main.o(i.show_sdcard_info)
+    AHBPrescTable                            0x080044e0   Data          16  system_stm32f4xx.o(.constdata)
+    APBPrescTable                            0x080044f0   Data           8  system_stm32f4xx.o(.constdata)
+    Region$$Table$$Base                      0x080046c8   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x080046e8   Number         0  anon$$obj.o(Region$$Table)
     hcrc                                     0x20000004   Data           8  crc.o(.data)
     uwTickFreq                               0x2000000c   Data           1  stm32f4xx_hal.o(.data)
     uwTickPrio                               0x20000010   Data           4  stm32f4xx_hal.o(.data)
@@ -2101,9 +2101,9 @@ Memory Map of the image
 
   Image Entry point : 0x08000189
 
-  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x0000470c, Max: 0x00100000, ABSOLUTE)
+  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00004710, Max: 0x00100000, ABSOLUTE)
 
-    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x000046e4, Max: 0x00100000, ABSOLUTE)
+    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x000046e8, Max: 0x00100000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -2289,28 +2289,28 @@ Memory Map of the image
     0x08003da4   0x08003da4   0x000001b0   Code   RO           16    i.app_is_valid      main.o
     0x08003f54   0x08003f54   0x00000024   Code   RO         3873    i.dwt_delay_init    dwt_delay.o
     0x08003f78   0x08003f78   0x00000020   Code   RO           17    i.fputc             main.o
-    0x08003f98   0x08003f98   0x00000178   Code   RO           18    i.jump_to_app       main.o
-    0x08004110   0x08004110   0x00000058   Code   RO           19    i.main              main.o
-    0x08004168   0x08004168   0x00000184   Code   RO           20    i.power_on_check    main.o
-    0x080042ec   0x080042ec   0x000001f0   Code   RO           21    i.show_sdcard_info  main.o
-    0x080044dc   0x080044dc   0x00000010   Data   RO         3611    .constdata          system_stm32f4xx.o
-    0x080044ec   0x080044ec   0x00000008   Data   RO         3612    .constdata          system_stm32f4xx.o
-    0x080044f4   0x080044f4   0x000001cd   Data   RO         3761    .conststring        menu.o
-    0x080046c1   0x080046c1   0x00000003   PAD
-    0x080046c4   0x080046c4   0x00000020   Data   RO         4219    Region$$Table       anon$$obj.o
+    0x08003f98   0x08003f98   0x0000017c   Code   RO           18    i.jump_to_app       main.o
+    0x08004114   0x08004114   0x00000058   Code   RO           19    i.main              main.o
+    0x0800416c   0x0800416c   0x00000184   Code   RO           20    i.power_on_check    main.o
+    0x080042f0   0x080042f0   0x000001f0   Code   RO           21    i.show_sdcard_info  main.o
+    0x080044e0   0x080044e0   0x00000010   Data   RO         3611    .constdata          system_stm32f4xx.o
+    0x080044f0   0x080044f0   0x00000008   Data   RO         3612    .constdata          system_stm32f4xx.o
+    0x080044f8   0x080044f8   0x000001cd   Data   RO         3761    .conststring        menu.o
+    0x080046c5   0x080046c5   0x00000003   PAD
+    0x080046c8   0x080046c8   0x00000020   Data   RO         4219    Region$$Table       anon$$obj.o
 
 
-    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x080046e4, Size: 0x000009f0, Max: 0x0001c000, ABSOLUTE)
+    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x080046e8, Size: 0x000009f0, Max: 0x0001c000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000000   0x080046e4   0x00000004   Data   RW           22    .data               main.o
-    0x20000004   0x080046e8   0x00000008   Data   RW          263    .data               crc.o
-    0x2000000c   0x080046f0   0x0000000c   Data   RW         1513    .data               stm32f4xx_hal.o
-    0x20000018   0x080046fc   0x00000004   Data   RW         3613    .data               system_stm32f4xx.o
-    0x2000001c   0x08004700   0x00000004   Data   RW         3762    .data               menu.o
-    0x20000020   0x08004704   0x00000004   Data   RW         3817    .data               ymodem.o
-    0x20000024   0x08004708   0x00000004   Data   RW         4195    .data               mc_w.l(stdout.o)
+    0x20000000   0x080046e8   0x00000004   Data   RW           22    .data               main.o
+    0x20000004   0x080046ec   0x00000008   Data   RW          263    .data               crc.o
+    0x2000000c   0x080046f4   0x0000000c   Data   RW         1513    .data               stm32f4xx_hal.o
+    0x20000018   0x08004700   0x00000004   Data   RW         3613    .data               system_stm32f4xx.o
+    0x2000001c   0x08004704   0x00000004   Data   RW         3762    .data               menu.o
+    0x20000020   0x08004708   0x00000004   Data   RW         3817    .data               ymodem.o
+    0x20000024   0x0800470c   0x00000004   Data   RW         4195    .data               mc_w.l(stdout.o)
     0x20000028        -       0x00000084   Zero   RW          305    .bss                sdio.o
     0x200000ac        -       0x00000048   Zero   RW          347    .bss                tim.o
     0x200000f4        -       0x00000048   Zero   RW          389    .bss                usart.o
@@ -2318,11 +2318,11 @@ Memory Map of the image
     0x2000015c        -       0x00000048   Zero   RW         3652    .bss                common.o
     0x200001a4        -       0x00000040   Zero   RW         3760    .bss                menu.o
     0x200001e4        -       0x00000406   Zero   RW         3816    .bss                ymodem.o
-    0x200005ea   0x0800470c   0x00000006   PAD
+    0x200005ea   0x08004710   0x00000006   PAD
     0x200005f0        -       0x00000400   Zero   RW            1    STACK               startup_stm32f407xx.o
 
 
-    Execution Region RW_IRAM2 (Exec base: 0x2001c000, Load base: 0x0800470c, Size: 0x00000000, Max: 0x00004000, ABSOLUTE)
+    Execution Region RW_IRAM2 (Exec base: 0x2001c000, Load base: 0x08004710, Size: 0x00000000, Max: 0x00004000, ABSOLUTE)
 
     **** No section assigned to this execution region ****
 
@@ -2339,7 +2339,7 @@ Image component sizes
         36         10          0          0          0        481   dwt_delay.o
        428         58          0          0          0       4443   flash_if.o
        140         10          0          0          0       1031   gpio.o
-      2044       1158          0          4          0     737107   main.o
+      2048       1158          0          4          0     737115   main.o
       1592       1176        461          4         64       3998   menu.o
        196         26          0          0        132       1805   sdio.o
         36          8        392          0       1024        860   startup_stm32f407xx.o
@@ -2364,7 +2364,7 @@ Image component sizes
       1376         34          0          4       1030       7060   ymodem.o
 
     ----------------------------------------------------------------------
-     15768       3074        912         36       2504     890190   Object Totals
+     15772       3074        912         36       2504     890198   Object Totals
          0          0         32          0          0          0   (incl. Generated)
         32          0          3          0          6          0   (incl. Padding)
 
@@ -2411,15 +2411,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     17236       3144        912         40       2504     877354   Grand Totals
-     17236       3144        912         40       2504     877354   ELF Image Totals
-     17236       3144        912         40          0          0   ROM Totals
+     17240       3144        912         40       2504     877362   Grand Totals
+     17240       3144        912         40       2504     877362   ELF Image Totals
+     17240       3144        912         40          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                18148 (  17.72kB)
+    Total RO  Size (Code + RO Data)                18152 (  17.73kB)
     Total RW  Size (RW Data + ZI Data)              2544 (   2.48kB)
-    Total ROM Size (Code + RO Data + RW Data)      18188 (  17.76kB)
+    Total ROM Size (Code + RO Data + RW Data)      18192 (  17.77kB)
 
 ==============================================================================
 
