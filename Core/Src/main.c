@@ -37,6 +37,25 @@
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
 typedef void (*pFunction)(void);
+// U-Boot头部定义
+#define UBOOT_MAGIC 0x27051956
+#define UBOOT_HEADER_SIZE 256
+// U-Boot头部结构体
+typedef struct image_header
+{
+  uint32_t ih_magic;   /* Image Header Magic Number  */
+  uint32_t ih_hcrc;    /* Image Header CRC Checksum  */
+  uint32_t ih_time;    /* Image Creation Timestamp   */
+  uint32_t ih_size;    /* Image Data Size            */
+  uint32_t ih_load;    /* Data Load Address          */
+  uint32_t ih_ep;      /* Entry Point Address        */
+  uint32_t ih_dcrc;    /* Image Data CRC Checksum    */
+  uint8_t ih_os;       /* Operating System           */
+  uint8_t ih_arch;     /* CPU architecture           */
+  uint8_t ih_type;     /* Image Type                 */
+  uint8_t ih_comp;     /* Compression Type           */
+  uint8_t ih_name[32]; /* Image Name                 */
+} image_header_t;
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -81,30 +100,109 @@ static uint8_t uart_wait_command(uint8_t *cmd, uint32_t timeout)
 
 static uint8_t app_is_valid(void)
 {
-  uint32_t sp = *(uint32_t *)APP_ADDRESS;
-  // 栈顶地址必须指向 SRAM F4 = 192KB
-  if ((sp >= 0x20000000U) && (sp <= 0x2002FFFFU))
+  image_header_t *header = (image_header_t *)APP_ADDRESS;
+
+  // 检查是否有U-Boot头部 (检查魔数)
+  if (header->ih_magic == UBOOT_MAGIC)
   {
-    return 1;
+    printf("Valid U-Boot header found:\r\n");
+    printf("  Image name: %.32s\r\n", header->ih_name);
+    printf("  Image size: %lu bytes\r\n", header->ih_size);
+    printf("  Load address: 0x%08lX\r\n", header->ih_load);
+    printf("  Entry point: 0x%08lX\r\n", header->ih_ep);
+    printf("  Data CRC: 0x%08lX\r\n", header->ih_dcrc);
+    printf("  Header CRC: 0x%08lX\r\n", header->ih_hcrc);
+
+    // 检查加载地址是否有效
+    if ((header->ih_load >= 0x08000000U && header->ih_load < 0x08100000U) || // Flash区域
+        (header->ih_load >= 0x20000000U && header->ih_load < 0x20030000U))
+    { // RAM区域
+      return 1;
+    }
+    else
+    {
+      printf("Invalid load address\r\n");
+    }
+  }
+  else
+  {
+    // 兼容没有头部的情况，直接检查栈指针
+    uint32_t sp = *(uint32_t *)APP_ADDRESS;
+    if ((sp >= 0x20000000U) && (sp <= 0x2002FFFFU))
+    {
+      printf("No U-Boot header, valid app stack pointer found\r\n");
+      return 1;
+    }
+    else
+    {
+      printf("No valid application found\r\n");
+    }
   }
   return 0;
 }
 
 static void jump_to_app(void)
 {
-  uint32_t jump_addr = *(uint32_t *)(APP_ADDRESS + 4);
-  pFunction jump_fn = (pFunction)jump_addr;
+  image_header_t *header = (image_header_t *)APP_ADDRESS;
+  uint32_t app_addr;
+  pFunction jump_fn;
 
-  __disable_irq(); // 禁用中断
+  // 检查是否有U-Boot头部
+  if (header->ih_magic == UBOOT_MAGIC)
+  {
+    // 有头部的情况
+    app_addr = APP_ADDRESS + UBOOT_HEADER_SIZE; // 跳过256字节头部，确保中断向量表256字节对齐
+    printf("U-Boot header detected\r\n");
+
+    // 如果加载地址在RAM中，需要复制数据到RAM
+    if (header->ih_load >= 0x20000000U && header->ih_load <= 0x2002FFFFU)
+    {
+      printf("Loading application to RAM...\r\n");
+
+      // 复制应用程序数据到指定的RAM地址
+      memcpy((void *)header->ih_load, (void *)app_addr, header->ih_size);
+
+      // 设置向量表偏移地址到RAM地址
+      SCB->VTOR = *(uint32_t *)(app_addr);
+      __DSB(); // 数据同步屏障
+      __ISB(); // 指令同步屏障
+
+      // 设置MSP为RAM中应用程序的栈指针
+      __set_MSP(*(uint32_t *)app_addr);
+
+      // 设置跳转函数为入口地址
+      jump_fn = (pFunction)(app_addr + 4);
+      printf("Jumping to application in RAM at 0x%08lX\r\n", header->ih_ep);
+    }
+    else
+    {
+      // 从Flash直接运行
+      printf("Executing application directly from Flash\r\n");
+      SCB->VTOR = app_addr; // 设置向量表偏移
+      __DSB();              // 数据同步屏障
+      __ISB();              // 指令同步屏障
+      __set_MSP(*(uint32_t *)app_addr);
+      jump_fn = (pFunction)(*(uint32_t *)(app_addr + 4));
+    }
+  }
+  else
+  {
+    // 没有头部的情况，保持原有逻辑
+    printf("No U-Boot header, using default boot procedure\r\n");
+    SCB->VTOR = APP_ADDRESS; // 设置向量表偏移
+    __DSB();                 // 数据同步屏障
+    __ISB();                 // 指令同步屏障
+    __set_MSP(*(uint32_t *)APP_ADDRESS);
+    jump_fn = (pFunction)(*(uint32_t *)(APP_ADDRESS + 4));
+  }
+
+  // 禁用中断和外设时钟
+  __disable_irq();
   __HAL_RCC_PWR_CLK_DISABLE();
-  HAL_RCC_DeInit(); // 复位RCC
+  HAL_RCC_DeInit();
 
-  SCB->VTOR = APP_ADDRESS; // 设置向量表偏移
-  __DSB();                 // 数据同步屏障
-  __ISB();                 // 指令同步屏障
-
-  __set_MSP(*(uint32_t *)APP_ADDRESS); // 设置主堆栈指针
-  jump_fn();                           // 跳转到应用程序
+  // 跳转到应用程序
+  jump_fn();
 }
 
 void show_sdcard_info(void)
