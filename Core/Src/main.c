@@ -94,11 +94,17 @@ static void jump_to_app(void)
 {
   uint32_t jump_addr = *(uint32_t *)(APP_ADDRESS + 4);
   pFunction jump_fn = (pFunction)jump_addr;
-  __disable_irq();
+
+  __disable_irq(); // 禁用中断
   __HAL_RCC_PWR_CLK_DISABLE();
-  HAL_RCC_DeInit();
-  __set_MSP(*(uint32_t *)APP_ADDRESS);
-  jump_fn();
+  HAL_RCC_DeInit(); // 复位RCC
+
+  SCB->VTOR = APP_ADDRESS; // 设置向量表偏移
+  __DSB();                 // 数据同步屏障
+  __ISB();                 // 指令同步屏障
+
+  __set_MSP(*(uint32_t *)APP_ADDRESS); // 设置主堆栈指针
+  jump_fn();                           // 跳转到应用程序
 }
 
 void show_sdcard_info(void)

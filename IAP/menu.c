@@ -175,17 +175,18 @@ void Main_Menu(void)
       break;
     case '3':
       Serial_PutString((uint8_t *)"Start program execution......\r\n\n");
-      /* execute the new program */
-      JumpAddress = *(__IO uint32_t *)(APPLICATION_ADDRESS + 4);
-      /* Jump to user application */
-      JumpToApplication = (pFunction)JumpAddress;
-      /* Deinitialize all used modules */
-      __disable_irq();
-      __HAL_RCC_PWR_CLK_DISABLE();
-      HAL_RCC_DeInit();
-      /* Initialize user application's Stack Pointer */
-      __set_MSP(*(__IO uint32_t *)APPLICATION_ADDRESS);
-      JumpToApplication();
+      // /* execute the new program */
+      // JumpAddress = *(__IO uint32_t *)(APPLICATION_ADDRESS + 4);
+      // /* Jump to user application */
+      // JumpToApplication = (pFunction)JumpAddress;
+      // /* Deinitialize all used modules */
+      // __disable_irq();
+      // __HAL_RCC_PWR_CLK_DISABLE();
+      // HAL_RCC_DeInit();
+      // /* Initialize user application's Stack Pointer */
+      // __set_MSP(*(__IO uint32_t *)APPLICATION_ADDRESS);
+      // JumpToApplication();
+      HAL_NVIC_SystemReset();
       break;
     case '4':
       if (FlashProtection != FLASHIF_PROTECTION_NONE)
