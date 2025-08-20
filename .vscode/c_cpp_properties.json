@@ -13,7 +13,10 @@
                 "Drivers/CMSIS/Device/ST/STM32F4xx/Include",
                 "Drivers/CMSIS/Include",
                 "IAP",
-                "User"
+                "User",
+                "FATFS/Target",
+                "FATFS/App",
+                "Middlewares/Third_Party/FatFs/src"
             ],
             "defines": [
                 "USE_HAL_DRIVER",

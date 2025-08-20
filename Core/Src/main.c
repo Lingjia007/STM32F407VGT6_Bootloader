@@ -19,13 +19,16 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "crc.h"
-#include "sdio.h"
+#include "dma.h"
+#include "fatfs.h"
+#include "rtc.h"
 #include "tim.h"
 #include "usart.h"
 #include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "sdio.h"
 #include "dwt_delay.h"
 #include <string.h>
 #include <stdio.h>
@@ -177,6 +180,7 @@ static void jump_to_app(void)
     {
       // 从Flash直接运行
       printf("Executing application directly from Flash\r\n");
+      printf("Jumping to application in FLASH at 0x%08lX\r\n", (header->ih_load + 4));
       SCB->VTOR = app_addr; // 设置向量表偏移
       __DSB();              // 数据同步屏障
       __ISB();              // 指令同步屏障
@@ -206,74 +210,56 @@ static void jump_to_app(void)
 
 void show_sdcard_info(void)
 {
-  uint64_t CardCap; // SD卡容量
-  HAL_SD_CardCIDTypeDef SDCard_CID;
-  HAL_SD_CardInfoTypeDef SDCardInfo;
-  HAL_StatusTypeDef status;
+  HAL_SD_CardInfoTypeDef sdinfo;
+  FATFS *fs;
+  DWORD fre_clust, fre_sect, tot_sect;
+  FRESULT res;
 
-  // 获取SD卡状态
-  HAL_SD_CardStateTypeDef ret = HAL_SD_GetCardState(&hsd);
-  printf("SD Card State:%d\r\n", ret);
-
-  // 检查SD卡是否处于可传输状态
-  if (ret != HAL_SD_CARD_TRANSFER)
+  // 获取SD卡底层信息
+  if (HAL_SD_GetCardInfo(&hsd, &sdinfo) == HAL_OK)
   {
-    printf("SD card not ready for transfer\r\n");
+    printf("SD Card Info:\r\n");
+    printf("  Capacity: %lu MB\r\n", (sdinfo.BlockNbr * sdinfo.BlockSize) / (1024 * 1024));
+    printf("  Block Size: %lu bytes\r\n", sdinfo.BlockSize);
+    printf("  Block Count: %lu\r\n", sdinfo.BlockNbr);
+  }
+  else
+  {
+    printf("Failed to get SD card info\r\n");
     return;
   }
 
-  // 获取SD卡CID信息（卡识别信息）
-  status = HAL_SD_GetCardCID(&hsd, &SDCard_CID);
-  if (status != HAL_OK)
+  // 获取FatFs文件系统信息
+  fs = &SDFatFS;
+  res = f_getfree(SDPath, &fre_clust, &fs);
+  if (res == FR_OK)
   {
-    printf("Failed to get SD card CID, error: %d\r\n", status);
-    return;
+    tot_sect = (fs->n_fatent - 2) * fs->csize;
+    fre_sect = fre_clust * fs->csize;
+    printf("FATFS Info:\r\n");
+    printf("  FAT type: FAT%u\r\n", (fs->fs_type == 3) ? 32 : 16); // 3=FAT32, 2=FAT16
+    printf("  Total Size: %lu MB\r\n", tot_sect / 2048);
+    printf("  Free Space: %lu MB\r\n", fre_sect / 2048);
   }
-
-  // 获取SD卡基本信息
-  status = HAL_SD_GetCardInfo(&hsd, &SDCardInfo);
-  if (status != HAL_OK)
+  else
   {
-    printf("Failed to get SD card info, error: %d\r\n", status);
-    return;
+    printf("Failed to get FATFS info: %d\r\n", res);
   }
-
-  // 根据卡类型显示相关信息
-  switch (SDCardInfo.CardType)
-  {
-  case CARD_SDSC:
-  {
-    if (SDCardInfo.CardVersion == CARD_V1_X)
-      printf("Card Type:SDSC V1\r\n");
-    else if (SDCardInfo.CardVersion == CARD_V2_X)
-      printf("Card Type:SDSC V2\r\n");
-  }
-  break;
-  case CARD_SDHC_SDXC:
-    printf("Card Type:SDHC\r\n");
-    break;
-  }
-
-  // 计算SD卡总容量
-  CardCap = (uint64_t)(SDCardInfo.LogBlockNbr) * (uint64_t)(SDCardInfo.LogBlockSize);
-
-  // 显示详细信息
-  printf("Card ManufacturerID:%d\r\n", SDCard_CID.ManufacturerID);     // 制造商ID
-  printf("Card RCA:%d\r\n", SDCardInfo.RelCardAdd);                    // 相对卡地址
-  printf("LogBlockNbr:%d \r\n", (uint32_t)(SDCardInfo.LogBlockNbr));   // 逻辑块数量
-  printf("LogBlockSize:%d \r\n", (uint32_t)(SDCardInfo.LogBlockSize)); // 逻辑块大小
-  printf("Card Capacity:%d MB\r\n", (uint32_t)(CardCap >> 20));        // 容量（MB）
-  printf("Card BlockSize:%d\r\n\r\n", SDCardInfo.BlockSize);           // 物理块大小
 }
 
 static void power_on_check(void)
 {
   uint8_t cmd = 0;
 
-  // 安全检查TF卡是否存在并读取
   printf("Checking TF card...\r\n");
 
-  // 使用超时机制检查SD卡状态
+  // 先挂载文件系统
+  FRESULT fres = f_mount(&SDFatFS, SDPath, 1);
+  if (fres != FR_OK)
+  {
+    printf("f_mount failed: %d\r\n", fres);
+  }
+
   HAL_SD_CardStateTypeDef sd_state;
   uint32_t timeout = 100; // 100ms超时
   uint32_t start_tick = HAL_GetTick();
@@ -293,10 +279,8 @@ static void power_on_check(void)
   if (sd_state == HAL_SD_CARD_TRANSFER)
   {
     printf("TF card detected and ready\r\n");
-    show_sdcard_info(); // 显示SD卡信息
-
+    show_sdcard_info();
     // 这里可以添加从TF卡读取应用程序的逻辑
-    // 例如：read_app_from_sdcard();
   }
   else
   {
@@ -354,11 +338,14 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+  MX_DMA_Init();
   MX_UART4_Init();
   MX_CRC_Init();
   MX_TIM1_Init();
-  MX_SDIO_SD_Init();
+  MX_RTC_Init();
+  MX_FATFS_Init();
   /* USER CODE BEGIN 2 */
+  MX_SDIO_SD_Init_Fix();
   dwt_delay_init();
   printf("Bootloader started...\r\n");
   FLASH_If_Init();
@@ -401,8 +388,9 @@ void SystemClock_Config(void)
   /** Initializes the RCC Oscillators according to the specified parameters
    * in the RCC_OscInitTypeDef structure.
    */
-  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
+  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE | RCC_OSCILLATORTYPE_LSE;
   RCC_OscInitStruct.HSEState = RCC_HSE_ON;
+  RCC_OscInitStruct.LSEState = RCC_LSE_ON;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
   RCC_OscInitStruct.PLL.PLLM = 4;
