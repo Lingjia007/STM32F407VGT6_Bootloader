@@ -24,6 +24,7 @@
 #include "rtc.h"
 #include "tim.h"
 #include "usart.h"
+#include "usb_device.h"
 #include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
@@ -218,10 +219,26 @@ void show_sdcard_info(void)
   // 获取SD卡底层信息
   if (HAL_SD_GetCardInfo(&hsd, &sdinfo) == HAL_OK)
   {
-    printf("SD Card Info:\r\n");
-    printf("  Capacity: %lu MB\r\n", (sdinfo.BlockNbr * sdinfo.BlockSize) / (1024 * 1024));
+    printf("===== SD Card Info =====\r\n");
+    printf("  Card Type: ");
+    switch (sdinfo.CardType)
+    {
+    case CARD_SDSC:
+      printf("SDSC\r\n");
+      break;
+    case CARD_SDHC_SDXC:
+      printf("SDHC/SDXC\r\n");
+      break;
+    default:
+      printf("Unknown (Type: %d)\r\n", sdinfo.CardType);
+      break;
+    }
+
+    uint64_t total_bytes = (uint64_t)sdinfo.BlockNbr * (uint64_t)sdinfo.BlockSize;
     printf("  Block Size: %lu bytes\r\n", sdinfo.BlockSize);
     printf("  Block Count: %lu\r\n", sdinfo.BlockNbr);
+    printf("  Capacity: %llu MB\r\n", total_bytes / (1024ULL * 1024ULL));
+    printf("========================\r\n\r\n");
   }
   else
   {
@@ -236,10 +253,11 @@ void show_sdcard_info(void)
   {
     tot_sect = (fs->n_fatent - 2) * fs->csize;
     fre_sect = fre_clust * fs->csize;
-    printf("FATFS Info:\r\n");
-    printf("  FAT type: FAT%u\r\n", (fs->fs_type == 3) ? 32 : 16); // 3=FAT32, 2=FAT16
+    printf("==== File System Info ====\r\n");
     printf("  Total Size: %lu MB\r\n", tot_sect / 2048);
     printf("  Free Space: %lu MB\r\n", fre_sect / 2048);
+    printf("  Used Space: %lu MB\r\n", (tot_sect - fre_sect) / 2048);
+    printf("==========================\r\n\r\n");
   }
   else
   {
@@ -278,7 +296,7 @@ static void power_on_check(void)
 
   if (sd_state == HAL_SD_CARD_TRANSFER)
   {
-    printf("TF card detected and ready\r\n");
+    printf("TF card detected and ready\r\n\r\n");
     show_sdcard_info();
     // 这里可以添加从TF卡读取应用程序的逻辑
   }
@@ -344,6 +362,7 @@ int main(void)
   MX_TIM1_Init();
   MX_RTC_Init();
   MX_FATFS_Init();
+  MX_USB_DEVICE_Init();
   /* USER CODE BEGIN 2 */
   MX_SDIO_SD_Init_Fix();
   dwt_delay_init();

@@ -40,6 +40,9 @@ bootloader\fatfs.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_sdmmc.h
 bootloader\fatfs.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 bootloader\fatfs.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 bootloader\fatfs.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
+bootloader\fatfs.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h
+bootloader\fatfs.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h
+bootloader\fatfs.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h
 bootloader\fatfs.o: ../FATFS/Target/bsp_driver_sd.h
 bootloader\fatfs.o: C:\Keil_v5\ARM\ARM_Compiler_5.06u7\Bin\..\include\stdlib.h
 bootloader\fatfs.o: ../Middlewares/Third_Party/FatFs/src/ff_gen_drv.h

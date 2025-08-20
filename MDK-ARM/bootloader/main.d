@@ -36,6 +36,9 @@ bootloader\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_sdmmc.h
 bootloader\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 bootloader\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 bootloader\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
+bootloader\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd.h
+bootloader\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h
+bootloader\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pcd_ex.h
 bootloader\main.o: ../Core/Inc/crc.h
 bootloader\main.o: ../Core/Inc/dma.h
 bootloader\main.o: ../FATFS/App/fatfs.h
@@ -50,11 +53,14 @@ bootloader\main.o: ../FATFS/Target/sd_diskio.h
 bootloader\main.o: ../Core/Inc/rtc.h
 bootloader\main.o: ../Core/Inc/tim.h
 bootloader\main.o: ../Core/Inc/usart.h
+bootloader\main.o: ../USB_DEVICE/App/usb_device.h
+bootloader\main.o: ../Middlewares/ST/STM32_USB_Device_Library/Core/Inc/usbd_def.h
+bootloader\main.o: ../USB_DEVICE/Target/usbd_conf.h
+bootloader\main.o: C:\Keil_v5\ARM\ARM_Compiler_5.06u7\Bin\..\include\stdio.h
+bootloader\main.o: C:\Keil_v5\ARM\ARM_Compiler_5.06u7\Bin\..\include\string.h
 bootloader\main.o: ../Core/Inc/gpio.h
 bootloader\main.o: ../Core/Inc/sdio.h
 bootloader\main.o: ../User/dwt_delay.h
-bootloader\main.o: C:\Keil_v5\ARM\ARM_Compiler_5.06u7\Bin\..\include\string.h
-bootloader\main.o: C:\Keil_v5\ARM\ARM_Compiler_5.06u7\Bin\..\include\stdio.h
 bootloader\main.o: ../IAP/menu.h
 bootloader\main.o: ../IAP/flash_if.h
 bootloader\main.o: ../IAP/ymodem.h

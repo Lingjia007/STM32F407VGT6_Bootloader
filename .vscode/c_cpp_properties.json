@@ -16,7 +16,11 @@
                 "User",
                 "FATFS/Target",
                 "FATFS/App",
-                "Middlewares/Third_Party/FatFs/src"
+                "Middlewares/Third_Party/FatFs/src",
+                "USB_DEVICE/App",
+                "USB_DEVICE/Target",
+                "Middlewares/ST/STM32_USB_Device_Library/Core/Inc",
+                "Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Inc"
             ],
             "defines": [
                 "USE_HAL_DRIVER",
