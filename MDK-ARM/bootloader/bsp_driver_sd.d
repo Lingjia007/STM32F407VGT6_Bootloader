@@ -33,6 +33,7 @@ bootloader\bsp_driver_sd.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rt
 bootloader\bsp_driver_sd.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc_ex.h
 bootloader\bsp_driver_sd.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sd.h
 bootloader\bsp_driver_sd.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_sdmmc.h
+bootloader\bsp_driver_sd.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h
 bootloader\bsp_driver_sd.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 bootloader\bsp_driver_sd.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 bootloader\bsp_driver_sd.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h

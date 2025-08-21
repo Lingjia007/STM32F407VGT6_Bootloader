@@ -22,6 +22,7 @@
 #include "dma.h"
 #include "fatfs.h"
 #include "rtc.h"
+#include "spi.h"
 #include "tim.h"
 #include "usart.h"
 #include "usb_device.h"
@@ -30,6 +31,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "sdio.h"
+#include <inttypes.h>
 #include "dwt_delay.h"
 #include <string.h>
 #include <stdio.h>
@@ -37,6 +39,7 @@
 #include "flash_if.h"
 #include "common.h"
 #include "file_opera.h"
+#include "w25q128.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -66,6 +69,8 @@ void SystemClock_Config(void);
 static uint8_t uart_wait_command(uint8_t *cmd, uint32_t timeout);
 static uint8_t app_is_valid(void);
 static void jump_to_app(void);
+static void show_sdcard_info(void);
+static void show_spi_flash_info(void);
 static void led_control_task(void);
 static void power_on_check(void);
 /* USER CODE END PFP */
@@ -93,11 +98,11 @@ static uint8_t app_is_valid(void)
   {
     printf("Valid U-Boot header found:\r\n");
     printf("  Image name: %.32s\r\n", header->ih_name);
-    printf("  Image size: %lu bytes\r\n", header->ih_size);
-    printf("  Load address: 0x%08lX\r\n", header->ih_load);
-    printf("  Entry point: 0x%08lX\r\n", header->ih_ep);
-    printf("  Data CRC: 0x%08lX\r\n", header->ih_dcrc);
-    printf("  Header CRC: 0x%08lX\r\n", header->ih_hcrc);
+    printf("  Image size: %" PRIu32 " bytes\r\n", header->ih_size);
+    printf("  Load address: 0x%08" PRIX32 "\r\n", header->ih_load);
+    printf("  Entry point: 0x%08" PRIX32 "\r\n", header->ih_ep);
+    printf("  Data CRC: 0x%08" PRIX32 "\r\n", header->ih_dcrc);
+    printf("  Header CRC: 0x%08" PRIX32 "\r\n", header->ih_hcrc);
 
     // 检查加载地址是否有效
     if ((header->ih_load >= APP_ADDRESS && header->ih_load < 0x08100000U) || // Flash区域
@@ -144,7 +149,7 @@ static void jump_to_app(void)
     if (header->ih_load >= 0x20000000U && header->ih_load <= 0x2002FFFFU)
     {
       printf("Loading application to RAM...\r\n");
-      printf("Jumping to application in RAM at 0x%08lX\r\n", (header->ih_load + 4));
+      printf("Jumping to application in RAM at 0x%08" PRIx32 "\r\n", (header->ih_load + 4));
       // 复制应用程序数据到指定的RAM地址
       memcpy((void *)header->ih_load, (void *)app_addr, header->ih_size);
 
@@ -163,7 +168,7 @@ static void jump_to_app(void)
     {
       // 从Flash直接运行
       printf("Executing application directly from Flash\r\n");
-      printf("Jumping to application in FLASH at 0x%08lX\r\n", (header->ih_load + UBOOT_HEADER_SIZE + 4));
+      printf("Jumping to application in FLASH at 0x%08" PRIx32 "\r\n", (header->ih_load + UBOOT_HEADER_SIZE + 4));
       SCB->VTOR = app_addr; // 设置向量表偏移
       __DSB();              // 数据同步屏障
       __ISB();              // 指令同步屏障
@@ -191,7 +196,7 @@ static void jump_to_app(void)
   jump_fn();
 }
 
-void show_sdcard_info(void)
+static void show_sdcard_info(void)
 {
   HAL_SD_CardInfoTypeDef sdinfo;
   FATFS *fs;
@@ -217,8 +222,8 @@ void show_sdcard_info(void)
     }
 
     uint64_t total_bytes = (uint64_t)sdinfo.BlockNbr * (uint64_t)sdinfo.BlockSize;
-    printf("  Block Size: %lu bytes\r\n", sdinfo.BlockSize);
-    printf("  Block Count: %lu\r\n", sdinfo.BlockNbr);
+    printf("  Block Size: %" PRIu32 " bytes\r\n", sdinfo.BlockSize);
+    printf("  Block Count: %" PRIu32 "\r\n", sdinfo.BlockNbr);
     printf("  Capacity: %llu MB\r\n", total_bytes / (1024ULL * 1024ULL));
     printf("========================\r\n\r\n");
   }
@@ -247,6 +252,108 @@ void show_sdcard_info(void)
   {
     printf("Failed to get FATFS info: %d\r\n", res);
   }
+}
+
+static void show_spi_flash_info(void)
+{
+  uint16_t flash_id;
+  uint8_t write_buffer[16];
+  uint8_t read_buffer[16];
+  uint32_t test_addr = 0x000000;
+  uint8_t i;
+
+  printf("======== SPI Flash Info ========\r\n");
+
+  // 读取Flash ID
+  flash_id = W25Q128_readID();
+
+  if (flash_id == 0xFFFF || flash_id == 0x0000)
+  {
+    printf("  No SPI Flash detected\r\n");
+    printf("================================\r\n\r\n");
+    return;
+  }
+
+  printf("  Flash ID: 0x%04X\r\n", flash_id);
+
+  // 根据ID判断Flash型号
+  switch (flash_id)
+  {
+  case 0xFEA6: // W25Q128
+    printf("  Model: Winbond W25Q128\r\n");
+    printf("  Capacity: 128 Mbits (16 MBytes)\r\n");
+    break;
+  case 0xEF17: // W25Q128FV
+    printf("  Model: W25Q128FV\r\n");
+    printf("  Capacity: 128 Mbits (16 MBytes)\r\n");
+    break;
+  case 0xEF16: // W25Q64FV
+    printf("  Model: W25Q64FV\r\n");
+    printf("  Capacity: 64 Mbits (8 MBytes)\r\n");
+    break;
+  case 0xEF15: // W25Q32FV
+    printf("  Model: W25Q32FV\r\n");
+    printf("  Capacity: 32 Mbits (4 MBytes)\r\n");
+    break;
+  case 0xEF14: // W25Q16FV
+    printf("  Model: W25Q16FV\r\n");
+    printf("  Capacity: 16 Mbits (2 MBytes)\r\n");
+    break;
+  default:
+    printf("  Model: Unknown (ID: 0x%04X)\r\n", flash_id);
+    break;
+  }
+
+  // 执行读写测试
+  printf("  Performing read/write test...\r\n");
+
+  // 初始化写入缓冲区
+  printf("  Initializing...\r\n");
+  printf("  Write buffer: ");
+  for (i = 0; i < 16; i++)
+  {
+    write_buffer[i] = (uint8_t)(i + 1);
+    printf("0x%02X ", write_buffer[i]);
+  }
+  printf("\r\n");
+
+  // 写入数据到Flash
+  printf("  Writing to address 0x%06" PRIx32 "...\r\n", test_addr);
+  W25Q128_write(write_buffer, test_addr, 16);
+  printf("  Write test: Done\r\n");
+
+  // 从Flash读取数据
+  printf("  Reading from address 0x%06" PRIx32 "...\r\n", test_addr);
+  memset(read_buffer, 0, sizeof(read_buffer)); // 清空读取缓冲区
+  W25Q128_read(read_buffer, test_addr, 16);
+  printf("  Read test: Done\r\n");
+
+  // 打印读取的数据
+  printf("  Read data: ");
+  for (i = 0; i < 16; i++)
+  {
+    printf("0x%02X ", read_buffer[i]);
+  }
+  printf("\r\n");
+
+  // 验证数据
+  printf("  Verifying data...\r\n");
+  for (i = 0; i < 16; i++)
+  {
+    if (write_buffer[i] != read_buffer[i])
+    {
+      printf("  Data verification: Failed at byte %" PRIu32 " (expected 0x%02X, read 0x%02X)\r\n",
+             i, write_buffer[i], read_buffer[i]);
+      break;
+    }
+  }
+
+  if (i == 16)
+  {
+    printf("  Data verification: Passed\r\n");
+  }
+
+  printf("================================\r\n\r\n");
 }
 
 static void power_on_check(void)
@@ -288,6 +395,9 @@ static void power_on_check(void)
   {
     printf("No TF card detected or card error (state: %d)\r\n", sd_state);
   }
+
+  // 显示SPI Flash信息
+  show_spi_flash_info();
 
   // 检查串口命令
   if (uart_wait_command(&cmd, UART_TIMEOUT) && cmd == 'M')
@@ -347,12 +457,14 @@ int main(void)
   MX_RTC_Init();
   MX_FATFS_Init();
   MX_USB_DEVICE_Init();
+  MX_SPI1_Init();
   /* USER CODE BEGIN 2 */
   MX_SDIO_SD_Init_Fix();
   dwt_delay_init();
   printf("Bootloader started...\r\n");
   FLASH_If_Init();
   Common_Init();
+  w25q128_init();
 
   // 启动定时器1
   HAL_TIM_Base_Start_IT(&htim1);

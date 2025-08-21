@@ -194,7 +194,7 @@ void fatTest_ReadTXTFile(TCHAR *filename)
         printf("Error: Failed to open file '%s' (Error code: %d)\r\n", filename, res);
     }
     f_close(&file);
-    printf("==================================\r\n\r\n");
+    printf("===========================================\r\n\r\n");
 }
 
 void fatTest_ReadBinFile(TCHAR *filename)

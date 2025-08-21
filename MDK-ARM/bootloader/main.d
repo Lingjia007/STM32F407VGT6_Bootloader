@@ -33,6 +33,7 @@ bootloader\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc.h
 bootloader\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rtc_ex.h
 bootloader\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_sd.h
 bootloader\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_sdmmc.h
+bootloader\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h
 bootloader\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h
 bootloader\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h
 bootloader\main.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
@@ -51,6 +52,7 @@ bootloader\main.o: ../Middlewares/Third_Party/FatFs/src/ff_gen_drv.h
 bootloader\main.o: ../Middlewares/Third_Party/FatFs/src/diskio.h
 bootloader\main.o: ../FATFS/Target/sd_diskio.h
 bootloader\main.o: ../Core/Inc/rtc.h
+bootloader\main.o: ../Core/Inc/spi.h
 bootloader\main.o: ../Core/Inc/tim.h
 bootloader\main.o: ../Core/Inc/usart.h
 bootloader\main.o: ../USB_DEVICE/App/usb_device.h
@@ -60,9 +62,11 @@ bootloader\main.o: C:\Keil_v5\ARM\ARM_Compiler_5.06u7\Bin\..\include\stdio.h
 bootloader\main.o: C:\Keil_v5\ARM\ARM_Compiler_5.06u7\Bin\..\include\string.h
 bootloader\main.o: ../Core/Inc/gpio.h
 bootloader\main.o: ../Core/Inc/sdio.h
+bootloader\main.o: C:\Keil_v5\ARM\ARM_Compiler_5.06u7\Bin\..\include\inttypes.h
 bootloader\main.o: ../User/dwt_delay.h
 bootloader\main.o: ../IAP/menu.h
 bootloader\main.o: ../IAP/flash_if.h
 bootloader\main.o: ../IAP/ymodem.h
 bootloader\main.o: ../IAP/common.h
 bootloader\main.o: ../User/file_opera.h
+bootloader\main.o: ../User/w25q128.h

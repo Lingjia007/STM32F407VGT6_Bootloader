@@ -680,5 +680,1402 @@
             "-o",
             "build/bootloader/Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Src/usbd_msc_scsi.o"
         ]
+    },
+    {
+        "directory": "MDK-ARM",
+        "file": "MDK-ARM/startup_stm32f407xx.s",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "MDK-ARM/startup_stm32f407xx.s",
+            "-o",
+            "build/bootloader/MDK-ARM/startup_stm32f407xx.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/main.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Core/Src/main.c",
+            "-o",
+            "build/bootloader/Core/Src/main.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/gpio.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Core/Src/gpio.c",
+            "-o",
+            "build/bootloader/Core/Src/gpio.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/crc.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Core/Src/crc.c",
+            "-o",
+            "build/bootloader/Core/Src/crc.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/dma.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Core/Src/dma.c",
+            "-o",
+            "build/bootloader/Core/Src/dma.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/rtc.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Core/Src/rtc.c",
+            "-o",
+            "build/bootloader/Core/Src/rtc.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/sdio.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Core/Src/sdio.c",
+            "-o",
+            "build/bootloader/Core/Src/sdio.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/tim.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Core/Src/tim.c",
+            "-o",
+            "build/bootloader/Core/Src/tim.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/usart.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Core/Src/usart.c",
+            "-o",
+            "build/bootloader/Core/Src/usart.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/stm32f4xx_it.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Core/Src/stm32f4xx_it.c",
+            "-o",
+            "build/bootloader/Core/Src/stm32f4xx_it.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/stm32f4xx_hal_msp.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Core/Src/stm32f4xx_hal_msp.c",
+            "-o",
+            "build/bootloader/Core/Src/stm32f4xx_hal_msp.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F4xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd.c",
+            "-o",
+            "build/bootloader/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F4xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.c",
+            "-o",
+            "build/bootloader/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F4xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c",
+            "-o",
+            "build/bootloader/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F4xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c",
+            "-o",
+            "build/bootloader/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F4xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c",
+            "-o",
+            "build/bootloader/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F4xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c",
+            "-o",
+            "build/bootloader/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F4xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c",
+            "-o",
+            "build/bootloader/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F4xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c",
+            "-o",
+            "build/bootloader/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F4xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c",
+            "-o",
+            "build/bootloader/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F4xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c",
+            "-o",
+            "build/bootloader/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F4xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c",
+            "-o",
+            "build/bootloader/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F4xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c",
+            "-o",
+            "build/bootloader/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F4xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c",
+            "-o",
+            "build/bootloader/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F4xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c",
+            "-o",
+            "build/bootloader/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F4xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c",
+            "-o",
+            "build/bootloader/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F4xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c",
+            "-o",
+            "build/bootloader/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F4xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_crc.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_crc.c",
+            "-o",
+            "build/bootloader/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_crc.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F4xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc.c",
+            "-o",
+            "build/bootloader/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F4xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc_ex.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc_ex.c",
+            "-o",
+            "build/bootloader/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc_ex.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F4xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_sdmmc.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_sdmmc.c",
+            "-o",
+            "build/bootloader/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_sdmmc.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F4xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_sd.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_sd.c",
+            "-o",
+            "build/bootloader/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_sd.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F4xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_mmc.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_mmc.c",
+            "-o",
+            "build/bootloader/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_mmc.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F4xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c",
+            "-o",
+            "build/bootloader/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F4xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c",
+            "-o",
+            "build/bootloader/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F4xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c",
+            "-o",
+            "build/bootloader/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/system_stm32f4xx.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Core/Src/system_stm32f4xx.c",
+            "-o",
+            "build/bootloader/Core/Src/system_stm32f4xx.o"
+        ]
+    },
+    {
+        "directory": "IAP",
+        "file": "IAP/common.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "IAP/common.c",
+            "-o",
+            "build/bootloader/IAP/common.o"
+        ]
+    },
+    {
+        "directory": "IAP",
+        "file": "IAP/flash_if.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "IAP/flash_if.c",
+            "-o",
+            "build/bootloader/IAP/flash_if.o"
+        ]
+    },
+    {
+        "directory": "IAP",
+        "file": "IAP/menu.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "IAP/menu.c",
+            "-o",
+            "build/bootloader/IAP/menu.o"
+        ]
+    },
+    {
+        "directory": "IAP",
+        "file": "IAP/ymodem.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "IAP/ymodem.c",
+            "-o",
+            "build/bootloader/IAP/ymodem.o"
+        ]
+    },
+    {
+        "directory": "User",
+        "file": "User/dwt_delay.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "User/dwt_delay.c",
+            "-o",
+            "build/bootloader/User/dwt_delay.o"
+        ]
+    },
+    {
+        "directory": "User",
+        "file": "User/file_opera.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "User/file_opera.c",
+            "-o",
+            "build/bootloader/User/file_opera.o"
+        ]
+    },
+    {
+        "directory": "FATFS/Target",
+        "file": "FATFS/Target/bsp_driver_sd.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "FATFS/Target/bsp_driver_sd.c",
+            "-o",
+            "build/bootloader/FATFS/Target/bsp_driver_sd.o"
+        ]
+    },
+    {
+        "directory": "FATFS/Target",
+        "file": "FATFS/Target/sd_diskio.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "FATFS/Target/sd_diskio.c",
+            "-o",
+            "build/bootloader/FATFS/Target/sd_diskio.o"
+        ]
+    },
+    {
+        "directory": "FATFS/App",
+        "file": "FATFS/App/fatfs.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "FATFS/App/fatfs.c",
+            "-o",
+            "build/bootloader/FATFS/App/fatfs.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/FatFs/src",
+        "file": "Middlewares/Third_Party/FatFs/src/diskio.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/FatFs/src/diskio.c",
+            "-o",
+            "build/bootloader/Middlewares/Third_Party/FatFs/src/diskio.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/FatFs/src",
+        "file": "Middlewares/Third_Party/FatFs/src/ff.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/FatFs/src/ff.c",
+            "-o",
+            "build/bootloader/Middlewares/Third_Party/FatFs/src/ff.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/FatFs/src",
+        "file": "Middlewares/Third_Party/FatFs/src/ff_gen_drv.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/FatFs/src/ff_gen_drv.c",
+            "-o",
+            "build/bootloader/Middlewares/Third_Party/FatFs/src/ff_gen_drv.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/FatFs/src/option",
+        "file": "Middlewares/Third_Party/FatFs/src/option/syscall.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/FatFs/src/option/syscall.c",
+            "-o",
+            "build/bootloader/Middlewares/Third_Party/FatFs/src/option/syscall.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/FatFs/src/option",
+        "file": "Middlewares/Third_Party/FatFs/src/option/cc936.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/FatFs/src/option/cc936.c",
+            "-o",
+            "build/bootloader/Middlewares/Third_Party/FatFs/src/option/cc936.o"
+        ]
+    },
+    {
+        "directory": "USB_DEVICE/App",
+        "file": "USB_DEVICE/App/usb_device.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "USB_DEVICE/App/usb_device.c",
+            "-o",
+            "build/bootloader/USB_DEVICE/App/usb_device.o"
+        ]
+    },
+    {
+        "directory": "USB_DEVICE/App",
+        "file": "USB_DEVICE/App/usbd_desc.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "USB_DEVICE/App/usbd_desc.c",
+            "-o",
+            "build/bootloader/USB_DEVICE/App/usbd_desc.o"
+        ]
+    },
+    {
+        "directory": "USB_DEVICE/App",
+        "file": "USB_DEVICE/App/usbd_storage_if.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "USB_DEVICE/App/usbd_storage_if.c",
+            "-o",
+            "build/bootloader/USB_DEVICE/App/usbd_storage_if.o"
+        ]
+    },
+    {
+        "directory": "USB_DEVICE/Target",
+        "file": "USB_DEVICE/Target/usbd_conf.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "USB_DEVICE/Target/usbd_conf.c",
+            "-o",
+            "build/bootloader/USB_DEVICE/Target/usbd_conf.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/ST/STM32_USB_Device_Library/Core/Src",
+        "file": "Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c",
+            "-o",
+            "build/bootloader/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/ST/STM32_USB_Device_Library/Core/Src",
+        "file": "Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c",
+            "-o",
+            "build/bootloader/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/ST/STM32_USB_Device_Library/Core/Src",
+        "file": "Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c",
+            "-o",
+            "build/bootloader/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Src",
+        "file": "Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Src/usbd_msc.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Src/usbd_msc.c",
+            "-o",
+            "build/bootloader/Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Src/usbd_msc.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Src",
+        "file": "Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Src/usbd_msc_bot.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Src/usbd_msc_bot.c",
+            "-o",
+            "build/bootloader/Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Src/usbd_msc_bot.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Src",
+        "file": "Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Src/usbd_msc_data.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Src/usbd_msc_data.c",
+            "-o",
+            "build/bootloader/Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Src/usbd_msc_data.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Src",
+        "file": "Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Src/usbd_msc_scsi.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Src/usbd_msc_scsi.c",
+            "-o",
+            "build/bootloader/Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Src/usbd_msc_scsi.o"
+        ]
+    },
+    {
+        "directory": "MDK-ARM",
+        "file": "MDK-ARM/startup_stm32f407xx.s",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "MDK-ARM/startup_stm32f407xx.s",
+            "-o",
+            "build/bootloader/MDK-ARM/startup_stm32f407xx.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/main.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Core/Src/main.c",
+            "-o",
+            "build/bootloader/Core/Src/main.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/gpio.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Core/Src/gpio.c",
+            "-o",
+            "build/bootloader/Core/Src/gpio.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/crc.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Core/Src/crc.c",
+            "-o",
+            "build/bootloader/Core/Src/crc.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/dma.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Core/Src/dma.c",
+            "-o",
+            "build/bootloader/Core/Src/dma.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/rtc.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Core/Src/rtc.c",
+            "-o",
+            "build/bootloader/Core/Src/rtc.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/sdio.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Core/Src/sdio.c",
+            "-o",
+            "build/bootloader/Core/Src/sdio.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/spi.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Core/Src/spi.c",
+            "-o",
+            "build/bootloader/Core/Src/spi.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/tim.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Core/Src/tim.c",
+            "-o",
+            "build/bootloader/Core/Src/tim.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/usart.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Core/Src/usart.c",
+            "-o",
+            "build/bootloader/Core/Src/usart.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/stm32f4xx_it.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Core/Src/stm32f4xx_it.c",
+            "-o",
+            "build/bootloader/Core/Src/stm32f4xx_it.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/stm32f4xx_hal_msp.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Core/Src/stm32f4xx_hal_msp.c",
+            "-o",
+            "build/bootloader/Core/Src/stm32f4xx_hal_msp.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F4xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd.c",
+            "-o",
+            "build/bootloader/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F4xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.c",
+            "-o",
+            "build/bootloader/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pcd_ex.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F4xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.c",
+            "-o",
+            "build/bootloader/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_usb.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F4xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c",
+            "-o",
+            "build/bootloader/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F4xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c",
+            "-o",
+            "build/bootloader/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F4xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c",
+            "-o",
+            "build/bootloader/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F4xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c",
+            "-o",
+            "build/bootloader/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F4xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c",
+            "-o",
+            "build/bootloader/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F4xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c",
+            "-o",
+            "build/bootloader/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F4xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c",
+            "-o",
+            "build/bootloader/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F4xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c",
+            "-o",
+            "build/bootloader/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F4xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c",
+            "-o",
+            "build/bootloader/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F4xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c",
+            "-o",
+            "build/bootloader/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F4xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c",
+            "-o",
+            "build/bootloader/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F4xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c",
+            "-o",
+            "build/bootloader/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F4xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c",
+            "-o",
+            "build/bootloader/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F4xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_crc.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_crc.c",
+            "-o",
+            "build/bootloader/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_crc.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F4xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc.c",
+            "-o",
+            "build/bootloader/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F4xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc_ex.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc_ex.c",
+            "-o",
+            "build/bootloader/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc_ex.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F4xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_sdmmc.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_sdmmc.c",
+            "-o",
+            "build/bootloader/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_sdmmc.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F4xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_sd.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_sd.c",
+            "-o",
+            "build/bootloader/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_sd.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F4xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_mmc.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_mmc.c",
+            "-o",
+            "build/bootloader/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_mmc.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F4xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c",
+            "-o",
+            "build/bootloader/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F4xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c",
+            "-o",
+            "build/bootloader/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F4xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c",
+            "-o",
+            "build/bootloader/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o"
+        ]
+    },
+    {
+        "directory": "Drivers/STM32F4xx_HAL_Driver/Src",
+        "file": "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c",
+            "-o",
+            "build/bootloader/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o"
+        ]
+    },
+    {
+        "directory": "Core/Src",
+        "file": "Core/Src/system_stm32f4xx.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Core/Src/system_stm32f4xx.c",
+            "-o",
+            "build/bootloader/Core/Src/system_stm32f4xx.o"
+        ]
+    },
+    {
+        "directory": "IAP",
+        "file": "IAP/common.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "IAP/common.c",
+            "-o",
+            "build/bootloader/IAP/common.o"
+        ]
+    },
+    {
+        "directory": "IAP",
+        "file": "IAP/flash_if.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "IAP/flash_if.c",
+            "-o",
+            "build/bootloader/IAP/flash_if.o"
+        ]
+    },
+    {
+        "directory": "IAP",
+        "file": "IAP/menu.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "IAP/menu.c",
+            "-o",
+            "build/bootloader/IAP/menu.o"
+        ]
+    },
+    {
+        "directory": "IAP",
+        "file": "IAP/ymodem.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "IAP/ymodem.c",
+            "-o",
+            "build/bootloader/IAP/ymodem.o"
+        ]
+    },
+    {
+        "directory": "User",
+        "file": "User/dwt_delay.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "User/dwt_delay.c",
+            "-o",
+            "build/bootloader/User/dwt_delay.o"
+        ]
+    },
+    {
+        "directory": "User",
+        "file": "User/file_opera.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "User/file_opera.c",
+            "-o",
+            "build/bootloader/User/file_opera.o"
+        ]
+    },
+    {
+        "directory": "User",
+        "file": "User/w25q128.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "User/w25q128.c",
+            "-o",
+            "build/bootloader/User/w25q128.o"
+        ]
+    },
+    {
+        "directory": "FATFS/Target",
+        "file": "FATFS/Target/bsp_driver_sd.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "FATFS/Target/bsp_driver_sd.c",
+            "-o",
+            "build/bootloader/FATFS/Target/bsp_driver_sd.o"
+        ]
+    },
+    {
+        "directory": "FATFS/Target",
+        "file": "FATFS/Target/sd_diskio.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "FATFS/Target/sd_diskio.c",
+            "-o",
+            "build/bootloader/FATFS/Target/sd_diskio.o"
+        ]
+    },
+    {
+        "directory": "FATFS/App",
+        "file": "FATFS/App/fatfs.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "FATFS/App/fatfs.c",
+            "-o",
+            "build/bootloader/FATFS/App/fatfs.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/FatFs/src",
+        "file": "Middlewares/Third_Party/FatFs/src/diskio.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/FatFs/src/diskio.c",
+            "-o",
+            "build/bootloader/Middlewares/Third_Party/FatFs/src/diskio.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/FatFs/src",
+        "file": "Middlewares/Third_Party/FatFs/src/ff.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/FatFs/src/ff.c",
+            "-o",
+            "build/bootloader/Middlewares/Third_Party/FatFs/src/ff.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/FatFs/src",
+        "file": "Middlewares/Third_Party/FatFs/src/ff_gen_drv.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/FatFs/src/ff_gen_drv.c",
+            "-o",
+            "build/bootloader/Middlewares/Third_Party/FatFs/src/ff_gen_drv.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/FatFs/src/option",
+        "file": "Middlewares/Third_Party/FatFs/src/option/syscall.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/FatFs/src/option/syscall.c",
+            "-o",
+            "build/bootloader/Middlewares/Third_Party/FatFs/src/option/syscall.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/Third_Party/FatFs/src/option",
+        "file": "Middlewares/Third_Party/FatFs/src/option/cc936.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/Third_Party/FatFs/src/option/cc936.c",
+            "-o",
+            "build/bootloader/Middlewares/Third_Party/FatFs/src/option/cc936.o"
+        ]
+    },
+    {
+        "directory": "USB_DEVICE/App",
+        "file": "USB_DEVICE/App/usb_device.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "USB_DEVICE/App/usb_device.c",
+            "-o",
+            "build/bootloader/USB_DEVICE/App/usb_device.o"
+        ]
+    },
+    {
+        "directory": "USB_DEVICE/App",
+        "file": "USB_DEVICE/App/usbd_desc.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "USB_DEVICE/App/usbd_desc.c",
+            "-o",
+            "build/bootloader/USB_DEVICE/App/usbd_desc.o"
+        ]
+    },
+    {
+        "directory": "USB_DEVICE/App",
+        "file": "USB_DEVICE/App/usbd_storage_if.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "USB_DEVICE/App/usbd_storage_if.c",
+            "-o",
+            "build/bootloader/USB_DEVICE/App/usbd_storage_if.o"
+        ]
+    },
+    {
+        "directory": "USB_DEVICE/Target",
+        "file": "USB_DEVICE/Target/usbd_conf.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "USB_DEVICE/Target/usbd_conf.c",
+            "-o",
+            "build/bootloader/USB_DEVICE/Target/usbd_conf.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/ST/STM32_USB_Device_Library/Core/Src",
+        "file": "Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.c",
+            "-o",
+            "build/bootloader/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_core.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/ST/STM32_USB_Device_Library/Core/Src",
+        "file": "Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.c",
+            "-o",
+            "build/bootloader/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ctlreq.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/ST/STM32_USB_Device_Library/Core/Src",
+        "file": "Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.c",
+            "-o",
+            "build/bootloader/Middlewares/ST/STM32_USB_Device_Library/Core/Src/usbd_ioreq.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Src",
+        "file": "Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Src/usbd_msc.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Src/usbd_msc.c",
+            "-o",
+            "build/bootloader/Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Src/usbd_msc.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Src",
+        "file": "Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Src/usbd_msc_bot.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Src/usbd_msc_bot.c",
+            "-o",
+            "build/bootloader/Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Src/usbd_msc_bot.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Src",
+        "file": "Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Src/usbd_msc_data.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Src/usbd_msc_data.c",
+            "-o",
+            "build/bootloader/Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Src/usbd_msc_data.o"
+        ]
+    },
+    {
+        "directory": "Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Src",
+        "file": "Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Src/usbd_msc_scsi.c",
+        "arguments": [
+            "C:/Keil_v5/ARM/ARMCC/bin/armcc.exe",
+            "-c",
+            "Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Src/usbd_msc_scsi.c",
+            "-o",
+            "build/bootloader/Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Src/usbd_msc_scsi.o"
+        ]
     }
 ]
