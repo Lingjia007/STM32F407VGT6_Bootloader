@@ -1435,6 +1435,11 @@
               <FileType>1</FileType>
               <FilePath>..\User\dwt_delay.c</FilePath>
             </File>
+            <File>
+              <FileName>file_opera.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\file_opera.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

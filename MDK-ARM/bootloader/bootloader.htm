@@ -3,11 +3,11 @@
 <title>Static Call Graph - [bootloader\bootloader.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image bootloader\bootloader.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Wed Aug 20 23:43:39 2025
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Thu Aug 21 13:36:29 2025
 <BR><P>
-<H3>Maximum Stack Usage =        248 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =       1120 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
-main &rArr; power_on_check &rArr; show_sdcard_info &rArr; f_getfree &rArr; find_volume &rArr; check_fs &rArr; move_window &rArr; sync_window &rArr; disk_write
+main &rArr; power_on_check &rArr; show_sdcard_info &rArr; fatTest_ReadTXTFile &rArr; f_open &rArr; dir_register &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
 <P>
 <H3>
 Mutually Recursive functions
@@ -159,7 +159,7 @@ Global Symbols
 <P><STRONG><a name="[74]"></a>__main</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry.o(.ARM.Collect$$$$00000000))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f407xx.o(.text)
 </UL>
-<P><STRONG><a name="[1dd]"></a>_main_stk</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry2.o(.ARM.Collect$$$$00000001))
+<P><STRONG><a name="[20c]"></a>_main_stk</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry2.o(.ARM.Collect$$$$00000001))
 
 <P><STRONG><a name="[7f]"></a>_main_scatterload</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry5.o(.ARM.Collect$$$$00000004))
 <BR><BR>[Calls]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
@@ -169,17 +169,17 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
 </UL>
 
-<P><STRONG><a name="[1de]"></a>_main_clock</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry7b.o(.ARM.Collect$$$$00000008))
+<P><STRONG><a name="[20d]"></a>_main_clock</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry7b.o(.ARM.Collect$$$$00000008))
 
-<P><STRONG><a name="[1df]"></a>_main_cpp_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry8b.o(.ARM.Collect$$$$0000000A))
+<P><STRONG><a name="[20e]"></a>_main_cpp_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry8b.o(.ARM.Collect$$$$0000000A))
 
-<P><STRONG><a name="[1e0]"></a>_main_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry9a.o(.ARM.Collect$$$$0000000B))
+<P><STRONG><a name="[20f]"></a>_main_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry9a.o(.ARM.Collect$$$$0000000B))
 
-<P><STRONG><a name="[1e1]"></a>__rt_lib_shutdown_fini</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry12b.o(.ARM.Collect$$$$0000000E))
+<P><STRONG><a name="[210]"></a>__rt_lib_shutdown_fini</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry12b.o(.ARM.Collect$$$$0000000E))
 
-<P><STRONG><a name="[1e2]"></a>__rt_final_cpp</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry10a.o(.ARM.Collect$$$$0000000F))
+<P><STRONG><a name="[211]"></a>__rt_final_cpp</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry10a.o(.ARM.Collect$$$$0000000F))
 
-<P><STRONG><a name="[1e3]"></a>__rt_final_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry11a.o(.ARM.Collect$$$$00000011))
+<P><STRONG><a name="[212]"></a>__rt_final_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry11a.o(.ARM.Collect$$$$00000011))
 
 <P><STRONG><a name="[17]"></a>Reset_Handler</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, startup_stm32f407xx.o(.text))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f407xx.o(RESET)
@@ -427,24 +427,24 @@ Global Symbols
 <LI><a href="#[1c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
 </UL>
 
-<P><STRONG><a name="[1d4]"></a>__aeabi_memcpy</STRONG> (Thumb, 36 bytes, Stack size 0 bytes, memcpya.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[1d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;jump_to_app
+<P><STRONG><a name="[205]"></a>__aeabi_memcpy</STRONG> (Thumb, 36 bytes, Stack size 0 bytes, memcpya.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[204]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;jump_to_app
 </UL>
 
 <P><STRONG><a name="[97]"></a>__aeabi_memcpy4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memcpya.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Common_Init
 </UL>
 
-<P><STRONG><a name="[1e4]"></a>__aeabi_memcpy8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memcpya.o(.text), UNUSED)
+<P><STRONG><a name="[213]"></a>__aeabi_memcpy8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memcpya.o(.text), UNUSED)
 
 <P><STRONG><a name="[85]"></a>__aeabi_memset</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, memseta.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_memset$wrapper
 <LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr
 </UL>
 
-<P><STRONG><a name="[1e5]"></a>__aeabi_memset4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
+<P><STRONG><a name="[214]"></a>__aeabi_memset4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
 
-<P><STRONG><a name="[1e6]"></a>__aeabi_memset8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
+<P><STRONG><a name="[215]"></a>__aeabi_memset8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
 
 <P><STRONG><a name="[84]"></a>__aeabi_memclr</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, memseta.o(.text))
 <BR><BR>[Calls]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memset
@@ -461,7 +461,7 @@ Global Symbols
 <LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_PCD_MspInit
 </UL>
 
-<P><STRONG><a name="[1e7]"></a>__aeabi_memclr8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
+<P><STRONG><a name="[216]"></a>__aeabi_memclr8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
 
 <P><STRONG><a name="[86]"></a>_memset$wrapper</STRONG> (Thumb, 18 bytes, Stack size 8 bytes, memseta.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[85]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memset
@@ -471,13 +471,13 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uldivmod
 </UL>
 
-<P><STRONG><a name="[1e8]"></a>_ll_shift_l</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, llshl.o(.text), UNUSED)
+<P><STRONG><a name="[217]"></a>_ll_shift_l</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, llshl.o(.text), UNUSED)
 
 <P><STRONG><a name="[82]"></a>__aeabi_llsr</STRONG> (Thumb, 32 bytes, Stack size 0 bytes, llushr.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uldivmod
 </UL>
 
-<P><STRONG><a name="[1e9]"></a>_ll_ushift_r</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, llushr.o(.text), UNUSED)
+<P><STRONG><a name="[218]"></a>_ll_ushift_r</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, llushr.o(.text), UNUSED)
 
 <P><STRONG><a name="[80]"></a>__scatterload</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, init.o(.text))
 <BR><BR>[Calls]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__main_after_scatterload
@@ -485,11 +485,11 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_main_scatterload
 </UL>
 
-<P><STRONG><a name="[1ea]"></a>__scatterload_rt2</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, init.o(.text), UNUSED)
+<P><STRONG><a name="[219]"></a>__scatterload_rt2</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, init.o(.text), UNUSED)
 
-<P><STRONG><a name="[1eb]"></a>__decompress</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __dczerorl2.o(.text), UNUSED)
+<P><STRONG><a name="[21a]"></a>__decompress</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __dczerorl2.o(.text), UNUSED)
 
-<P><STRONG><a name="[1ec]"></a>__decompress1</STRONG> (Thumb, 86 bytes, Stack size unknown bytes, __dczerorl2.o(.text), UNUSED)
+<P><STRONG><a name="[21b]"></a>__decompress1</STRONG> (Thumb, 86 bytes, Stack size unknown bytes, __dczerorl2.o(.text), UNUSED)
 
 <P><STRONG><a name="[88]"></a>BSP_SD_GetCardInfo</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, bsp_driver_sd.o(i.BSP_SD_GetCardInfo))
 <BR><BR>[Calls]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SD_GetCardInfo
@@ -601,7 +601,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[15d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_FATFS_Init
 </UL>
 
-<P><STRONG><a name="[1ed]"></a>FATFS_LinkDriverEx</STRONG> (Thumb, 58 bytes, Stack size 12 bytes, ff_gen_drv.o(i.FATFS_LinkDriverEx), UNUSED)
+<P><STRONG><a name="[21c]"></a>FATFS_LinkDriverEx</STRONG> (Thumb, 58 bytes, Stack size 12 bytes, ff_gen_drv.o(i.FATFS_LinkDriverEx), UNUSED)
 
 <P><STRONG><a name="[b3]"></a>FLASH_Erase_Sector</STRONG> (Thumb, 74 bytes, Stack size 0 bytes, stm32f4xx_hal_flash_ex.o(i.FLASH_Erase_Sector))
 <BR><BR>[Called By]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_FLASHEx_Erase
@@ -732,10 +732,11 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetTick
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;power_on_check
+<BR>[Called By]<UL><LI><a href="#[209]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;power_on_check
 <LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_SetCurrentMode
 <LI><a href="#[11d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SD_InitCard
 <LI><a href="#[195]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Ymodem_Transmit
+<LI><a href="#[16b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SerialDownload
 </UL>
 
 <P><STRONG><a name="[9c]"></a>HAL_FLASHEx_Erase</STRONG> (Thumb, 144 bytes, Stack size 32 bytes, stm32f4xx_hal_flash_ex.o(i.HAL_FLASHEx_Erase))
@@ -819,7 +820,7 @@ Global Symbols
 <LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_OscConfig
 <LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_ClockConfig
 <LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
-<LI><a href="#[1d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;power_on_check
+<LI><a href="#[209]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;power_on_check
 <LI><a href="#[149]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_WaitOnFlagUntilTimeout
 <LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_DeInit
 <LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_DMA_Abort
@@ -921,7 +922,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[c5]"></a>HAL_PCD_DataOutStageCallback</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, usbd_conf.o(i.HAL_PCD_DataOutStageCallback))
-<BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = HAL_PCD_DataOutStageCallback &rArr; USBD_LL_DataOutStage &rArr; USBD_CtlContinueRx &rArr; USBD_LL_PrepareReceive &rArr; HAL_PCD_EP_Receive &rArr; USB_EPStartXfer &rArr; USB_WritePacket
+<BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = HAL_PCD_DataOutStageCallback &rArr; USBD_LL_DataOutStage &rArr; USBD_CtlSendStatus &rArr; USBD_LL_Transmit &rArr; HAL_PCD_EP_Transmit &rArr; USB_EPStartXfer &rArr; USB_WritePacket
 </UL>
 <BR>[Calls]<UL><LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USBD_LL_DataOutStage
 </UL>
@@ -1161,7 +1162,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetTick
 <LI><a href="#[bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_InitTick
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;jump_to_app
+<BR>[Called By]<UL><LI><a href="#[204]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;jump_to_app
 </UL>
 
 <P><STRONG><a name="[ec]"></a>HAL_RCC_GetHCLKFreq</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32f4xx_hal_rcc.o(i.HAL_RCC_GetHCLKFreq))
@@ -1264,7 +1265,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[89]"></a>HAL_SD_GetCardInfo</STRONG> (Thumb, 36 bytes, Stack size 0 bytes, stm32f4xx_hal_sd.o(i.HAL_SD_GetCardInfo))
-<BR><BR>[Called By]<UL><LI><a href="#[1db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_sdcard_info
+<BR><BR>[Called By]<UL><LI><a href="#[20a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_sdcard_info
 <LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_SD_GetCardInfo
 <LI><a href="#[8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;STORAGE_GetCapacity_FS
 </UL>
@@ -1275,7 +1276,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[11b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDMMC_CmdSendStatus
 <LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDIO_GetResponse
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;power_on_check
+<BR>[Called By]<UL><LI><a href="#[209]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;power_on_check
 <LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SD_DMAError
 <LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;BSP_SD_GetCardState
 <LI><a href="#[c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;STORAGE_Write_FS
@@ -1411,7 +1412,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[12d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_Base_Init
 </UL>
 
-<P><STRONG><a name="[1d7]"></a>HAL_TIM_Base_Start_IT</STRONG> (Thumb, 100 bytes, Stack size 0 bytes, stm32f4xx_hal_tim.o(i.HAL_TIM_Base_Start_IT))
+<P><STRONG><a name="[208]"></a>HAL_TIM_Base_Start_IT</STRONG> (Thumb, 100 bytes, Stack size 0 bytes, stm32f4xx_hal_tim.o(i.HAL_TIM_Base_Start_IT))
 <BR><BR>[Called By]<UL><LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
@@ -1513,7 +1514,7 @@ Global Symbols
 <LI><a href="#[149]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_WaitOnFlagUntilTimeout
 </UL>
 <BR>[Called By]<UL><LI><a href="#[169]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Main_Menu
-<LI><a href="#[1d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;power_on_check
+<LI><a href="#[209]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;power_on_check
 <LI><a href="#[16f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ReceivePacket
 <LI><a href="#[195]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Ymodem_Transmit
 <LI><a href="#[16c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SerialUpload
@@ -1665,7 +1666,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[1d5]"></a>MX_SDIO_SD_Init_Fix</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, sdio.o(i.MX_SDIO_SD_Init_Fix))
+<P><STRONG><a name="[206]"></a>MX_SDIO_SD_Init_Fix</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, sdio.o(i.MX_SDIO_SD_Init_Fix))
 <BR><BR>[Called By]<UL><LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
@@ -1714,7 +1715,7 @@ Global Symbols
 <LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FLASH_If_GetWriteProtectionStatus
 <LI><a href="#[16a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Serial_PutString
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;power_on_check
+<BR>[Called By]<UL><LI><a href="#[209]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;power_on_check
 </UL>
 
 <P><STRONG><a name="[1a]"></a>MemManage_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f4xx_it.o(i.MemManage_Handler))
@@ -2118,10 +2119,11 @@ Global Symbols
 <P><STRONG><a name="[1d]"></a>SVC_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f4xx_it.o(i.SVC_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f407xx.o(RESET)
 </UL>
-<P><STRONG><a name="[16b]"></a>SerialDownload</STRONG> (Thumb, 100 bytes, Stack size 24 bytes, menu.o(i.SerialDownload))
+<P><STRONG><a name="[16b]"></a>SerialDownload</STRONG> (Thumb, 106 bytes, Stack size 24 bytes, menu.o(i.SerialDownload))
 <BR><BR>[Stack]<UL><LI>Max Depth = 200<LI>Call Chain = SerialDownload &rArr; Ymodem_Receive &rArr; ReceivePacket &rArr; HAL_UART_Receive &rArr; UART_WaitOnFlagUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[193]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Ymodem_Receive
+<BR>[Calls]<UL><LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
+<LI><a href="#[193]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Ymodem_Receive
 <LI><a href="#[16a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Serial_PutString
 <LI><a href="#[194]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Int2Str
 </UL>
@@ -2390,19 +2392,19 @@ Global Symbols
 <P><STRONG><a name="[c4]"></a>USBD_LL_DataInStage</STRONG> (Thumb, 184 bytes, Stack size 16 bytes, usbd_core.o(i.USBD_LL_DataInStage))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = USBD_LL_DataInStage &rArr; USBD_CtlReceiveStatus &rArr; USBD_LL_PrepareReceive &rArr; HAL_PCD_EP_Receive &rArr; USB_EPStartXfer &rArr; USB_WritePacket
 </UL>
-<BR>[Calls]<UL><LI><a href="#[19f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USBD_CtlReceiveStatus
-<LI><a href="#[19d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USBD_CtlContinueSendData
-<LI><a href="#[14c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USBD_LL_StallEP
+<BR>[Calls]<UL><LI><a href="#[14c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USBD_LL_StallEP
 <LI><a href="#[158]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USBD_LL_PrepareReceive
+<LI><a href="#[19f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USBD_CtlReceiveStatus
+<LI><a href="#[19d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USBD_CtlContinueSendData
 </UL>
 <BR>[Called By]<UL><LI><a href="#[c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_PCD_DataInStageCallback
 </UL>
 
 <P><STRONG><a name="[c6]"></a>USBD_LL_DataOutStage</STRONG> (Thumb, 148 bytes, Stack size 8 bytes, usbd_core.o(i.USBD_LL_DataOutStage))
-<BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = USBD_LL_DataOutStage &rArr; USBD_CtlContinueRx &rArr; USBD_LL_PrepareReceive &rArr; HAL_PCD_EP_Receive &rArr; USB_EPStartXfer &rArr; USB_WritePacket
+<BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = USBD_LL_DataOutStage &rArr; USBD_CtlSendStatus &rArr; USBD_LL_Transmit &rArr; HAL_PCD_EP_Transmit &rArr; USB_EPStartXfer &rArr; USB_WritePacket
 </UL>
-<BR>[Calls]<UL><LI><a href="#[19c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USBD_CtlContinueRx
-<LI><a href="#[1a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USBD_CtlSendStatus
+<BR>[Calls]<UL><LI><a href="#[1a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USBD_CtlSendStatus
+<LI><a href="#[19c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USBD_CtlContinueRx
 </UL>
 <BR>[Called By]<UL><LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_PCD_DataOutStageCallback
 </UL>
@@ -2476,15 +2478,15 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_PCD_EP_Receive
 <LI><a href="#[1a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USBD_Get_USB_Status
 </UL>
-<BR>[Called By]<UL><LI><a href="#[19f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USBD_CtlReceiveStatus
-<LI><a href="#[19c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USBD_CtlContinueRx
-<LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USBD_LL_DataInStage
+<BR>[Called By]<UL><LI><a href="#[c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USBD_LL_DataInStage
 <LI><a href="#[17b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCSI_Write12
 <LI><a href="#[17a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCSI_Write10
 <LI><a href="#[17e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCSI_ProcessWrite
 <LI><a href="#[152]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MSC_BOT_SendCSW
 <LI><a href="#[159]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MSC_BOT_Reset
 <LI><a href="#[156]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MSC_BOT_Init
+<LI><a href="#[19f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USBD_CtlReceiveStatus
+<LI><a href="#[19c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USBD_CtlContinueRx
 </UL>
 
 <P><STRONG><a name="[fe]"></a>USBD_LL_Reset</STRONG> (Thumb, 94 bytes, Stack size 24 bytes, usbd_core.o(i.USBD_LL_Reset))
@@ -2563,12 +2565,12 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_PCD_EP_Transmit
 <LI><a href="#[1a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USBD_Get_USB_Status
 </UL>
-<BR>[Called By]<UL><LI><a href="#[19d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USBD_CtlContinueSendData
-<LI><a href="#[17d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCSI_ProcessRead
+<BR>[Called By]<UL><LI><a href="#[17d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SCSI_ProcessRead
 <LI><a href="#[152]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MSC_BOT_SendCSW
 <LI><a href="#[14d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MSC_BOT_CBW_Decode
 <LI><a href="#[1a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USBD_CtlSendData
 <LI><a href="#[1a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USBD_CtlSendStatus
+<LI><a href="#[19d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USBD_CtlContinueSendData
 </UL>
 
 <P><STRONG><a name="[11]"></a>USBD_MSC_DataIn</STRONG> (Thumb, 10 bytes, Stack size 8 bytes, usbd_msc.o(i.USBD_MSC_DataIn))
@@ -2684,13 +2686,13 @@ Global Symbols
 <P><STRONG><a name="[1b3]"></a>USBD_StdEPReq</STRONG> (Thumb, 358 bytes, Stack size 24 bytes, usbd_ctlreq.o(i.USBD_StdEPReq))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = USBD_StdEPReq &rArr; USBD_CtlSendData &rArr; USBD_LL_Transmit &rArr; HAL_PCD_EP_Transmit &rArr; USB_EPStartXfer &rArr; USB_WritePacket
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USBD_CoreFindEP
-<LI><a href="#[14c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USBD_LL_StallEP
+<BR>[Calls]<UL><LI><a href="#[14c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USBD_LL_StallEP
 <LI><a href="#[1bd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USBD_LL_IsStallEP
 <LI><a href="#[15a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USBD_LL_ClearStallEP
 <LI><a href="#[1a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USBD_CtlSendData
 <LI><a href="#[19e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USBD_CtlError
 <LI><a href="#[1a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USBD_CtlSendStatus
+<LI><a href="#[1bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USBD_CoreFindEP
 </UL>
 <BR>[Called By]<UL><LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USBD_LL_SetupStage
 </UL>
@@ -2698,9 +2700,9 @@ Global Symbols
 <P><STRONG><a name="[1b2]"></a>USBD_StdItfReq</STRONG> (Thumb, 114 bytes, Stack size 16 bytes, usbd_ctlreq.o(i.USBD_StdItfReq))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = USBD_StdItfReq &rArr; USBD_CtlSendStatus &rArr; USBD_LL_Transmit &rArr; HAL_PCD_EP_Transmit &rArr; USB_EPStartXfer &rArr; USB_WritePacket
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USBD_CoreFindIF
-<LI><a href="#[19e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USBD_CtlError
+<BR>[Calls]<UL><LI><a href="#[19e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USBD_CtlError
 <LI><a href="#[1a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USBD_CtlSendStatus
+<LI><a href="#[1be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USBD_CoreFindIF
 </UL>
 <BR>[Called By]<UL><LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USBD_LL_SetupStage
 </UL>
@@ -2908,70 +2910,251 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[1c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
 </UL>
 
-<P><STRONG><a name="[1ee]"></a>__1printf$8</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printf8.o(i.__0printf$8), UNUSED)
+<P><STRONG><a name="[21d]"></a>__1printf$8</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printf8.o(i.__0printf$8), UNUSED)
 
 <P><STRONG><a name="[1c6]"></a>__2printf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printf8.o(i.__0printf$8))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = __2printf
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_sdcard_info
+<BR>[Called By]<UL><LI><a href="#[1ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fatTest_ScanDir
+<LI><a href="#[1fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fatTest_ReadTXTFile
+<LI><a href="#[20a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_sdcard_info
 <LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-<LI><a href="#[1d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;power_on_check
-<LI><a href="#[1d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;jump_to_app
+<LI><a href="#[209]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;power_on_check
+<LI><a href="#[204]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;jump_to_app
 <LI><a href="#[1c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_is_valid
 </UL>
 
-<P><STRONG><a name="[1ef]"></a>__scatterload_copy</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_copy), UNUSED)
+<P><STRONG><a name="[21e]"></a>__scatterload_copy</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_copy), UNUSED)
 
-<P><STRONG><a name="[1f0]"></a>__scatterload_null</STRONG> (Thumb, 2 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_null), UNUSED)
+<P><STRONG><a name="[21f]"></a>__scatterload_null</STRONG> (Thumb, 2 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_null), UNUSED)
 
-<P><STRONG><a name="[1f1]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
+<P><STRONG><a name="[220]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
 
-<P><STRONG><a name="[1d2]"></a>disk_initialize</STRONG> (Thumb, 38 bytes, Stack size 16 bytes, diskio.o(i.disk_initialize))
+<P><STRONG><a name="[203]"></a>disk_initialize</STRONG> (Thumb, 38 bytes, Stack size 16 bytes, diskio.o(i.disk_initialize))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = disk_initialize
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;find_volume
+<BR>[Called By]<UL><LI><a href="#[1e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;find_volume
 </UL>
 
-<P><STRONG><a name="[1da]"></a>disk_read</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, diskio.o(i.disk_read))
+<P><STRONG><a name="[20b]"></a>disk_ioctl</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, diskio.o(i.disk_ioctl))
+<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = disk_ioctl
+</UL>
+<BR>[Called By]<UL><LI><a href="#[1fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sync_fs
+</UL>
+
+<P><STRONG><a name="[1f7]"></a>disk_read</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, diskio.o(i.disk_read))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = disk_read
 </UL>
 <BR>[Called By]<UL><LI><a href="#[1c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;move_window
+<LI><a href="#[1e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_read
+<LI><a href="#[1ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_open
 </UL>
 
-<P><STRONG><a name="[1d1]"></a>disk_status</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, diskio.o(i.disk_status))
-<BR><BR>[Called By]<UL><LI><a href="#[1cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;find_volume
+<P><STRONG><a name="[202]"></a>disk_status</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, diskio.o(i.disk_status))
+<BR><BR>[Called By]<UL><LI><a href="#[1e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;validate
+<LI><a href="#[1e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;find_volume
 </UL>
 
-<P><STRONG><a name="[1dc]"></a>disk_write</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, diskio.o(i.disk_write))
+<P><STRONG><a name="[1fa]"></a>disk_write</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, diskio.o(i.disk_write))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = disk_write
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sync_window
+<BR>[Called By]<UL><LI><a href="#[1d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sync_window
+<LI><a href="#[1fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sync_fs
+<LI><a href="#[1e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_read
+<LI><a href="#[1e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_sync
 </UL>
 
-<P><STRONG><a name="[1d6]"></a>dwt_delay_init</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, dwt_delay.o(i.dwt_delay_init))
+<P><STRONG><a name="[207]"></a>dwt_delay_init</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, dwt_delay.o(i.dwt_delay_init))
 <BR><BR>[Called By]<UL><LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[1cb]"></a>f_getfree</STRONG> (Thumb, 212 bytes, Stack size 72 bytes, ff.o(i.f_getfree))
+<P><STRONG><a name="[1e0]"></a>f_close</STRONG> (Thumb, 40 bytes, Stack size 16 bytes, ff.o(i.f_close))
+<BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = f_close &rArr; f_sync &rArr; sync_fs &rArr; sync_window &rArr; disk_write
+</UL>
+<BR>[Calls]<UL><LI><a href="#[1e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;validate
+<LI><a href="#[1e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dec_lock
+<LI><a href="#[1e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_sync
+</UL>
+<BR>[Called By]<UL><LI><a href="#[1fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fatTest_ReadTXTFile
+</UL>
+
+<P><STRONG><a name="[1e4]"></a>f_closedir</STRONG> (Thumb, 34 bytes, Stack size 16 bytes, ff.o(i.f_closedir))
+<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = f_closedir &rArr; validate
+</UL>
+<BR>[Calls]<UL><LI><a href="#[1e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;validate
+<LI><a href="#[1e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dec_lock
+</UL>
+<BR>[Called By]<UL><LI><a href="#[1ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fatTest_ScanDir
+</UL>
+
+<P><STRONG><a name="[1e5]"></a>f_getfree</STRONG> (Thumb, 212 bytes, Stack size 72 bytes, ff.o(i.f_getfree))
 <BR><BR>[Stack]<UL><LI>Max Depth = 168<LI>Call Chain = f_getfree &rArr; find_volume &rArr; check_fs &rArr; move_window &rArr; sync_window &rArr; disk_write
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;move_window
 <LI><a href="#[1c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ld_word
 <LI><a href="#[1ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ld_dword
-<LI><a href="#[1cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_fat
-<LI><a href="#[1cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;find_volume
+<LI><a href="#[1ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_fat
+<LI><a href="#[1e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;find_volume
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_sdcard_info
+<BR>[Called By]<UL><LI><a href="#[20a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_sdcard_info
 </UL>
 
-<P><STRONG><a name="[1ce]"></a>f_mount</STRONG> (Thumb, 84 bytes, Stack size 40 bytes, ff.o(i.f_mount))
+<P><STRONG><a name="[1e7]"></a>f_gets</STRONG> (Thumb, 72 bytes, Stack size 32 bytes, ff.o(i.f_gets))
+<BR><BR>[Stack]<UL><LI>Max Depth = 152<LI>Call Chain = f_gets &rArr; f_read &rArr; get_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
+</UL>
+<BR>[Calls]<UL><LI><a href="#[1e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_read
+</UL>
+<BR>[Called By]<UL><LI><a href="#[1fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fatTest_ReadTXTFile
+</UL>
+
+<P><STRONG><a name="[1e9]"></a>f_mount</STRONG> (Thumb, 84 bytes, Stack size 40 bytes, ff.o(i.f_mount))
 <BR><BR>[Stack]<UL><LI>Max Depth = 136<LI>Call Chain = f_mount &rArr; find_volume &rArr; check_fs &rArr; move_window &rArr; sync_window &rArr; disk_write
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_ldnumber
-<LI><a href="#[1cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;find_volume
-<LI><a href="#[1d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clear_lock
+<BR>[Calls]<UL><LI><a href="#[1ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_ldnumber
+<LI><a href="#[1e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;find_volume
+<LI><a href="#[1eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clear_lock
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;power_on_check
+<BR>[Called By]<UL><LI><a href="#[209]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;power_on_check
+</UL>
+
+<P><STRONG><a name="[1ec]"></a>f_open</STRONG> (Thumb, 574 bytes, Stack size 128 bytes, ff.o(i.f_open))
+<BR><BR>[Stack]<UL><LI>Max Depth = 368<LI>Call Chain = f_open &rArr; dir_register &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
+</UL>
+<BR>[Calls]<UL><LI><a href="#[1f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st_dword
+<LI><a href="#[1f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st_clust
+<LI><a href="#[1f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remove_chain
+<LI><a href="#[1c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;move_window
+<LI><a href="#[1d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mem_set
+<LI><a href="#[1ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ld_dword
+<LI><a href="#[1f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ld_clust
+<LI><a href="#[1f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;inc_lock
+<LI><a href="#[1ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_fat
+<LI><a href="#[1ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;follow_path
+<LI><a href="#[1e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;find_volume
+<LI><a href="#[1dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dir_register
+<LI><a href="#[1d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clust2sect
+<LI><a href="#[1ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;chk_lock
+<LI><a href="#[1f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;disk_read
+<LI><a href="#[1f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_fattime
+<LI><a href="#[1f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ff_memfree
+<LI><a href="#[1ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ff_memalloc
+</UL>
+<BR>[Called By]<UL><LI><a href="#[1fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fatTest_ReadTXTFile
+</UL>
+
+<P><STRONG><a name="[1f8]"></a>f_opendir</STRONG> (Thumb, 172 bytes, Stack size 32 bytes, ff.o(i.f_opendir))
+<BR><BR>[Stack]<UL><LI>Max Depth = 224<LI>Call Chain = f_opendir &rArr; follow_path &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
+</UL>
+<BR>[Calls]<UL><LI><a href="#[1f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ld_clust
+<LI><a href="#[1f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;inc_lock
+<LI><a href="#[1ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;follow_path
+<LI><a href="#[1e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;find_volume
+<LI><a href="#[1d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dir_sdi
+<LI><a href="#[1f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ff_memfree
+<LI><a href="#[1ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ff_memalloc
+</UL>
+<BR>[Called By]<UL><LI><a href="#[1ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fatTest_ScanDir
+</UL>
+
+<P><STRONG><a name="[1e8]"></a>f_read</STRONG> (Thumb, 338 bytes, Stack size 48 bytes, ff.o(i.f_read))
+<BR><BR>[Stack]<UL><LI>Max Depth = 120<LI>Call Chain = f_read &rArr; get_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
+</UL>
+<BR>[Calls]<UL><LI><a href="#[1e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;validate
+<LI><a href="#[1dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mem_cpy
+<LI><a href="#[1ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_fat
+<LI><a href="#[1d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clust2sect
+<LI><a href="#[1f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clmt_clust
+<LI><a href="#[1fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;disk_write
+<LI><a href="#[1f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;disk_read
+</UL>
+<BR>[Called By]<UL><LI><a href="#[1e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_gets
+</UL>
+
+<P><STRONG><a name="[1fb]"></a>f_readdir</STRONG> (Thumb, 102 bytes, Stack size 24 bytes, ff.o(i.f_readdir))
+<BR><BR>[Stack]<UL><LI>Max Depth = 192<LI>Call Chain = f_readdir &rArr; dir_read &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
+</UL>
+<BR>[Calls]<UL><LI><a href="#[1e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;validate
+<LI><a href="#[1fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_fileinfo
+<LI><a href="#[1d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dir_sdi
+<LI><a href="#[1da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dir_read
+<LI><a href="#[1d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dir_next
+<LI><a href="#[1f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ff_memfree
+<LI><a href="#[1ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ff_memalloc
+</UL>
+<BR>[Called By]<UL><LI><a href="#[1ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fatTest_ScanDir
+</UL>
+
+<P><STRONG><a name="[1e1]"></a>f_sync</STRONG> (Thumb, 142 bytes, Stack size 24 bytes, ff.o(i.f_sync))
+<BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = f_sync &rArr; sync_fs &rArr; sync_window &rArr; disk_write
+</UL>
+<BR>[Calls]<UL><LI><a href="#[1e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;validate
+<LI><a href="#[1fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sync_fs
+<LI><a href="#[1df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st_word
+<LI><a href="#[1f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st_dword
+<LI><a href="#[1f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st_clust
+<LI><a href="#[1c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;move_window
+<LI><a href="#[1fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;disk_write
+<LI><a href="#[1f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_fattime
+</UL>
+<BR>[Called By]<UL><LI><a href="#[1e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_close
+</UL>
+
+<P><STRONG><a name="[1fe]"></a>fatTest_ReadTXTFile</STRONG> (Thumb, 124 bytes, Stack size 672 bytes, file_opera.o(i.fatTest_ReadTXTFile))
+<BR><BR>[Stack]<UL><LI>Max Depth = 1040<LI>Call Chain = fatTest_ReadTXTFile &rArr; f_open &rArr; dir_register &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
+</UL>
+<BR>[Calls]<UL><LI><a href="#[1ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_open
+<LI><a href="#[1e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_gets
+<LI><a href="#[1e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_close
+<LI><a href="#[1c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
+</UL>
+<BR>[Called By]<UL><LI><a href="#[20a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_sdcard_info
+</UL>
+
+<P><STRONG><a name="[1ff]"></a>fatTest_ScanDir</STRONG> (Thumb, 252 bytes, Stack size 40 bytes, file_opera.o(i.fatTest_ScanDir))
+<BR><BR>[Stack]<UL><LI>Max Depth = 264<LI>Call Chain = fatTest_ScanDir &rArr; f_opendir &rArr; follow_path &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
+</UL>
+<BR>[Calls]<UL><LI><a href="#[1fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_readdir
+<LI><a href="#[1f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_opendir
+<LI><a href="#[1e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_closedir
+<LI><a href="#[200]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;malloc
+<LI><a href="#[201]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;free
+<LI><a href="#[1c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
+</UL>
+<BR>[Called By]<UL><LI><a href="#[20a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_sdcard_info
+</UL>
+
+<P><STRONG><a name="[1d1]"></a>ff_convert</STRONG> (Thumb, 68 bytes, Stack size 16 bytes, cc936.o(i.ff_convert))
+<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = ff_convert
+</UL>
+<BR>[Called By]<UL><LI><a href="#[1fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_fileinfo
+<LI><a href="#[1d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;create_name
+</UL>
+
+<P><STRONG><a name="[1ed]"></a>ff_memalloc</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, syscall.o(i.ff_memalloc))
+<BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = ff_memalloc &rArr; malloc
+</UL>
+<BR>[Calls]<UL><LI><a href="#[200]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;malloc
+</UL>
+<BR>[Called By]<UL><LI><a href="#[1fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_readdir
+<LI><a href="#[1f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_opendir
+<LI><a href="#[1ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_open
+</UL>
+
+<P><STRONG><a name="[1f6]"></a>ff_memfree</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, syscall.o(i.ff_memfree))
+<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = ff_memfree &rArr; free
+</UL>
+<BR>[Calls]<UL><LI><a href="#[201]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;free
+</UL>
+<BR>[Called By]<UL><LI><a href="#[1fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_readdir
+<LI><a href="#[1f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_opendir
+<LI><a href="#[1ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_open
+</UL>
+
+<P><STRONG><a name="[1cc]"></a>ff_wtoupper</STRONG> (Thumb, 120 bytes, Stack size 12 bytes, cc936.o(i.ff_wtoupper))
+<BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = ff_wtoupper
+</UL>
+<BR>[Called By]<UL><LI><a href="#[1d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;create_name
+<LI><a href="#[1cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cmp_lfn
 </UL>
 
 <P><STRONG><a name="[79]"></a>fputc</STRONG> (Thumb, 26 bytes, Stack size 16 bytes, main.o(i.fputc))
@@ -2981,37 +3164,58 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> printf8.o(i.__0printf$8)
 </UL>
-<P><STRONG><a name="[72]"></a>main</STRONG> (Thumb, 74 bytes, Stack size 0 bytes, main.o(i.main))
-<BR><BR>[Stack]<UL><LI>Max Depth = 248<LI>Call Chain = main &rArr; power_on_check &rArr; show_sdcard_info &rArr; f_getfree &rArr; find_volume &rArr; check_fs &rArr; move_window &rArr; sync_window &rArr; disk_write
+<P><STRONG><a name="[201]"></a>free</STRONG> (Thumb, 76 bytes, Stack size 8 bytes, malloc.o(i.free))
+<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = free
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_delay_init
+<BR>[Called By]<UL><LI><a href="#[1ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fatTest_ScanDir
+<LI><a href="#[1f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ff_memfree
+</UL>
+
+<P><STRONG><a name="[1f0]"></a>get_fattime</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, fatfs.o(i.get_fattime))
+<BR><BR>[Called By]<UL><LI><a href="#[1ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_open
+<LI><a href="#[1e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_sync
+</UL>
+
+<P><STRONG><a name="[72]"></a>main</STRONG> (Thumb, 74 bytes, Stack size 0 bytes, main.o(i.main))
+<BR><BR>[Stack]<UL><LI>Max Depth = 1120<LI>Call Chain = main &rArr; power_on_check &rArr; show_sdcard_info &rArr; fatTest_ReadTXTFile &rArr; f_open &rArr; dir_register &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
+</UL>
+<BR>[Calls]<UL><LI><a href="#[207]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dwt_delay_init
 <LI><a href="#[164]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_USB_DEVICE_Init
 <LI><a href="#[163]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_UART4_Init
 <LI><a href="#[161]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_TIM1_Init
-<LI><a href="#[1d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_SDIO_SD_Init_Fix
+<LI><a href="#[206]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_SDIO_SD_Init_Fix
 <LI><a href="#[160]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_RTC_Init
 <LI><a href="#[15f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_GPIO_Init
 <LI><a href="#[15d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_FATFS_Init
 <LI><a href="#[15c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_DMA_Init
 <LI><a href="#[15b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_CRC_Init
-<LI><a href="#[1d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_Base_Start_IT
+<LI><a href="#[208]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_Base_Start_IT
 <LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Init
 <LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FLASH_If_Init
 <LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Common_Init
 <LI><a href="#[198]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemClock_Config
-<LI><a href="#[1d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;power_on_check
+<LI><a href="#[209]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;power_on_check
 <LI><a href="#[1c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> entry9a.o(.ARM.Collect$$$$0000000B)
 </UL>
-<P><STRONG><a name="[1db]"></a>show_sdcard_info</STRONG> (Thumb, 184 bytes, Stack size 56 bytes, main.o(i.show_sdcard_info))
-<BR><BR>[Stack]<UL><LI>Max Depth = 224<LI>Call Chain = show_sdcard_info &rArr; f_getfree &rArr; find_volume &rArr; check_fs &rArr; move_window &rArr; sync_window &rArr; disk_write
+<P><STRONG><a name="[200]"></a>malloc</STRONG> (Thumb, 92 bytes, Stack size 20 bytes, malloc.o(i.malloc))
+<BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = malloc
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_getfree
+<BR>[Called By]<UL><LI><a href="#[1ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fatTest_ScanDir
+<LI><a href="#[1ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ff_memalloc
+</UL>
+
+<P><STRONG><a name="[20a]"></a>show_sdcard_info</STRONG> (Thumb, 204 bytes, Stack size 56 bytes, main.o(i.show_sdcard_info))
+<BR><BR>[Stack]<UL><LI>Max Depth = 1096<LI>Call Chain = show_sdcard_info &rArr; fatTest_ReadTXTFile &rArr; f_open &rArr; dir_register &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
+</UL>
+<BR>[Calls]<UL><LI><a href="#[1ff]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fatTest_ScanDir
+<LI><a href="#[1fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fatTest_ReadTXTFile
+<LI><a href="#[1e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_getfree
 <LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SD_GetCardInfo
 <LI><a href="#[1c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;power_on_check
+<BR>[Called By]<UL><LI><a href="#[209]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;power_on_check
 </UL>
 <P>
 <H3>
@@ -3022,30 +3226,30 @@ Local Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;power_on_check
+<BR>[Called By]<UL><LI><a href="#[209]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;power_on_check
 </UL>
 
-<P><STRONG><a name="[1d3]"></a>jump_to_app</STRONG> (Thumb, 168 bytes, Stack size 16 bytes, main.o(i.jump_to_app))
+<P><STRONG><a name="[204]"></a>jump_to_app</STRONG> (Thumb, 170 bytes, Stack size 16 bytes, main.o(i.jump_to_app))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = jump_to_app &rArr; HAL_RCC_DeInit &rArr; HAL_InitTick &rArr; HAL_NVIC_SetPriority
 </UL>
 <BR>[Calls]<UL><LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_DeInit
+<LI><a href="#[205]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
 <LI><a href="#[1c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
-<LI><a href="#[1d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;power_on_check
+<BR>[Called By]<UL><LI><a href="#[209]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;power_on_check
 </UL>
 
-<P><STRONG><a name="[1d8]"></a>power_on_check</STRONG> (Thumb, 168 bytes, Stack size 24 bytes, main.o(i.power_on_check))
-<BR><BR>[Stack]<UL><LI>Max Depth = 248<LI>Call Chain = power_on_check &rArr; show_sdcard_info &rArr; f_getfree &rArr; find_volume &rArr; check_fs &rArr; move_window &rArr; sync_window &rArr; disk_write
+<P><STRONG><a name="[209]"></a>power_on_check</STRONG> (Thumb, 168 bytes, Stack size 24 bytes, main.o(i.power_on_check))
+<BR><BR>[Stack]<UL><LI>Max Depth = 1120<LI>Call Chain = power_on_check &rArr; show_sdcard_info &rArr; fatTest_ReadTXTFile &rArr; f_open &rArr; dir_register &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_mount
+<BR>[Calls]<UL><LI><a href="#[1e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_mount
 <LI><a href="#[169]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Main_Menu
 <LI><a href="#[148]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Receive
 <LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SD_GetCardState
 <LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetTick
 <LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
-<LI><a href="#[1db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_sdcard_info
-<LI><a href="#[1d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;jump_to_app
+<LI><a href="#[20a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_sdcard_info
+<LI><a href="#[204]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;jump_to_app
 <LI><a href="#[1c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_is_valid
 <LI><a href="#[1c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
@@ -3053,7 +3257,7 @@ Local Symbols
 </UL>
 
 <P><STRONG><a name="[e0]"></a>PCD_EP_OutXfrComplete_int</STRONG> (Thumb, 196 bytes, Stack size 24 bytes, stm32f4xx_hal_pcd.o(i.PCD_EP_OutXfrComplete_int))
-<BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = PCD_EP_OutXfrComplete_int &rArr; HAL_PCD_DataOutStageCallback &rArr; USBD_LL_DataOutStage &rArr; USBD_CtlContinueRx &rArr; USBD_LL_PrepareReceive &rArr; HAL_PCD_EP_Receive &rArr; USB_EPStartXfer &rArr; USB_WritePacket
+<BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = PCD_EP_OutXfrComplete_int &rArr; HAL_PCD_DataOutStageCallback &rArr; USBD_LL_DataOutStage &rArr; USBD_CtlSendStatus &rArr; USBD_LL_Transmit &rArr; HAL_PCD_EP_Transmit &rArr; USB_EPStartXfer &rArr; USB_WritePacket
 </UL>
 <BR>[Calls]<UL><LI><a href="#[d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_EP0_OutStart
 <LI><a href="#[c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_PCD_DataOutStageCallback
@@ -3284,81 +3488,370 @@ Local Symbols
 <LI><a href="#[1c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ld_word
 <LI><a href="#[1ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ld_dword
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;find_volume
+<BR>[Called By]<UL><LI><a href="#[1e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;find_volume
 </UL>
 
-<P><STRONG><a name="[1d0]"></a>clear_lock</STRONG> (Thumb, 28 bytes, Stack size 12 bytes, ff.o(i.clear_lock))
+<P><STRONG><a name="[1d2]"></a>chk_chr</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, ff.o(i.chk_chr))
+<BR><BR>[Called By]<UL><LI><a href="#[1d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;create_name
+</UL>
+
+<P><STRONG><a name="[1ef]"></a>chk_lock</STRONG> (Thumb, 86 bytes, Stack size 20 bytes, ff.o(i.chk_lock))
+<BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = chk_lock
+</UL>
+<BR>[Called By]<UL><LI><a href="#[1ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_open
+</UL>
+
+<P><STRONG><a name="[1eb]"></a>clear_lock</STRONG> (Thumb, 28 bytes, Stack size 12 bytes, ff.o(i.clear_lock))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = clear_lock
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_mount
-<LI><a href="#[1cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;find_volume
+<BR>[Called By]<UL><LI><a href="#[1e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_mount
+<LI><a href="#[1e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;find_volume
 </UL>
 
-<P><STRONG><a name="[1cc]"></a>find_volume</STRONG> (Thumb, 582 bytes, Stack size 40 bytes, ff.o(i.find_volume))
+<P><STRONG><a name="[1f9]"></a>clmt_clust</STRONG> (Thumb, 36 bytes, Stack size 0 bytes, ff.o(i.clmt_clust))
+<BR><BR>[Called By]<UL><LI><a href="#[1e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_read
+</UL>
+
+<P><STRONG><a name="[1d9]"></a>clust2sect</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, ff.o(i.clust2sect))
+<BR><BR>[Called By]<UL><LI><a href="#[1d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dir_sdi
+<LI><a href="#[1d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dir_next
+<LI><a href="#[1e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_read
+<LI><a href="#[1ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_open
+</UL>
+
+<P><STRONG><a name="[1cb]"></a>cmp_lfn</STRONG> (Thumb, 124 bytes, Stack size 40 bytes, ff.o(i.cmp_lfn))
+<BR><BR>[Stack]<UL><LI>Max Depth = 52<LI>Call Chain = cmp_lfn &rArr; ff_wtoupper
+</UL>
+<BR>[Calls]<UL><LI><a href="#[1c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ld_word
+<LI><a href="#[1cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ff_wtoupper
+</UL>
+<BR>[Called By]<UL><LI><a href="#[1d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dir_find
+</UL>
+
+<P><STRONG><a name="[1cd]"></a>create_chain</STRONG> (Thumb, 164 bytes, Stack size 24 bytes, ff.o(i.create_chain))
+<BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
+</UL>
+<BR>[Calls]<UL><LI><a href="#[1cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;put_fat
+<LI><a href="#[1ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_fat
+</UL>
+<BR>[Called By]<UL><LI><a href="#[1d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dir_next
+</UL>
+
+<P><STRONG><a name="[1d0]"></a>create_name</STRONG> (Thumb, 560 bytes, Stack size 40 bytes, ff.o(i.create_name))
+<BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = create_name &rArr; ff_convert
+</UL>
+<BR>[Calls]<UL><LI><a href="#[1d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mem_set
+<LI><a href="#[1d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;chk_chr
+<LI><a href="#[1cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ff_wtoupper
+<LI><a href="#[1d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ff_convert
+</UL>
+<BR>[Called By]<UL><LI><a href="#[1ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;follow_path
+</UL>
+
+<P><STRONG><a name="[1e3]"></a>dec_lock</STRONG> (Thumb, 48 bytes, Stack size 0 bytes, ff.o(i.dec_lock))
+<BR><BR>[Called By]<UL><LI><a href="#[1e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_closedir
+<LI><a href="#[1e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_close
+</UL>
+
+<P><STRONG><a name="[1d4]"></a>dir_find</STRONG> (Thumb, 208 bytes, Stack size 32 bytes, ff.o(i.dir_find))
+<BR><BR>[Stack]<UL><LI>Max Depth = 168<LI>Call Chain = dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
+</UL>
+<BR>[Calls]<UL><LI><a href="#[1d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sum_sfn
+<LI><a href="#[1c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;move_window
+<LI><a href="#[1d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dir_sdi
+<LI><a href="#[1d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dir_next
+<LI><a href="#[1cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cmp_lfn
+</UL>
+<BR>[Called By]<UL><LI><a href="#[1ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;follow_path
+<LI><a href="#[1dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dir_register
+</UL>
+
+<P><STRONG><a name="[1d7]"></a>dir_next</STRONG> (Thumb, 244 bytes, Stack size 32 bytes, ff.o(i.dir_next))
+<BR><BR>[Stack]<UL><LI>Max Depth = 136<LI>Call Chain = dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
+</UL>
+<BR>[Calls]<UL><LI><a href="#[1d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sync_window
+<LI><a href="#[1d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mem_set
+<LI><a href="#[1ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_fat
+<LI><a href="#[1cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;create_chain
+<LI><a href="#[1d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clust2sect
+</UL>
+<BR>[Called By]<UL><LI><a href="#[1dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dir_register
+<LI><a href="#[1da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dir_read
+<LI><a href="#[1d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dir_find
+<LI><a href="#[1fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_readdir
+</UL>
+
+<P><STRONG><a name="[1da]"></a>dir_read</STRONG> (Thumb, 182 bytes, Stack size 32 bytes, ff.o(i.dir_read))
+<BR><BR>[Stack]<UL><LI>Max Depth = 168<LI>Call Chain = dir_read &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
+</UL>
+<BR>[Calls]<UL><LI><a href="#[1d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sum_sfn
+<LI><a href="#[1db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pick_lfn
+<LI><a href="#[1c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;move_window
+<LI><a href="#[1d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dir_next
+</UL>
+<BR>[Called By]<UL><LI><a href="#[1fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_readdir
+</UL>
+
+<P><STRONG><a name="[1dc]"></a>dir_register</STRONG> (Thumb, 480 bytes, Stack size 72 bytes, ff.o(i.dir_register))
+<BR><BR>[Stack]<UL><LI>Max Depth = 240<LI>Call Chain = dir_register &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
+</UL>
+<BR>[Calls]<UL><LI><a href="#[1d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sum_sfn
+<LI><a href="#[1df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st_word
+<LI><a href="#[1c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;move_window
+<LI><a href="#[1d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mem_set
+<LI><a href="#[1dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mem_cpy
+<LI><a href="#[1de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gen_numname
+<LI><a href="#[1d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dir_sdi
+<LI><a href="#[1d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dir_next
+<LI><a href="#[1d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dir_find
+</UL>
+<BR>[Called By]<UL><LI><a href="#[1ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_open
+</UL>
+
+<P><STRONG><a name="[1d5]"></a>dir_sdi</STRONG> (Thumb, 130 bytes, Stack size 24 bytes, ff.o(i.dir_sdi))
+<BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = dir_sdi &rArr; get_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
+</UL>
+<BR>[Calls]<UL><LI><a href="#[1ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_fat
+<LI><a href="#[1d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clust2sect
+</UL>
+<BR>[Called By]<UL><LI><a href="#[1ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;follow_path
+<LI><a href="#[1dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dir_register
+<LI><a href="#[1d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dir_find
+<LI><a href="#[1fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_readdir
+<LI><a href="#[1f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_opendir
+</UL>
+
+<P><STRONG><a name="[1e6]"></a>find_volume</STRONG> (Thumb, 582 bytes, Stack size 40 bytes, ff.o(i.find_volume))
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = find_volume &rArr; check_fs &rArr; move_window &rArr; sync_window &rArr; disk_write
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;move_window
 <LI><a href="#[1c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ld_word
 <LI><a href="#[1ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ld_dword
-<LI><a href="#[1cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_ldnumber
-<LI><a href="#[1d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clear_lock
+<LI><a href="#[1ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_ldnumber
+<LI><a href="#[1eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clear_lock
 <LI><a href="#[1c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;check_fs
-<LI><a href="#[1d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;disk_status
-<LI><a href="#[1d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;disk_initialize
+<LI><a href="#[202]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;disk_status
+<LI><a href="#[203]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;disk_initialize
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_mount
-<LI><a href="#[1cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_getfree
+<BR>[Called By]<UL><LI><a href="#[1e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_mount
+<LI><a href="#[1e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_getfree
+<LI><a href="#[1f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_opendir
+<LI><a href="#[1ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_open
 </UL>
 
-<P><STRONG><a name="[1cd]"></a>get_fat</STRONG> (Thumb, 190 bytes, Stack size 24 bytes, ff.o(i.get_fat))
+<P><STRONG><a name="[1ee]"></a>follow_path</STRONG> (Thumb, 116 bytes, Stack size 24 bytes, ff.o(i.follow_path))
+<BR><BR>[Stack]<UL><LI>Max Depth = 192<LI>Call Chain = follow_path &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
+</UL>
+<BR>[Calls]<UL><LI><a href="#[1f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ld_clust
+<LI><a href="#[1d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dir_sdi
+<LI><a href="#[1d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dir_find
+<LI><a href="#[1d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;create_name
+</UL>
+<BR>[Called By]<UL><LI><a href="#[1f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_opendir
+<LI><a href="#[1ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_open
+</UL>
+
+<P><STRONG><a name="[1de]"></a>gen_numname</STRONG> (Thumb, 136 bytes, Stack size 24 bytes, ff.o(i.gen_numname))
+<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = gen_numname
+</UL>
+<BR>[Calls]<UL><LI><a href="#[1dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mem_cpy
+</UL>
+<BR>[Called By]<UL><LI><a href="#[1dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dir_register
+</UL>
+
+<P><STRONG><a name="[1ce]"></a>get_fat</STRONG> (Thumb, 190 bytes, Stack size 24 bytes, ff.o(i.get_fat))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = get_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;move_window
 <LI><a href="#[1c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ld_word
 <LI><a href="#[1ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ld_dword
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_getfree
+<BR>[Called By]<UL><LI><a href="#[1e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_getfree
+<LI><a href="#[1f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remove_chain
+<LI><a href="#[1d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dir_sdi
+<LI><a href="#[1d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dir_next
+<LI><a href="#[1cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;create_chain
+<LI><a href="#[1e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_read
+<LI><a href="#[1ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_open
 </UL>
 
-<P><STRONG><a name="[1cf]"></a>get_ldnumber</STRONG> (Thumb, 60 bytes, Stack size 8 bytes, ff.o(i.get_ldnumber))
+<P><STRONG><a name="[1fc]"></a>get_fileinfo</STRONG> (Thumb, 244 bytes, Stack size 32 bytes, ff.o(i.get_fileinfo))
+<BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = get_fileinfo &rArr; ff_convert
+</UL>
+<BR>[Calls]<UL><LI><a href="#[1ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ld_dword
+<LI><a href="#[1d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ff_convert
+</UL>
+<BR>[Called By]<UL><LI><a href="#[1fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_readdir
+</UL>
+
+<P><STRONG><a name="[1ea]"></a>get_ldnumber</STRONG> (Thumb, 60 bytes, Stack size 8 bytes, ff.o(i.get_ldnumber))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = get_ldnumber
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_mount
-<LI><a href="#[1cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;find_volume
+<BR>[Called By]<UL><LI><a href="#[1e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_mount
+<LI><a href="#[1e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;find_volume
+</UL>
+
+<P><STRONG><a name="[1f5]"></a>inc_lock</STRONG> (Thumb, 124 bytes, Stack size 20 bytes, ff.o(i.inc_lock))
+<BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = inc_lock
+</UL>
+<BR>[Called By]<UL><LI><a href="#[1f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_opendir
+<LI><a href="#[1ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_open
+</UL>
+
+<P><STRONG><a name="[1f2]"></a>ld_clust</STRONG> (Thumb, 38 bytes, Stack size 16 bytes, ff.o(i.ld_clust))
+<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = ld_clust
+</UL>
+<BR>[Calls]<UL><LI><a href="#[1c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ld_word
+</UL>
+<BR>[Called By]<UL><LI><a href="#[1ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;follow_path
+<LI><a href="#[1f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_opendir
+<LI><a href="#[1ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_open
 </UL>
 
 <P><STRONG><a name="[1ca]"></a>ld_dword</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, ff.o(i.ld_dword))
-<BR><BR>[Called By]<UL><LI><a href="#[1cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_getfree
-<LI><a href="#[1cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_fat
-<LI><a href="#[1cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;find_volume
+<BR><BR>[Called By]<UL><LI><a href="#[1e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_getfree
+<LI><a href="#[1cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;put_fat
+<LI><a href="#[1fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_fileinfo
+<LI><a href="#[1ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_fat
+<LI><a href="#[1e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;find_volume
 <LI><a href="#[1c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;check_fs
+<LI><a href="#[1ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_open
 </UL>
 
 <P><STRONG><a name="[1c9]"></a>ld_word</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, ff.o(i.ld_word))
-<BR><BR>[Called By]<UL><LI><a href="#[1cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_getfree
-<LI><a href="#[1cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_fat
-<LI><a href="#[1cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;find_volume
+<BR><BR>[Called By]<UL><LI><a href="#[1e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_getfree
+<LI><a href="#[1db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pick_lfn
+<LI><a href="#[1f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ld_clust
+<LI><a href="#[1ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_fat
+<LI><a href="#[1e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;find_volume
+<LI><a href="#[1cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cmp_lfn
 <LI><a href="#[1c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;check_fs
+</UL>
+
+<P><STRONG><a name="[1dd]"></a>mem_cpy</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, ff.o(i.mem_cpy))
+<BR><BR>[Called By]<UL><LI><a href="#[1de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;gen_numname
+<LI><a href="#[1dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dir_register
+<LI><a href="#[1e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_read
+</UL>
+
+<P><STRONG><a name="[1d3]"></a>mem_set</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, ff.o(i.mem_set))
+<BR><BR>[Called By]<UL><LI><a href="#[1fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sync_fs
+<LI><a href="#[1dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dir_register
+<LI><a href="#[1d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dir_next
+<LI><a href="#[1d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;create_name
+<LI><a href="#[1ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_open
 </UL>
 
 <P><STRONG><a name="[1c8]"></a>move_window</STRONG> (Thumb, 50 bytes, Stack size 16 bytes, ff.o(i.move_window))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = move_window &rArr; sync_window &rArr; disk_write
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sync_window
-<LI><a href="#[1da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;disk_read
+<BR>[Calls]<UL><LI><a href="#[1d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sync_window
+<LI><a href="#[1f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;disk_read
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_getfree
-<LI><a href="#[1cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_fat
-<LI><a href="#[1cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;find_volume
+<BR>[Called By]<UL><LI><a href="#[1e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_getfree
+<LI><a href="#[1cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;put_fat
+<LI><a href="#[1ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_fat
+<LI><a href="#[1e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;find_volume
+<LI><a href="#[1dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dir_register
+<LI><a href="#[1da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dir_read
+<LI><a href="#[1d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dir_find
 <LI><a href="#[1c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;check_fs
+<LI><a href="#[1ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_open
+<LI><a href="#[1e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_sync
 </UL>
 
-<P><STRONG><a name="[1d9]"></a>sync_window</STRONG> (Thumb, 82 bytes, Stack size 24 bytes, ff.o(i.sync_window))
+<P><STRONG><a name="[1db]"></a>pick_lfn</STRONG> (Thumb, 110 bytes, Stack size 32 bytes, ff.o(i.pick_lfn))
+<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = pick_lfn
+</UL>
+<BR>[Calls]<UL><LI><a href="#[1c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ld_word
+</UL>
+<BR>[Called By]<UL><LI><a href="#[1da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dir_read
+</UL>
+
+<P><STRONG><a name="[1cf]"></a>put_fat</STRONG> (Thumb, 234 bytes, Stack size 32 bytes, ff.o(i.put_fat))
+<BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
+</UL>
+<BR>[Calls]<UL><LI><a href="#[1df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st_word
+<LI><a href="#[1f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st_dword
+<LI><a href="#[1c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;move_window
+<LI><a href="#[1ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ld_dword
+</UL>
+<BR>[Called By]<UL><LI><a href="#[1f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;remove_chain
+<LI><a href="#[1cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;create_chain
+</UL>
+
+<P><STRONG><a name="[1f4]"></a>remove_chain</STRONG> (Thumb, 116 bytes, Stack size 24 bytes, ff.o(i.remove_chain))
+<BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = remove_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write
+</UL>
+<BR>[Calls]<UL><LI><a href="#[1cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;put_fat
+<LI><a href="#[1ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_fat
+</UL>
+<BR>[Called By]<UL><LI><a href="#[1ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_open
+</UL>
+
+<P><STRONG><a name="[1f3]"></a>st_clust</STRONG> (Thumb, 40 bytes, Stack size 16 bytes, ff.o(i.st_clust))
+<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = st_clust
+</UL>
+<BR>[Calls]<UL><LI><a href="#[1df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st_word
+</UL>
+<BR>[Called By]<UL><LI><a href="#[1ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_open
+<LI><a href="#[1e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_sync
+</UL>
+
+<P><STRONG><a name="[1f1]"></a>st_dword</STRONG> (Thumb, 16 bytes, Stack size 0 bytes, ff.o(i.st_dword))
+<BR><BR>[Called By]<UL><LI><a href="#[1fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sync_fs
+<LI><a href="#[1cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;put_fat
+<LI><a href="#[1ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_open
+<LI><a href="#[1e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_sync
+</UL>
+
+<P><STRONG><a name="[1df]"></a>st_word</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, ff.o(i.st_word))
+<BR><BR>[Called By]<UL><LI><a href="#[1fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sync_fs
+<LI><a href="#[1f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st_clust
+<LI><a href="#[1cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;put_fat
+<LI><a href="#[1dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dir_register
+<LI><a href="#[1e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_sync
+</UL>
+
+<P><STRONG><a name="[1d6]"></a>sum_sfn</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, ff.o(i.sum_sfn))
+<BR><BR>[Called By]<UL><LI><a href="#[1dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dir_register
+<LI><a href="#[1da]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dir_read
+<LI><a href="#[1d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dir_find
+</UL>
+
+<P><STRONG><a name="[1fd]"></a>sync_fs</STRONG> (Thumb, 126 bytes, Stack size 16 bytes, ff.o(i.sync_fs))
+<BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = sync_fs &rArr; sync_window &rArr; disk_write
+</UL>
+<BR>[Calls]<UL><LI><a href="#[1d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sync_window
+<LI><a href="#[1df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st_word
+<LI><a href="#[1f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st_dword
+<LI><a href="#[1d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mem_set
+<LI><a href="#[1fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;disk_write
+<LI><a href="#[20b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;disk_ioctl
+</UL>
+<BR>[Called By]<UL><LI><a href="#[1e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_sync
+</UL>
+
+<P><STRONG><a name="[1d8]"></a>sync_window</STRONG> (Thumb, 82 bytes, Stack size 24 bytes, ff.o(i.sync_window))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = sync_window &rArr; disk_write
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;disk_write
+<BR>[Calls]<UL><LI><a href="#[1fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;disk_write
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;move_window
+<BR>[Called By]<UL><LI><a href="#[1fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;sync_fs
+<LI><a href="#[1c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;move_window
+<LI><a href="#[1d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dir_next
+</UL>
+
+<P><STRONG><a name="[1e2]"></a>validate</STRONG> (Thumb, 52 bytes, Stack size 16 bytes, ff.o(i.validate))
+<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = validate
+</UL>
+<BR>[Calls]<UL><LI><a href="#[202]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;disk_status
+</UL>
+<BR>[Called By]<UL><LI><a href="#[1fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_readdir
+<LI><a href="#[1e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_read
+<LI><a href="#[1e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_closedir
+<LI><a href="#[1e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_close
+<LI><a href="#[1e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_sync
 </UL>
 
 <P><STRONG><a name="[1a3]"></a>IntToUnicode</STRONG> (Thumb, 56 bytes, Stack size 20 bytes, usbd_desc.o(i.IntToUnicode))
@@ -3423,10 +3916,10 @@ Local Symbols
 <P><STRONG><a name="[1b9]"></a>USBD_SetConfig</STRONG> (Thumb, 180 bytes, Stack size 24 bytes, usbd_ctlreq.o(i.USBD_SetConfig))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = USBD_SetConfig &rArr; USBD_CtlSendStatus &rArr; USBD_LL_Transmit &rArr; HAL_PCD_EP_Transmit &rArr; USB_EPStartXfer &rArr; USB_WritePacket
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USBD_SetClassConfig
-<LI><a href="#[1ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USBD_ClrClassConfig
-<LI><a href="#[19e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USBD_CtlError
+<BR>[Calls]<UL><LI><a href="#[19e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USBD_CtlError
 <LI><a href="#[1a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USBD_CtlSendStatus
+<LI><a href="#[1bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USBD_SetClassConfig
+<LI><a href="#[1ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USBD_ClrClassConfig
 </UL>
 <BR>[Called By]<UL><LI><a href="#[1b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USBD_StdDevReq
 </UL>
@@ -3594,9 +4087,9 @@ Local Symbols
 </UL>
 
 <P><STRONG><a name="[1c2]"></a>_printf_core</STRONG> (Thumb, 984 bytes, Stack size 104 bytes, printf8.o(i._printf_core), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[1c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_pre_padding
+<BR><BR>[Calls]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uldivmod
+<LI><a href="#[1c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_pre_padding
 <LI><a href="#[1c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_post_padding
-<LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_uldivmod
 </UL>
 <BR>[Called By]<UL><LI><a href="#[1c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__0printf$8
 </UL>

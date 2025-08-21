@@ -65,3 +65,4 @@ bootloader\main.o: ../IAP/menu.h
 bootloader\main.o: ../IAP/flash_if.h
 bootloader\main.o: ../IAP/ymodem.h
 bootloader\main.o: ../IAP/common.h
+bootloader\main.o: ../User/file_opera.h

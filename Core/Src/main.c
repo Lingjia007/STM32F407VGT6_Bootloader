@@ -36,6 +36,7 @@
 #include "menu.h"
 #include "flash_if.h"
 #include "common.h"
+#include "file_opera.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -181,7 +182,7 @@ static void jump_to_app(void)
     {
       // 从Flash直接运行
       printf("Executing application directly from Flash\r\n");
-      printf("Jumping to application in FLASH at 0x%08lX\r\n", (header->ih_load + 4));
+      printf("Jumping to application in FLASH at 0x%08lX\r\n", (header->ih_load + UBOOT_HEADER_SIZE + 4));
       SCB->VTOR = app_addr; // 设置向量表偏移
       __DSB();              // 数据同步屏障
       __ISB();              // 指令同步屏障
@@ -253,11 +254,13 @@ void show_sdcard_info(void)
   {
     tot_sect = (fs->n_fatent - 2) * fs->csize;
     fre_sect = fre_clust * fs->csize;
-    printf("==== File System Info ====\r\n");
-    printf("  Total Size: %lu MB\r\n", tot_sect / 2048);
-    printf("  Free Space: %lu MB\r\n", fre_sect / 2048);
-    printf("  Used Space: %lu MB\r\n", (tot_sect - fre_sect) / 2048);
-    printf("==========================\r\n\r\n");
+    printf("======= File System Info =======\r\n");
+    printf("  Total Size: %llu bytes\r\n", (uint64_t)tot_sect * 512);
+    printf("  Free Space: %llu bytes\r\n", (uint64_t)fre_sect * 512);
+    printf("  Used Space: %llu bytes\r\n", (uint64_t)(tot_sect - fre_sect) * 512);
+    printf("================================\r\n\r\n");
+    fatTest_ScanDir("0:/");
+    fatTest_ReadTXTFile("0:/text/test.txt");
   }
   else
   {
@@ -272,7 +275,7 @@ static void power_on_check(void)
   printf("Checking TF card...\r\n");
 
   // 先挂载文件系统
-  FRESULT fres = f_mount(&SDFatFS, SDPath, 1);
+  FRESULT fres = f_mount(&SDFatFS, "0:", 1);
   if (fres != FR_OK)
   {
     printf("f_mount failed: %d\r\n", fres);

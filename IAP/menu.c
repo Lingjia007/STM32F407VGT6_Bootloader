@@ -64,6 +64,7 @@ void SerialDownload(void)
   result = Ymodem_Receive(&size);
   if (result == COM_OK)
   {
+    HAL_Delay(100);
     Serial_PutString((uint8_t *)"\n\n\r Programming Completed Successfully!\n\r--------------------------------\r\n Name: ");
     Serial_PutString(aFileName);
     Int2Str(number, size);

@@ -41,6 +41,7 @@
 "bootloader\menu.o"
 "bootloader\ymodem.o"
 "bootloader\dwt_delay.o"
+"bootloader\file_opera.o"
 "bootloader\bsp_driver_sd.o"
 "bootloader\sd_diskio.o"
 "bootloader\fatfs.o"
