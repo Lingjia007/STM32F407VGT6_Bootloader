@@ -1,3 +1,9 @@
 {
-    "Codegeex.RepoIndex": true
+    "Codegeex.RepoIndex": true,
+    "files.associations": {
+        "*.py": "python",
+        "*.c": "c",
+        "stm32f4xx_hal.h": "c",
+        "ff.h": "c"
+    }
 }

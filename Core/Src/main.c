@@ -42,25 +42,6 @@
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
 typedef void (*pFunction)(void);
-// U-Boot头部定义
-#define UBOOT_MAGIC 0x27051956
-#define UBOOT_HEADER_SIZE 256
-// U-Boot头部结构体
-typedef struct image_header
-{
-  uint32_t ih_magic;   /* Image Header Magic Number  */
-  uint32_t ih_hcrc;    /* Image Header CRC Checksum  */
-  uint32_t ih_time;    /* Image Creation Timestamp   */
-  uint32_t ih_size;    /* Image Data Size            */
-  uint32_t ih_load;    /* Data Load Address          */
-  uint32_t ih_ep;      /* Entry Point Address        */
-  uint32_t ih_dcrc;    /* Image Data CRC Checksum    */
-  uint8_t ih_os;       /* Operating System           */
-  uint8_t ih_arch;     /* CPU architecture           */
-  uint8_t ih_type;     /* Image Type                 */
-  uint8_t ih_comp;     /* Compression Type           */
-  uint8_t ih_name[32]; /* Image Name                 */
-} image_header_t;
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -119,7 +100,7 @@ static uint8_t app_is_valid(void)
     printf("  Header CRC: 0x%08lX\r\n", header->ih_hcrc);
 
     // 检查加载地址是否有效
-    if ((header->ih_load >= 0x08000000U && header->ih_load < 0x08100000U) || // Flash区域
+    if ((header->ih_load >= APP_ADDRESS && header->ih_load < 0x08100000U) || // Flash区域
         (header->ih_load >= 0x20000000U && header->ih_load < 0x20030000U))
     { // RAM区域
       return 1;

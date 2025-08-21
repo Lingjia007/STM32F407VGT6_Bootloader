@@ -43,3 +43,10 @@ bootloader\menu.o: ..\IAP\common.h
 bootloader\menu.o: ..\IAP\flash_if.h
 bootloader\menu.o: ..\IAP\menu.h
 bootloader\menu.o: ..\IAP\ymodem.h
+bootloader\menu.o: ../Middlewares/Third_Party/FatFs/src/ff.h
+bootloader\menu.o: ../Middlewares/Third_Party/FatFs/src/integer.h
+bootloader\menu.o: ../FATFS/Target/ffconf.h
+bootloader\menu.o: ../FATFS/Target/bsp_driver_sd.h
+bootloader\menu.o: C:\Keil_v5\ARM\ARM_Compiler_5.06u7\Bin\..\include\stdlib.h
+bootloader\menu.o: C:\Keil_v5\ARM\ARM_Compiler_5.06u7\Bin\..\include\string.h
+bootloader\menu.o: C:\Keil_v5\ARM\ARM_Compiler_5.06u7\Bin\..\include\stdio.h
