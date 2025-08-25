@@ -379,7 +379,7 @@ void Main_Menu(void)
 
     if (FlashProtection != FLASHIF_PROTECTION_NONE)
     {
-      Serial_PutString((uint8_t *)"  Disable the write protection ------------------------- 6\r\n\n");
+      Serial_PutString((uint8_t *)"  Disable the write protection ------------------------- 7\r\n\n");
     }
     else
     {

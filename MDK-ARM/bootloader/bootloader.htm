@@ -3,7 +3,7 @@
 <title>Static Call Graph - [bootloader\bootloader.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image bootloader\bootloader.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Mon Aug 25 18:27:12 2025
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Mon Aug 25 18:45:11 2025
 <BR><P>
 <H3>Maximum Stack Usage =       9448 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -436,8 +436,8 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[8f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_llsr
 <LI><a href="#[90]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_llsl
 </UL>
-<BR>[Called By]<UL><LI><a href="#[158]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_SetConfig
-<LI><a href="#[117]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_GetSysClockFreq
+<BR>[Called By]<UL><LI><a href="#[117]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_GetSysClockFreq
+<LI><a href="#[158]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_SetConfig
 <LI><a href="#[1f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_core
 </UL>
 
@@ -697,8 +697,8 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = FLASH_If_Erase &rArr; HAL_FLASHEx_Erase &rArr; FLASH_WaitForLastOperation
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FLASH_If_Init
-<LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetSector
 <LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_FLASHEx_Erase
+<LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetSector
 </UL>
 <BR>[Called By]<UL><LI><a href="#[1b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Ymodem_Receive
 <LI><a href="#[18d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TFCard_Update
@@ -819,9 +819,9 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetTick
 </UL>
 <BR>[Called By]<UL><LI><a href="#[29c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;power_on_check
+<LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_SetCurrentMode
 <LI><a href="#[1b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Ymodem_Transmit
 <LI><a href="#[18c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SerialDownload
-<LI><a href="#[103]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_SetCurrentMode
 <LI><a href="#[12a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SD_InitCard
 </UL>
 
@@ -915,12 +915,12 @@ Global Symbols
 <LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_ClockConfig
 <LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_Delay
 <LI><a href="#[29c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;power_on_check
-<LI><a href="#[15a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_WaitOnFlagUntilTimeout
+<LI><a href="#[11c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RTC_EnterInitMode
+<LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RTC_WaitForSynchro
 <LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_DMA_Abort
 <LI><a href="#[b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FLASH_WaitForLastOperation
 <LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_DeInit
-<LI><a href="#[11c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RTC_EnterInitMode
-<LI><a href="#[121]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RTC_WaitForSynchro
+<LI><a href="#[15a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_WaitOnFlagUntilTimeout
 <LI><a href="#[13c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SPI_TransmitReceive
 <LI><a href="#[1b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPI_WaitFlagStateUntilTimeout
 <LI><a href="#[136]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SD_WriteBlocks
@@ -1586,25 +1586,25 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[154]"></a>HAL_UARTEx_RxEventCallback</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f4xx_hal_uart.o(i.HAL_UARTEx_RxEventCallback))
-<BR><BR>[Called By]<UL><LI><a href="#[150]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_Receive_IT
-<LI><a href="#[14f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_IRQHandler
+<BR><BR>[Called By]<UL><LI><a href="#[14f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_IRQHandler
+<LI><a href="#[150]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_Receive_IT
 </UL>
 
 <P><STRONG><a name="[153]"></a>HAL_UART_ErrorCallback</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32f4xx_hal_uart.o(i.HAL_UART_ErrorCallback))
-<BR><BR>[Called By]<UL><LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_DMAAbortOnError
-<LI><a href="#[14f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_IRQHandler
+<BR><BR>[Called By]<UL><LI><a href="#[14f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_IRQHandler
+<LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_DMAAbortOnError
 </UL>
 
 <P><STRONG><a name="[14f]"></a>HAL_UART_IRQHandler</STRONG> (Thumb, 636 bytes, Stack size 24 bytes, stm32f4xx_hal_uart.o(i.HAL_UART_IRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = HAL_UART_IRQHandler &rArr; HAL_DMA_Abort
 </UL>
-<BR>[Calls]<UL><LI><a href="#[155]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_TxCpltCallback
+<BR>[Calls]<UL><LI><a href="#[152]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_DMA_Abort_IT
+<LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_DMA_Abort
+<LI><a href="#[155]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_TxCpltCallback
 <LI><a href="#[153]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_ErrorCallback
 <LI><a href="#[154]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UARTEx_RxEventCallback
 <LI><a href="#[150]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_Receive_IT
 <LI><a href="#[151]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_EndRxTransfer
-<LI><a href="#[152]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_DMA_Abort_IT
-<LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_DMA_Abort
 </UL>
 <BR>[Called By]<UL><LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART4_IRQHandler
 </UL>
@@ -1612,8 +1612,8 @@ Global Symbols
 <P><STRONG><a name="[156]"></a>HAL_UART_Init</STRONG> (Thumb, 100 bytes, Stack size 16 bytes, stm32f4xx_hal_uart.o(i.HAL_UART_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = HAL_UART_Init &rArr; HAL_UART_MspInit &rArr; HAL_GPIO_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[158]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_SetConfig
-<LI><a href="#[157]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_MspInit
+<BR>[Calls]<UL><LI><a href="#[157]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_MspInit
+<LI><a href="#[158]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_SetConfig
 </UL>
 <BR>[Called By]<UL><LI><a href="#[185]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_UART4_Init
 </UL>
@@ -1868,6 +1868,9 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 9424<LI>Call Chain = Main_Menu &rArr; TFCardToLFS_Update &rArr; lfs_file_open &rArr; lfs_file_opencfg_ &rArr; lfs_fs_forceconsistency &rArr; lfs_fs_desuperblock &rArr; lfs_dir_commit &rArr; lfs_fs_deorphan &rArr; lfs_dir_orphaningcommit &rArr; lfs_dir_relocatingcommit &rArr; lfs_dir_splittingcompact &rArr; lfs_dir_split &rArr; lfs_dir_compact &rArr; lfs_alloc &rArr; lfs_alloc_scan &rArr; lfs_fs_traverse_ &rArr; lfs_dir_fetch &rArr; lfs_dir_fetchmatch &rArr; lfs_bd_crc &rArr; lfs_bd_read
 </UL>
 <BR>[Calls]<UL><LI><a href="#[159]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Receive
+<LI><a href="#[18f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_NVIC_SystemReset
+<LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_FLASH_Unlock
+<LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_FLASH_OB_Launch
 <LI><a href="#[18d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TFCard_Update
 <LI><a href="#[190]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TFCardToLFS_Update
 <LI><a href="#[18e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SerialUpload
@@ -1876,9 +1879,6 @@ Global Symbols
 <LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FLASH_If_WriteProtectionConfig
 <LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FLASH_If_GetWriteProtectionStatus
 <LI><a href="#[15d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Serial_PutString
-<LI><a href="#[18f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_NVIC_SystemReset
-<LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_FLASH_Unlock
-<LI><a href="#[c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_FLASH_OB_Launch
 </UL>
 <BR>[Called By]<UL><LI><a href="#[29c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;power_on_check
 </UL>
@@ -3187,7 +3187,6 @@ Global Symbols
 </UL>
 <BR>[Called By]<UL><LI><a href="#[22c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fatTest_ScanDir
 <LI><a href="#[22b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fatTest_ReadTXTFile
-<LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[29d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_spi_flash_info
 <LI><a href="#[29e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_sdcard_info
 <LI><a href="#[29c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;power_on_check
@@ -3632,7 +3631,7 @@ Global Symbols
 <LI><a href="#[16b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lfs_spi_flash_unmount
 </UL>
 
-<P><STRONG><a name="[73]"></a>main</STRONG> (Thumb, 82 bytes, Stack size 0 bytes, main.o(i.main))
+<P><STRONG><a name="[73]"></a>main</STRONG> (Thumb, 76 bytes, Stack size 0 bytes, main.o(i.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 9448<LI>Call Chain = main &rArr; power_on_check &rArr; Main_Menu &rArr; TFCardToLFS_Update &rArr; lfs_file_open &rArr; lfs_file_opencfg_ &rArr; lfs_fs_forceconsistency &rArr; lfs_fs_desuperblock &rArr; lfs_dir_commit &rArr; lfs_fs_deorphan &rArr; lfs_dir_orphaningcommit &rArr; lfs_dir_relocatingcommit &rArr; lfs_dir_splittingcompact &rArr; lfs_dir_split &rArr; lfs_dir_compact &rArr; lfs_alloc &rArr; lfs_alloc_scan &rArr; lfs_fs_traverse_ &rArr; lfs_dir_fetch &rArr; lfs_dir_fetchmatch &rArr; lfs_bd_crc &rArr; lfs_bd_read
 </UL>
 <BR>[Calls]<UL><LI><a href="#[293]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;w25q128_init
@@ -3653,7 +3652,6 @@ Global Symbols
 <LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Common_Init
 <LI><a href="#[1bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemClock_Config
 <LI><a href="#[29c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;power_on_check
-<LI><a href="#[1fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> entry9a.o(.ARM.Collect$$$$0000000B)
 </UL>
@@ -3706,7 +3704,7 @@ Local Symbols
 <BR>[Called By]<UL><LI><a href="#[29c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;power_on_check
 </UL>
 
-<P><STRONG><a name="[29c]"></a>power_on_check</STRONG> (Thumb, 172 bytes, Stack size 24 bytes, main.o(i.power_on_check))
+<P><STRONG><a name="[29c]"></a>power_on_check</STRONG> (Thumb, 180 bytes, Stack size 24 bytes, main.o(i.power_on_check))
 <BR><BR>[Stack]<UL><LI>Max Depth = 9448<LI>Call Chain = power_on_check &rArr; Main_Menu &rArr; TFCardToLFS_Update &rArr; lfs_file_open &rArr; lfs_file_opencfg_ &rArr; lfs_fs_forceconsistency &rArr; lfs_fs_desuperblock &rArr; lfs_dir_commit &rArr; lfs_fs_deorphan &rArr; lfs_dir_orphaningcommit &rArr; lfs_dir_relocatingcommit &rArr; lfs_dir_splittingcompact &rArr; lfs_dir_split &rArr; lfs_dir_compact &rArr; lfs_alloc &rArr; lfs_alloc_scan &rArr; lfs_fs_traverse_ &rArr; lfs_dir_fetch &rArr; lfs_dir_fetchmatch &rArr; lfs_bd_crc &rArr; lfs_bd_read
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_mount
@@ -3736,7 +3734,7 @@ Local Symbols
 <BR>[Called By]<UL><LI><a href="#[29c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;power_on_check
 </UL>
 
-<P><STRONG><a name="[29d]"></a>show_spi_flash_info</STRONG> (Thumb, 280 bytes, Stack size 272 bytes, main.o(i.show_spi_flash_info))
+<P><STRONG><a name="[29d]"></a>show_spi_flash_info</STRONG> (Thumb, 288 bytes, Stack size 272 bytes, main.o(i.show_spi_flash_info))
 <BR><BR>[Stack]<UL><LI>Max Depth = 704<LI>Call Chain = show_spi_flash_info &rArr; lfs_mount &rArr; lfs_mount_ &rArr; lfs_dir_fetchmatch &rArr; lfs_bd_crc &rArr; lfs_bd_read
 </UL>
 <BR>[Calls]<UL><LI><a href="#[295]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lfs_unmount
@@ -3923,9 +3921,9 @@ Local Symbols
 <P><STRONG><a name="[151]"></a>UART_EndRxTransfer</STRONG> (Thumb, 78 bytes, Stack size 0 bytes, stm32f4xx_hal_uart.o(i.UART_EndRxTransfer))
 <BR><BR>[Calls]<UL><LI><a href="#[151]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_EndRxTransfer
 </UL>
-<BR>[Called By]<UL><LI><a href="#[15a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_WaitOnFlagUntilTimeout
+<BR>[Called By]<UL><LI><a href="#[14f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_IRQHandler
+<LI><a href="#[15a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_WaitOnFlagUntilTimeout
 <LI><a href="#[151]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_EndRxTransfer
-<LI><a href="#[14f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_IRQHandler
 </UL>
 
 <P><STRONG><a name="[150]"></a>UART_Receive_IT</STRONG> (Thumb, 194 bytes, Stack size 8 bytes, stm32f4xx_hal_uart.o(i.UART_Receive_IT))
