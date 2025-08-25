@@ -40,6 +40,7 @@
 #include "common.h"
 #include "file_opera.h"
 #include "w25q128.h"
+#include "lfs_spi_flash_adapter.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -159,10 +160,10 @@ static void jump_to_app(void)
       __ISB(); // 指令同步屏障
 
       // 设置MSP为RAM中应用程序的栈指针
-      __set_MSP(*(uint32_t *)header->ih_load);
+      __set_MSP(*(__IO uint32_t *)header->ih_load);
 
       // 设置跳转函数为入口地址
-      jump_fn = (pFunction)(*(uint32_t *)(header->ih_load + 4));
+      jump_fn = (pFunction)(*(__IO uint32_t *)(header->ih_load + 4));
     }
     else
     {
@@ -172,8 +173,8 @@ static void jump_to_app(void)
       SCB->VTOR = app_addr; // 设置向量表偏移
       __DSB();              // 数据同步屏障
       __ISB();              // 指令同步屏障
-      __set_MSP(*(uint32_t *)app_addr);
-      jump_fn = (pFunction)(*(uint32_t *)(app_addr + 4));
+      __set_MSP(*(__IO uint32_t *)app_addr);
+      jump_fn = (pFunction)(*(__IO uint32_t *)(app_addr + 4));
     }
   }
   else
@@ -183,8 +184,8 @@ static void jump_to_app(void)
     SCB->VTOR = APP_ADDRESS; // 设置向量表偏移
     __DSB();                 // 数据同步屏障
     __ISB();                 // 指令同步屏障
-    __set_MSP(*(uint32_t *)APP_ADDRESS);
-    jump_fn = (pFunction)(*(uint32_t *)(APP_ADDRESS + 4));
+    __set_MSP(*(__IO uint32_t *)APP_ADDRESS);
+    jump_fn = (pFunction)(*(__IO uint32_t *)(APP_ADDRESS + 4));
   }
 
   // 禁用中断和外设时钟
@@ -257,10 +258,6 @@ static void show_sdcard_info(void)
 static void show_spi_flash_info(void)
 {
   uint16_t flash_id;
-  uint8_t write_buffer[16];
-  uint8_t read_buffer[16];
-  uint32_t test_addr = 0x000000;
-  uint8_t i;
 
   printf("======== SPI Flash Info ========\r\n");
 
@@ -304,53 +301,37 @@ static void show_spi_flash_info(void)
     break;
   }
 
-  // 执行读写测试
-  printf("  Performing read/write test...\r\n");
+  // 显示LittleFS配置信息
+  printf("\n====== LittleFS Configuration ======\r\n");
+  printf("  Block size: %d bytes\r\n", SPI_FLASH_BLOCK_SIZE);
+  printf("  Total blocks: %d\r\n", SPI_FLASH_BLOCK_COUNT);
+  printf("  Program size: %d bytes\r\n", SPI_FLASH_PROG_SIZE);
+  printf("  Read size: %d bytes\r\n", SPI_FLASH_READ_SIZE);
+  printf("  Cache size: %d bytes\r\n", lfs_spi_flash_cfg.cache_size);
+  printf("  Lookahead size: %d bytes\r\n", lfs_spi_flash_cfg.lookahead_size);
 
-  // 初始化写入缓冲区
-  printf("  Initializing...\r\n");
-  printf("  Write buffer: ");
-  for (i = 0; i < 16; i++)
+  // 尝试挂载LittleFS以检查状态
+  printf("\n  Checking LittleFS status...\r\n");
+  int lfs_result = lfs_mount(&lfs_instance, &lfs_spi_flash_cfg);
+  if (lfs_result == LFS_ERR_OK)
   {
-    write_buffer[i] = (uint8_t)(i + 1);
-    printf("0x%02X ", write_buffer[i]);
-  }
-  printf("\r\n");
+    printf("  LittleFS mounted successfully\r\n");
 
-  // 写入数据到Flash
-  printf("  Writing to address 0x%06" PRIx32 "...\r\n", test_addr);
-  W25Q128_write(write_buffer, test_addr, 16);
-  printf("  Write test: Done\r\n");
-
-  // 从Flash读取数据
-  printf("  Reading from address 0x%06" PRIx32 "...\r\n", test_addr);
-  memset(read_buffer, 0, sizeof(read_buffer)); // 清空读取缓冲区
-  W25Q128_read(read_buffer, test_addr, 16);
-  printf("  Read test: Done\r\n");
-
-  // 打印读取的数据
-  printf("  Read data: ");
-  for (i = 0; i < 16; i++)
-  {
-    printf("0x%02X ", read_buffer[i]);
-  }
-  printf("\r\n");
-
-  // 验证数据
-  printf("  Verifying data...\r\n");
-  for (i = 0; i < 16; i++)
-  {
-    if (write_buffer[i] != read_buffer[i])
+    // 显示文件系统信息
+    struct lfs_info info;
+    if (lfs_stat(&lfs_instance, "/", &info) == LFS_ERR_OK)
     {
-      printf("  Data verification: Failed at byte %" PRIu32 " (expected 0x%02X, read 0x%02X)\r\n",
-             i, write_buffer[i], read_buffer[i]);
-      break;
+      printf("  Root directory: Size=%d, Type=%s\r\n",
+             info.size, (info.type == LFS_TYPE_DIR ? "Directory" : "File"));
     }
-  }
 
-  if (i == 16)
+    // 卸载文件系统
+    lfs_unmount(&lfs_instance);
+  }
+  else
   {
-    printf("  Data verification: Passed\r\n");
+    printf("  LittleFS mount failed: Error code=%d\r\n", lfs_result);
+    printf("  File system may need formatting\r\n");
   }
 
   printf("================================\r\n\r\n");

@@ -34,5 +34,7 @@ typedef  void (*pFunction)(void);
 /* Exported macro ------------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */
 void Main_Menu(void);
+void TFCardToLFS_Update(void);
+void LFS_Update(void);
 
 #endif  /* __MENU_H */

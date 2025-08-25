@@ -71,6 +71,9 @@ void Int2Str(uint8_t *p_str, uint32_t intnum)
       status++;
     }
   }
+
+  // 确保添加字符串终止符
+  p_str[pos] = '\0';
 }
 
 /**

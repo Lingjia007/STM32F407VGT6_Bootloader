@@ -20,7 +20,8 @@
                 "USB_DEVICE/App",
                 "USB_DEVICE/Target",
                 "Middlewares/ST/STM32_USB_Device_Library/Core/Inc",
-                "Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Inc"
+                "Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Inc",
+                "Middlewares/Third_Party/LittleFs"
             ],
             "defines": [
                 "USE_HAL_DRIVER",

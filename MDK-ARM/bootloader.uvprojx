@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F407xx</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F4xx/Include;../Drivers/CMSIS/Include;../IAP;../User;../FATFS/Target;../FATFS/App;../Middlewares/Third_Party/FatFs/src;../USB_DEVICE/App;../USB_DEVICE/Target;../Middlewares/ST/STM32_USB_Device_Library/Core/Inc;../Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Inc</IncludePath>
+              <IncludePath>../Core/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F4xx/Include;../Drivers/CMSIS/Include;../IAP;../User;../FATFS/Target;../FATFS/App;../Middlewares/Third_Party/FatFs/src;../USB_DEVICE/App;../USB_DEVICE/Target;../Middlewares/ST/STM32_USB_Device_Library/Core/Inc;../Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Inc;..\Middlewares\Third_Party\LittleFs</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -1556,6 +1556,16 @@
               <FileName>w25q128.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\User\w25q128.c</FilePath>
+            </File>
+            <File>
+              <FileName>lfs_spi_flash_adapter.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\lfs_spi_flash_adapter.c</FilePath>
+            </File>
+            <File>
+              <FileName>lfs_test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\lfs_test.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -3064,6 +3074,21 @@
                   </Cads>
                 </FileArmAds>
               </FileOption>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Middlewares/LittleFs</GroupName>
+          <Files>
+            <File>
+              <FileName>lfs.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\LittleFs\lfs.c</FilePath>
+            </File>
+            <File>
+              <FileName>lfs_util.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Middlewares\Third_Party\LittleFs\lfs_util.c</FilePath>
             </File>
           </Files>
         </Group>

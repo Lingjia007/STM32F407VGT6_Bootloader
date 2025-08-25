@@ -45,6 +45,8 @@
 "bootloader\dwt_delay.o"
 "bootloader\file_opera.o"
 "bootloader\w25q128.o"
+"bootloader\lfs_spi_flash_adapter.o"
+"bootloader\lfs_test.o"
 "bootloader\bsp_driver_sd.o"
 "bootloader\sd_diskio.o"
 "bootloader\fatfs.o"
@@ -64,6 +66,8 @@
 "bootloader\usbd_msc_bot.o"
 "bootloader\usbd_msc_data.o"
 "bootloader\usbd_msc_scsi.o"
+"bootloader\lfs.o"
+"bootloader\lfs_util.o"
 --library_type=microlib --strict --scatter "bootloader\bootloader.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
