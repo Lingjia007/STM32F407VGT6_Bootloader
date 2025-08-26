@@ -71,7 +71,7 @@ bootloader\main.o: ../IAP/common.h
 bootloader\main.o: ../User/file_opera.h
 bootloader\main.o: ../User/w25q128.h
 bootloader\main.o: ../User/lfs_spi_flash_adapter.h
-bootloader\main.o: ..\Middlewares\Third_Party\LittleFs\lfs.h
-bootloader\main.o: ..\Middlewares\Third_Party\LittleFs\lfs_util.h
+bootloader\main.o: ../Middlewares/Third_Party/LittleFs/lfs.h
+bootloader\main.o: ../Middlewares/Third_Party/LittleFs/lfs_util.h
 bootloader\main.o: C:\Keil_v5\ARM\ARM_Compiler_5.06u7\Bin\..\include\stdbool.h
 bootloader\main.o: C:\Keil_v5\ARM\ARM_Compiler_5.06u7\Bin\..\include\assert.h

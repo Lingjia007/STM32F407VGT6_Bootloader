@@ -20,7 +20,7 @@
 
 // 定义SPI Flash的块大小、扇区大小等参数
 #define SPI_FLASH_BLOCK_SIZE 4096  // 块大小，W25Q128一个扇区为4KB
-#define SPI_FLASH_BLOCK_COUNT 4096 // 块数量，W25Q128总容量为16MB，16MB / 4KB = 4096块
+#define SPI_FLASH_BLOCK_COUNT 1024 // 块数量，设置为4MB存储空间，4MB / 4KB = 1024块
 #define SPI_FLASH_PROG_SIZE 256    // 编程大小，W25Q128一页为256字节
 #define SPI_FLASH_READ_SIZE 1      // 读取大小，最小为1字节
 

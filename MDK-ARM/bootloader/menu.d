@@ -50,8 +50,8 @@ bootloader\menu.o: ../FATFS/Target/ffconf.h
 bootloader\menu.o: ../FATFS/Target/bsp_driver_sd.h
 bootloader\menu.o: C:\Keil_v5\ARM\ARM_Compiler_5.06u7\Bin\..\include\stdlib.h
 bootloader\menu.o: ../User/lfs_spi_flash_adapter.h
-bootloader\menu.o: ..\Middlewares\Third_Party\LittleFs\lfs.h
-bootloader\menu.o: ..\Middlewares\Third_Party\LittleFs\lfs_util.h
+bootloader\menu.o: ../Middlewares/Third_Party/LittleFs/lfs.h
+bootloader\menu.o: ../Middlewares/Third_Party/LittleFs/lfs_util.h
 bootloader\menu.o: C:\Keil_v5\ARM\ARM_Compiler_5.06u7\Bin\..\include\stdbool.h
 bootloader\menu.o: C:\Keil_v5\ARM\ARM_Compiler_5.06u7\Bin\..\include\string.h
 bootloader\menu.o: C:\Keil_v5\ARM\ARM_Compiler_5.06u7\Bin\..\include\inttypes.h

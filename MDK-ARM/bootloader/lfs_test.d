@@ -1,7 +1,7 @@
 bootloader\lfs_test.o: ..\User\lfs_test.c
 bootloader\lfs_test.o: ..\User\lfs_spi_flash_adapter.h
-bootloader\lfs_test.o: ..\Middlewares\Third_Party\LittleFs\lfs.h
-bootloader\lfs_test.o: ..\Middlewares\Third_Party\LittleFs\lfs_util.h
+bootloader\lfs_test.o: ../Middlewares/Third_Party/LittleFs/lfs.h
+bootloader\lfs_test.o: ../Middlewares/Third_Party/LittleFs/lfs_util.h
 bootloader\lfs_test.o: C:\Keil_v5\ARM\ARM_Compiler_5.06u7\Bin\..\include\stdint.h
 bootloader\lfs_test.o: C:\Keil_v5\ARM\ARM_Compiler_5.06u7\Bin\..\include\stdbool.h
 bootloader\lfs_test.o: C:\Keil_v5\ARM\ARM_Compiler_5.06u7\Bin\..\include\string.h

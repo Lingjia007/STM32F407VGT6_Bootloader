@@ -55,8 +55,12 @@ extern FATFS SDFatFS; /* File system object for SD logical drive */
 void SerialDownload(void);
 void SerialUpload(void);
 void TFCard_Update(void);
-void TFCardToLFS_Update(void);
 void LFS_Update(void);
+void StoreImage_Menu(void);
+void StoreFromTFCard(void);
+void StoreFromFlash(void);
+void DeleteStoredImage(void);
+void DeleteEntireFileSystem(void);
 
 /* Private defines -----------------------------------------------------------*/
 #define MAX_BIN_FILES 10          // 最大支持的bin文件数量
@@ -136,7 +140,7 @@ void SerialUpload(void)
     Int2Str(size_str, file_size);
     Serial_PutString(size_str);
     Serial_PutString((uint8_t *)" bytes\n\r");
-    
+
     /* Ask if user wants to manually enter file name */
     Serial_PutString((uint8_t *)"Do you want to manually enter file name? (y/n, default n): ");
     uint8_t choice;
@@ -145,11 +149,11 @@ void SerialUpload(void)
       Serial_PutString((uint8_t *)"\n\rPlease enter file name (press Enter to use '");
       Serial_PutString((uint8_t *)file_name);
       Serial_PutString((uint8_t *)".bin'): ");
-      
+
       uint8_t input_char;
       uint8_t index = 0;
       uint8_t temp_name[FILE_NAME_LENGTH];
-      
+
       while (1)
       {
         if (HAL_UART_Receive(&UartHandle, &input_char, 1, HAL_MAX_DELAY) == HAL_OK)
@@ -202,11 +206,11 @@ void SerialUpload(void)
     /* Manual input mode - no header found */
     Serial_PutString((uint8_t *)"\n\rNo U-Boot header found\n\r");
     Serial_PutString((uint8_t *)"Please manually enter the file name (including extension): ");
-    
+
     /* Wait for user to input file name */
     uint8_t input_char;
     uint8_t index = 0;
-    
+
     while (1)
     {
       if (HAL_UART_Receive(&UartHandle, &input_char, 1, HAL_MAX_DELAY) == HAL_OK)
@@ -215,6 +219,15 @@ void SerialUpload(void)
         {
           file_name[index] = '\0';
           Serial_PutString((uint8_t *)"\n\r");
+
+          /* 如果没有文件扩展名，自动添加.bin后缀 */
+          if (strstr((char *)file_name, ".") == NULL)
+          {
+            strcat((char *)file_name, ".bin");
+            Serial_PutString((uint8_t *)"Auto-added .bin extension: ");
+            Serial_PutString(file_name);
+            Serial_PutString((uint8_t *)"\n\r");
+          }
           break;
         }
         else if (input_char == 0x08 || input_char == 0x7F) /* Backspace or Delete */
@@ -232,12 +245,12 @@ void SerialUpload(void)
         }
       }
     }
-    
+
     /* Manual input for file size */
     Serial_PutString((uint8_t *)"Please enter file size in bytes: ");
     uint8_t size_input[16];
     uint8_t size_index = 0;
-    
+
     while (1)
     {
       if (HAL_UART_Receive(&UartHandle, &input_char, 1, HAL_MAX_DELAY) == HAL_OK)
@@ -276,7 +289,7 @@ void SerialUpload(void)
         }
       }
     }
-    
+
     Serial_PutString((uint8_t *)"Using manual parameters: \n\r");
     Serial_PutString((uint8_t *)"  File name: ");
     Serial_PutString(file_name);
@@ -341,7 +354,7 @@ void Main_Menu(void)
     Serial_PutString((uint8_t *)"  Download image from LFS to the internal Flash -------- 3\r\n\n");
     Serial_PutString((uint8_t *)"  Upload image from the internal Flash ----------------- 4\r\n\n");
     Serial_PutString((uint8_t *)"  Execute the loaded application ----------------------- 5\r\n\n");
-    Serial_PutString((uint8_t *)"  Store image from TF to SPI-Flash LFS ----------------- 6\r\n\n");
+    Serial_PutString((uint8_t *)"  Store image from TF or FLASH to SPI-Flash LFS -------- 6\r\n\n");
 
     if (FlashProtection != FLASHIF_PROTECTION_NONE)
     {
@@ -393,8 +406,8 @@ void Main_Menu(void)
       HAL_NVIC_SystemReset();
       break;
     case '6':
-      /* Store image from TF to SPI-Flash LFS */
-      TFCardToLFS_Update();
+      /* Store image menu */
+      StoreImage_Menu();
       break;
     case '7':
       if (FlashProtection != FLASHIF_PROTECTION_NONE)
@@ -437,11 +450,378 @@ void Main_Menu(void)
 }
 
 /**
+ * @brief  存储镜像菜单
+ * @param  None
+ * @retval None
+ */
+void StoreImage_Menu(void)
+{
+  uint8_t key = 0;
+
+  while (1)
+  {
+    Serial_PutString((uint8_t *)"\r\n============== Store Image Menu ==============\r\n\n");
+    Serial_PutString((uint8_t *)"  1. Store image from TF card ------------ 1\r\n\n");
+    Serial_PutString((uint8_t *)"  2. Store image from Flash -------------- 2\r\n\n");
+    Serial_PutString((uint8_t *)"  3. Show stored images ------------------ 3\r\n\n");
+    Serial_PutString((uint8_t *)"  4. Delete stored image ----------------- 4\r\n\n");
+    Serial_PutString((uint8_t *)"  5. Delete entire file system ----------- 5\r\n\n");
+    Serial_PutString((uint8_t *)"  Return to main menu -------------------- 0\r\n\n");
+    Serial_PutString((uint8_t *)"==============================================\r\n\n");
+    Serial_PutString((uint8_t *)"Please select an option: ");
+
+    /* Clean the input path */
+    __HAL_UART_FLUSH_DRREGISTER(&UartHandle);
+
+    /* Receive key */
+    HAL_UART_Receive(&UartHandle, &key, 1, RX_TIMEOUT);
+
+    switch (key)
+    {
+    case '1':
+      /* Store image from TF card */
+      StoreFromTFCard();
+      break;
+    case '2':
+      /* Store image from Flash */
+      StoreFromFlash();
+      break;
+    case '3':
+      /* Show stored images */
+      ShowStoredImages();
+      break;
+    case '4':
+      /* Delete stored image */
+      DeleteStoredImage();
+      break;
+    case '5':
+      /* Delete entire file system */
+      DeleteEntireFileSystem();
+      break;
+    case '0':
+      /* Return to main menu */
+      Serial_PutString((uint8_t *)"\r\nReturning to main menu...\r\n");
+      return;
+    default:
+      Serial_PutString((uint8_t *)"Invalid Number ! ==> The number should be either 0, 1, 2, 3, 4 or 5\r");
+      break;
+    }
+  }
+}
+
+/**
+ * @brief  从Flash存储镜像到LFS
+ * @param  None
+ * @retval None
+ */
+void StoreFromFlash(void)
+{
+  int err;
+  struct lfs_file lfs_file;
+  uint32_t flash_address = APPLICATION_ADDRESS;
+  uint32_t file_size = USER_FLASH_SIZE;
+  uint8_t buffer[4096];
+  uint32_t total_read = 0;
+  image_header_t *header = (image_header_t *)APPLICATION_ADDRESS;
+  char file_name[FILE_NAME_LENGTH];
+
+  // 检查U-Boot头部以获取文件信息
+  if (header->ih_magic == UBOOT_MAGIC)
+  {
+    file_size = header->ih_size + UBOOT_HEADER_SIZE;
+    strcpy(file_name, (char *)header->ih_name);
+    strcat(file_name, ".bin");
+  }
+  else
+  {
+    // 手动输入文件名和大小
+    Serial_PutString((uint8_t *)"\r\nNo U-Boot header detected.\r\n");
+    Serial_PutString((uint8_t *)"Please enter file name: ");
+
+    uint8_t input_char;
+    uint8_t index = 0;
+
+    while (1)
+    {
+      if (HAL_UART_Receive(&UartHandle, &input_char, 1, HAL_MAX_DELAY) == HAL_OK)
+      {
+        if (input_char == '\r' || input_char == '\n')
+        {
+          file_name[index] = '\0';
+          Serial_PutString((uint8_t *)"\r\n");
+
+          // 如果没有文件扩展名，自动添加.bin后缀
+          if (strstr(file_name, ".") == NULL)
+          {
+            strcat(file_name, ".bin");
+            Serial_PutString((uint8_t *)"Auto-added .bin extension: ");
+            Serial_PutString((uint8_t *)file_name);
+            Serial_PutString((uint8_t *)"\r\n");
+          }
+          break;
+        }
+        else if (input_char == 0x08 || input_char == 0x7F) /* Backspace or Delete */
+        {
+          if (index > 0)
+          {
+            index--;
+            Serial_PutString((uint8_t *)"\b \b");
+          }
+        }
+        else if (index < FILE_NAME_LENGTH - 1)
+        {
+          file_name[index++] = input_char;
+          Serial_PutByte(input_char);
+        }
+      }
+    }
+
+    Serial_PutString((uint8_t *)"Please enter file size (bytes): ");
+    uint8_t size_str[16];
+    uint8_t size_index = 0;
+
+    while (1)
+    {
+      if (HAL_UART_Receive(&UartHandle, &input_char, 1, HAL_MAX_DELAY) == HAL_OK)
+      {
+        if (input_char == '\r' || input_char == '\n')
+        {
+          size_str[size_index] = '\0';
+          file_size = atoi((char *)size_str);
+          Serial_PutString((uint8_t *)"\r\n");
+          break;
+        }
+        else if (input_char == 0x08 || input_char == 0x7F) /* Backspace or Delete */
+        {
+          if (size_index > 0)
+          {
+            size_index--;
+            Serial_PutString((uint8_t *)"\b \b");
+          }
+        }
+        else if (size_index < sizeof(size_str) - 1 && input_char >= '0' && input_char <= '9')
+        {
+          size_str[size_index++] = input_char;
+          Serial_PutByte(input_char);
+        }
+      }
+    }
+  }
+
+  // 初始化SPI Flash和LittleFS
+  Serial_PutString((uint8_t *)"\r\nInitializing SPI Flash and LittleFS...\r\n");
+  err = lfs_spi_flash_init();
+  if (err != 0)
+  {
+    Serial_PutString((uint8_t *)"SPI Flash initialization failed!\r\n");
+    return;
+  }
+
+  // 挂载LittleFS文件系统
+  Serial_PutString((uint8_t *)"Mounting LittleFS...\r\n");
+  err = lfs_spi_flash_mount(NULL);
+  if (err != LFS_ERR_OK)
+  {
+    Serial_PutString((uint8_t *)"Failed to mount LittleFS!\r\n");
+    return;
+  }
+
+  // 在LFS中创建文件
+  Serial_PutString((uint8_t *)"Creating file in LittleFS...\r\n");
+  err = lfs_file_open(&lfs_instance, &lfs_file, file_name, LFS_O_WRONLY | LFS_O_CREAT | LFS_O_TRUNC);
+  if (err != LFS_ERR_OK)
+  {
+    Serial_PutString((uint8_t *)"Failed to create file in LittleFS!\r\n");
+    lfs_spi_flash_unmount(NULL);
+    return;
+  }
+
+  // 从Flash读取数据并写入LFS
+  Serial_PutString((uint8_t *)"Writing Flash content to LittleFS...\r\n");
+  total_read = 0;
+  while (total_read < file_size)
+  {
+    uint32_t bytes_to_read = (file_size - total_read) > sizeof(buffer) ? sizeof(buffer) : (file_size - total_read);
+
+    // 从Flash读取数据
+    memcpy(buffer, (void *)flash_address, bytes_to_read);
+
+    // 写入LFS文件
+    int written = lfs_file_write(&lfs_instance, &lfs_file, buffer, bytes_to_read);
+    if (written < 0)
+    {
+      Serial_PutString((uint8_t *)"Failed to write to LittleFS file!\r\n");
+      lfs_file_close(&lfs_instance, &lfs_file);
+      lfs_spi_flash_unmount(NULL);
+      return;
+    }
+
+    flash_address += bytes_to_read;
+    total_read += bytes_to_read;
+
+    // 显示进度
+    Serial_PutString((uint8_t *)"Progress: ");
+    uint8_t progress_str[16];
+    Int2Str(progress_str, (total_read * 100) / file_size);
+    Serial_PutString(progress_str);
+    Serial_PutString((uint8_t *)"%\r");
+  }
+
+  Serial_PutString((uint8_t *)"\r\nFile written successfully to LittleFS!\r\n");
+
+  // 确保数据被刷新到存储
+  err = lfs_file_sync(&lfs_instance, &lfs_file);
+  if (err != LFS_ERR_OK)
+  {
+    Serial_PutString((uint8_t *)"Failed to sync file!\r\n");
+  }
+
+  // 关闭文件
+  err = lfs_file_close(&lfs_instance, &lfs_file);
+  if (err != LFS_ERR_OK)
+  {
+    Serial_PutString((uint8_t *)"Failed to close LittleFS file!\r\n");
+  }
+
+  lfs_spi_flash_unmount(NULL);
+  Serial_PutString((uint8_t *)"Flash to LittleFS storage completed!\r\n");
+}
+
+/**
+ * @brief  删除LFS中存储的镜像
+ * @param  None
+ * @retval None
+ */
+void DeleteStoredImage(void)
+{
+  int err;
+  struct lfs_dir dir;
+  char bin_files[MAX_BIN_FILES][256];
+  uint8_t bin_count = 0;
+  uint8_t key = 0;
+
+  // 初始化SPI Flash和LittleFS
+  Serial_PutString((uint8_t *)"\r\nInitializing SPI Flash and LittleFS...\r\n");
+  err = lfs_spi_flash_init();
+  if (err != 0)
+  {
+    Serial_PutString((uint8_t *)"SPI Flash initialization failed!\r\n");
+    return;
+  }
+
+  // 挂载LittleFS文件系统
+  Serial_PutString((uint8_t *)"Mounting LittleFS...\r\n");
+  err = lfs_spi_flash_mount(NULL);
+  if (err != LFS_ERR_OK)
+  {
+    Serial_PutString((uint8_t *)"Failed to mount LittleFS!\r\n");
+    return;
+  }
+
+  // 扫描LFS上的bin文件
+  Serial_PutString((uint8_t *)"Scanning LittleFS for bin files...\r\n");
+  err = lfs_dir_open(&lfs_instance, &dir, "/");
+  if (err != LFS_ERR_OK)
+  {
+    Serial_PutString((uint8_t *)"Failed to open LittleFS directory!\r\n");
+    lfs_spi_flash_unmount(NULL);
+    return;
+  }
+
+  // 列出所有bin文件
+  Serial_PutString((uint8_t *)"\r\nFound bin files in LittleFS:\r\n");
+  struct lfs_info info;
+  while (lfs_dir_read(&lfs_instance, &dir, &info) > 0)
+  {
+    // 检查是否是bin文件
+    if (info.type == LFS_TYPE_REG)
+    {
+      char *ext = strrchr(info.name, '.');
+      if (ext != NULL && strcmp(ext, BIN_FILE_EXTENSION) == 0)
+      {
+        if (bin_count < MAX_BIN_FILES)
+        {
+          strcpy(bin_files[bin_count], info.name);
+          Serial_PutString((uint8_t *)"  ");
+          Serial_PutString((uint8_t *)"[");
+          uint8_t index_str[16];
+          Int2Str(index_str, bin_count + 1);
+          Serial_PutString(index_str);
+          Serial_PutString((uint8_t *)"] ");
+          Serial_PutString((uint8_t *)info.name);
+          Serial_PutString((uint8_t *)" (size: ");
+          uint8_t size_str[16];
+          Int2Str(size_str, info.size);
+          Serial_PutString(size_str);
+          Serial_PutString((uint8_t *)" bytes)\r\n");
+          bin_count++;
+        }
+      }
+    }
+  }
+  lfs_dir_close(&lfs_instance, &dir);
+
+  if (bin_count == 0)
+  {
+    Serial_PutString((uint8_t *)"No bin files found in LittleFS!\r\n");
+    lfs_spi_flash_unmount(NULL);
+    return;
+  }
+
+  // 提示用户选择要删除的文件
+  Serial_PutString((uint8_t *)"\r\nPlease select a file to delete (1-");
+  uint8_t count_str[16];
+  Int2Str(count_str, bin_count);
+  Serial_PutString(count_str);
+  Serial_PutString((uint8_t *)") or press 'a' to abort: ");
+
+  // 等待用户输入
+  while (1)
+  {
+    if (HAL_UART_Receive(&UartHandle, &key, 1, RX_TIMEOUT) == HAL_OK)
+    {
+      if (key == 'a' || key == 'A')
+      {
+        Serial_PutString((uint8_t *)"\r\nOperation aborted!\r\n");
+        lfs_spi_flash_unmount(NULL);
+        return;
+      }
+      else if (key >= '1' && key <= '0' + bin_count)
+      {
+        break;
+      }
+      else
+      {
+        Serial_PutString((uint8_t *)"Invalid input!\r\n");
+      }
+    }
+  }
+
+  // 删除选中的文件
+  uint8_t file_index = key - '1';
+  Serial_PutString((uint8_t *)"\r\nDeleting file: ");
+  Serial_PutString((uint8_t *)bin_files[file_index]);
+  Serial_PutString((uint8_t *)"...\r\n");
+
+  err = lfs_remove(&lfs_instance, bin_files[file_index]);
+  if (err != LFS_ERR_OK)
+  {
+    Serial_PutString((uint8_t *)"Failed to delete file!\r\n");
+  }
+  else
+  {
+    Serial_PutString((uint8_t *)"File deleted successfully!\r\n");
+  }
+
+  lfs_spi_flash_unmount(NULL);
+}
+
+/**
  * @brief  从TF卡选择.bin文件存储到SPI-Flash的LFS文件系统
  * @param  None
  * @retval None
  */
-void TFCardToLFS_Update(void)
+void StoreFromTFCard(void)
 {
   FRESULT res;
   DIR dir;
@@ -1099,6 +1479,169 @@ void LFS_Update(void)
   }
 
   Serial_PutString((uint8_t *)"LittleFS to Flash update completed!\r\n");
+}
+
+/**
+ * @brief  显示已存储的镜像文件
+ * @param  None
+ * @retval None
+ */
+void ShowStoredImages(void)
+{
+  int err;
+  lfs_dir_t dir;
+  struct lfs_info info;
+  uint8_t buffer[64];
+  uint32_t file_count = 0;
+  uint32_t total_size = 0;
+
+  // 初始化SPI Flash和LittleFS
+  Serial_PutString((uint8_t *)"\r\nInitializing SPI Flash and LittleFS...\r\n");
+  err = lfs_spi_flash_init();
+  if (err != 0)
+  {
+    Serial_PutString((uint8_t *)"SPI Flash initialization failed!\r\n");
+    return;
+  }
+
+  // 挂载LittleFS文件系统
+  Serial_PutString((uint8_t *)"Mounting LittleFS...\r\n");
+  err = lfs_spi_flash_mount(NULL);
+  if (err != LFS_ERR_OK)
+  {
+    Serial_PutString((uint8_t *)"Failed to mount LittleFS!\r\n");
+    return;
+  }
+
+  // 打开根目录
+  Serial_PutString((uint8_t *)"Scanning for stored images...\r\n\r\n");
+  err = lfs_dir_open(&lfs_instance, &dir, "/");
+  if (err != LFS_ERR_OK)
+  {
+    Serial_PutString((uint8_t *)"Failed to open directory!\r\n");
+    lfs_spi_flash_unmount(NULL);
+    return;
+  }
+
+  // 显示文件列表标题
+  Serial_PutString((uint8_t *)"======== Stored Images ========\r\n");
+  Serial_PutString((uint8_t *)"No.   Size (bytes)  Name\r\n");
+  Serial_PutString((uint8_t *)"---------------------------------------\r\n");
+
+  // 遍历目录中的文件
+  while (lfs_dir_read(&lfs_instance, &dir, &info) > 0)
+  {
+    if (info.type == LFS_TYPE_REG) // 只处理普通文件
+    {
+      file_count++;
+      total_size += info.size;
+
+      // 显示文件信息
+      Int2Str((uint8_t *)buffer, file_count);
+      Serial_PutString((uint8_t *)buffer);
+      Serial_PutString((uint8_t *)".  ");
+
+      // 格式化文件大小（右对齐，最大6位数字）
+      uint8_t size_str[16];
+      Int2Str((uint8_t *)size_str, info.size);
+      uint8_t size_len = strlen((char *)size_str);
+
+      // 添加前导空格使大小右对齐
+      for (uint8_t i = 0; i < 6 - size_len; i++)
+      {
+        Serial_PutString((uint8_t *)" ");
+      }
+      Serial_PutString((uint8_t *)size_str);
+      Serial_PutString((uint8_t *)"          ");
+
+      Serial_PutString((uint8_t *)info.name);
+      Serial_PutString((uint8_t *)"\r\n");
+    }
+  }
+
+  // 关闭目录
+  lfs_dir_close(&lfs_instance, &dir);
+
+  // 显示统计信息
+  Serial_PutString((uint8_t *)"---------------------------------------\r\n");
+  Serial_PutString((uint8_t *)"Total files: ");
+  Int2Str((uint8_t *)buffer, file_count);
+  Serial_PutString((uint8_t *)buffer);
+  Serial_PutString((uint8_t *)"\r\n");
+
+  Serial_PutString((uint8_t *)"Total size: ");
+  Int2Str((uint8_t *)buffer, total_size);
+  Serial_PutString((uint8_t *)buffer);
+  Serial_PutString((uint8_t *)" bytes\r\n\r\n");
+
+  if (file_count == 0)
+  {
+    Serial_PutString((uint8_t *)"No stored images found.\r\n");
+  }
+
+  // 卸载文件系统
+  lfs_spi_flash_unmount(NULL);
+}
+
+/**
+ * @brief  删除整个文件系统
+ * @param  None
+ * @retval None
+ */
+void DeleteEntireFileSystem(void)
+{
+  int err;
+  uint8_t key = 0;
+
+  // 警告用户
+  Serial_PutString((uint8_t *)"\r\nWARNING: This will delete ALL files in the file system!\r\n");
+  Serial_PutString((uint8_t *)"Are you sure you want to continue? (y/n): ");
+
+  // 等待用户确认
+  while (1)
+  {
+    if (HAL_UART_Receive(&UartHandle, &key, 1, HAL_MAX_DELAY) == HAL_OK)
+    {
+      if (key == 'y' || key == 'Y')
+      {
+        break;
+      }
+      else if (key == 'n' || key == 'N')
+      {
+        Serial_PutString((uint8_t *)"\r\nOperation cancelled.\r\n");
+        return;
+      }
+      else
+      {
+        Serial_PutString((uint8_t *)"Invalid input! Please enter 'y' or 'n': ");
+      }
+    }
+  }
+
+  // 初始化SPI Flash和LittleFS
+  Serial_PutString((uint8_t *)"\r\nInitializing SPI Flash and LittleFS...\r\n");
+  err = lfs_spi_flash_init();
+  if (err != 0)
+  {
+    Serial_PutString((uint8_t *)"SPI Flash initialization failed!\r\n");
+    return;
+  }
+
+  // 格式化文件系统
+  Serial_PutString((uint8_t *)"Formatting file system...\r\n");
+  err = lfs_spi_flash_format(NULL);
+  if (err != LFS_ERR_OK)
+  {
+    Serial_PutString((uint8_t *)"Failed to format file system! Error: ");
+    uint8_t err_str[16];
+    Int2Str(err_str, err);
+    Serial_PutString(err_str);
+    Serial_PutString((uint8_t *)"\r\n");
+    return;
+  }
+
+  Serial_PutString((uint8_t *)"File system formatted successfully!\r\n");
+  Serial_PutString((uint8_t *)"All files have been deleted.\r\n");
 }
 
 /**

@@ -36,5 +36,7 @@ typedef  void (*pFunction)(void);
 void Main_Menu(void);
 void TFCardToLFS_Update(void);
 void LFS_Update(void);
+void DeleteEntireFileSystem(void);
+void ShowStoredImages(void);
 
 #endif  /* __MENU_H */
