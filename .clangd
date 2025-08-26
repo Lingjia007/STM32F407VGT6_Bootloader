@@ -16,6 +16,7 @@ CompileFlags:
     - '-Id:/BaiduNetdiskDownload/STM32F407VGT6_Bootloader/bootloader/USB_DEVICE/Target'
     - '-Id:/BaiduNetdiskDownload/STM32F407VGT6_Bootloader/bootloader/Middlewares/ST/STM32_USB_Device_Library/Core/Inc'
     - '-Id:/BaiduNetdiskDownload/STM32F407VGT6_Bootloader/bootloader/Middlewares/ST/STM32_USB_Device_Library/Class/MSC/Inc'
+    - '-Id:/BaiduNetdiskDownload/STM32F407VGT6_Bootloader/bootloader/Middlewares/Third_Party/LittleFs'
     - '-DUSE_HAL_DRIVER'
     - '-DSTM32F407xx'
     - '-D__CC_ARM'
