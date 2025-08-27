@@ -3,7 +3,7 @@
 <title>Static Call Graph - [bootloader\bootloader.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image bootloader\bootloader.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Wed Aug 27 00:17:56 2025
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Wed Aug 27 18:34:59 2025
 <BR><P>
 <H3>Maximum Stack Usage =       9464 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -491,10 +491,10 @@ Global Symbols
 <LI><a href="#[18b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_GPIO_Init
 <LI><a href="#[1d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemClock_Config
 <LI><a href="#[16f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_MspInit
+<LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_PCD_MspInit
 <LI><a href="#[292]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lfs_file_opencfg_
 <LI><a href="#[26c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lfs_dir_traverse
 <LI><a href="#[289]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lfs_dir_read_
-<LI><a href="#[118]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_PCD_MspInit
 </UL>
 
 <P><STRONG><a name="[2bd]"></a>__aeabi_memclr8</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text), UNUSED)
@@ -3597,8 +3597,8 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_open
 <LI><a href="#[1d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_close
-<LI><a href="#[20c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 <LI><a href="#[22b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_gets
+<LI><a href="#[20c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[2b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_sdcard_info
 </UL>
@@ -3616,10 +3616,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[2b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;show_sdcard_info
 </UL>
 
-<P><STRONG><a name="[217]"></a>ff_convert</STRONG> (Thumb, 68 bytes, Stack size 16 bytes, cc936.o(i.ff_convert))
-<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = ff_convert
-</UL>
-<BR>[Called By]<UL><LI><a href="#[23b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_fileinfo
+<P><STRONG><a name="[217]"></a>ff_convert</STRONG> (Thumb, 52 bytes, Stack size 0 bytes, ccsbcs.o(i.ff_convert))
+<BR><BR>[Called By]<UL><LI><a href="#[23b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;get_fileinfo
 <LI><a href="#[216]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;create_name
 </UL>
 
@@ -3643,11 +3641,10 @@ Global Symbols
 <LI><a href="#[1d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_open
 </UL>
 
-<P><STRONG><a name="[212]"></a>ff_wtoupper</STRONG> (Thumb, 120 bytes, Stack size 12 bytes, cc936.o(i.ff_wtoupper))
+<P><STRONG><a name="[212]"></a>ff_wtoupper</STRONG> (Thumb, 120 bytes, Stack size 12 bytes, ccsbcs.o(i.ff_wtoupper))
 <BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = ff_wtoupper
 </UL>
-<BR>[Called By]<UL><LI><a href="#[216]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;create_name
-<LI><a href="#[211]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cmp_lfn
+<BR>[Called By]<UL><LI><a href="#[211]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cmp_lfn
 </UL>
 
 <P><STRONG><a name="[7a]"></a>fputc</STRONG> (Thumb, 26 bytes, Stack size 16 bytes, main.o(i.fputc))
@@ -3661,9 +3658,9 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = free
 </UL>
 <BR>[Called By]<UL><LI><a href="#[23e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fatTest_ScanDir
+<LI><a href="#[237]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ff_memfree
 <LI><a href="#[28d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lfs_file_close_
 <LI><a href="#[25e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lfs_deinit
-<LI><a href="#[237]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ff_memfree
 </UL>
 
 <P><STRONG><a name="[231]"></a>get_fattime</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, fatfs.o(i.get_fattime))
@@ -3876,8 +3873,8 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = malloc
 </UL>
 <BR>[Called By]<UL><LI><a href="#[23e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;fatTest_ScanDir
-<LI><a href="#[297]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lfs_malloc
 <LI><a href="#[22e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ff_memalloc
+<LI><a href="#[297]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;lfs_malloc
 </UL>
 
 <P><STRONG><a name="[203]"></a>spi_read_write_byte</STRONG> (Thumb, 34 bytes, Stack size 16 bytes, w25q128.o(i.spi_read_write_byte))
@@ -4291,12 +4288,11 @@ Local Symbols
 <BR>[Called By]<UL><LI><a href="#[21d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;dir_next
 </UL>
 
-<P><STRONG><a name="[216]"></a>create_name</STRONG> (Thumb, 560 bytes, Stack size 40 bytes, ff.o(i.create_name))
-<BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = create_name &rArr; ff_convert
+<P><STRONG><a name="[216]"></a>create_name</STRONG> (Thumb, 494 bytes, Stack size 40 bytes, ff.o(i.create_name))
+<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = create_name
 </UL>
 <BR>[Calls]<UL><LI><a href="#[219]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mem_set
 <LI><a href="#[218]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;chk_chr
-<LI><a href="#[212]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ff_wtoupper
 <LI><a href="#[217]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ff_convert
 </UL>
 <BR>[Called By]<UL><LI><a href="#[22f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;follow_path
@@ -4405,7 +4401,7 @@ Local Symbols
 <LI><a href="#[1d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;f_open
 </UL>
 
-<P><STRONG><a name="[224]"></a>gen_numname</STRONG> (Thumb, 136 bytes, Stack size 24 bytes, ff.o(i.gen_numname))
+<P><STRONG><a name="[224]"></a>gen_numname</STRONG> (Thumb, 122 bytes, Stack size 24 bytes, ff.o(i.gen_numname))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = gen_numname
 </UL>
 <BR>[Calls]<UL><LI><a href="#[223]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mem_cpy
@@ -4429,8 +4425,8 @@ Local Symbols
 <LI><a href="#[213]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;create_chain
 </UL>
 
-<P><STRONG><a name="[23b]"></a>get_fileinfo</STRONG> (Thumb, 244 bytes, Stack size 32 bytes, ff.o(i.get_fileinfo))
-<BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = get_fileinfo &rArr; ff_convert
+<P><STRONG><a name="[23b]"></a>get_fileinfo</STRONG> (Thumb, 232 bytes, Stack size 32 bytes, ff.o(i.get_fileinfo))
+<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = get_fileinfo
 </UL>
 <BR>[Calls]<UL><LI><a href="#[210]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ld_dword
 <LI><a href="#[217]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ff_convert

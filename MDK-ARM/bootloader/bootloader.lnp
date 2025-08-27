@@ -54,7 +54,7 @@
 "bootloader\ff.o"
 "bootloader\ff_gen_drv.o"
 "bootloader\syscall.o"
-"bootloader\cc936.o"
+"bootloader\ccsbcs.o"
 "bootloader\usb_device.o"
 "bootloader\usbd_desc.o"
 "bootloader\usbd_storage_if.o"
