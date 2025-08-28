@@ -126,7 +126,7 @@ void fatTest_WriteTXTFile(TCHAR *filename, uint16_t year, uint8_t month, uint8_t
     if (res == FR_OK)
     {
         f_puts("Line1: Hello FatFS\r\n", &file);
-        f_puts("Line2: UPC, Qingdao\r\n", &file);
+        f_puts("Line2: UPC, Huizhou\r\n", &file);
         f_printf(&file, "Line3: Date=%04d-%02d-%02d\r\n", year, month, day);
         f_close(&file);
         printf("Success: Text file '%s' created successfully\r\n", filename);

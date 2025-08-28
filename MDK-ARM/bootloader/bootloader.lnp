@@ -47,6 +47,7 @@
 "bootloader\w25q128.o"
 "bootloader\lfs_spi_flash_adapter.o"
 "bootloader\lfs_test.o"
+"bootloader\aes.o"
 "bootloader\bsp_driver_sd.o"
 "bootloader\sd_diskio.o"
 "bootloader\fatfs.o"

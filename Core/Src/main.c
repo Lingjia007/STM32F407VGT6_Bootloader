@@ -41,6 +41,7 @@
 #include "file_opera.h"
 #include "w25q128.h"
 #include "lfs_spi_flash_adapter.h"
+#include "aes.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -200,9 +201,9 @@ static void jump_to_app(void)
 /* USER CODE END 0 */
 
 /**
-  * @brief  The application entry point.
-  * @retval int
-  */
+ * @brief  The application entry point.
+ * @retval int
+ */
 int main(void)
 {
 
@@ -263,23 +264,23 @@ int main(void)
 }
 
 /**
-  * @brief System Clock Configuration
-  * @retval None
-  */
+ * @brief System Clock Configuration
+ * @retval None
+ */
 void SystemClock_Config(void)
 {
   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
 
   /** Configure the main internal regulator output voltage
-  */
+   */
   __HAL_RCC_PWR_CLK_ENABLE();
   __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE1);
 
   /** Initializes the RCC Oscillators according to the specified parameters
-  * in the RCC_OscInitTypeDef structure.
-  */
-  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE|RCC_OSCILLATORTYPE_LSE;
+   * in the RCC_OscInitTypeDef structure.
+   */
+  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE | RCC_OSCILLATORTYPE_LSE;
   RCC_OscInitStruct.HSEState = RCC_HSE_ON;
   RCC_OscInitStruct.LSEState = RCC_LSE_ON;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
@@ -294,9 +295,8 @@ void SystemClock_Config(void)
   }
 
   /** Initializes the CPU, AHB and APB buses clocks
-  */
-  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
-                              |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
+   */
+  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_SYSCLK | RCC_CLOCKTYPE_PCLK1 | RCC_CLOCKTYPE_PCLK2;
   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV4;
@@ -309,6 +309,100 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
+
+/**
+ * @brief  AES加密解密测试函数
+ * @param  None
+ * @retval None
+ */
+static void aes_test(void)
+{
+  FRESULT res;
+  uint8_t key[AES_KEYLEN] = "ThisIsA256BitKeyForAESTest!";
+  uint8_t iv[AES_BLOCKLEN] = "InitialVector12";
+  const TCHAR *test_file = "0:/text/test.txt";
+  const TCHAR *encrypted_file = "0:/text/encrypted.txt.aes";
+  const TCHAR *decrypted_file = "0:/text/decrypted.txt";
+
+  printf("\n======= AES Encryption/Decryption Test =======\r\n");
+
+  // 检查测试文件是否存在
+  res = f_stat(test_file, NULL);
+  if (res != FR_OK)
+  {
+    printf("  Test file %s not found, creating...\r\n", test_file);
+    fatTest_WriteTXTFile((TCHAR *)test_file, 2025, 8, 20);
+  }
+
+  // 测试文件加密
+  printf("\n  Encrypting file %s to %s...\r\n", test_file, encrypted_file);
+  res = AES_encrypt_file(test_file, encrypted_file, key, iv);
+  if (res == FR_OK)
+  {
+    printf("  File encrypted successfully!\r\n");
+  }
+  else
+  {
+    printf("  File encryption failed! Error code: %d\r\n", res);
+    return;
+  }
+
+  // 测试文件解密
+  printf("\n  Decrypting file %s to %s...\r\n", encrypted_file, decrypted_file);
+  res = AES_decrypt_file(encrypted_file, decrypted_file, key, iv);
+  if (res == FR_OK)
+  {
+    printf("  File decrypted successfully!\r\n");
+  }
+  else
+  {
+    printf("  File decryption failed! Error code: %d\r\n", res);
+    return;
+  }
+
+  // 测试内存中的AES加密解密
+  printf("\n  Testing in-memory AES CBC encryption/decryption...\r\n");
+  uint8_t plaintext[AES_BLOCKLEN * 2] = "AES CBC Mode Test Data!";
+  uint8_t ciphertext[AES_BLOCKLEN * 2];
+  uint8_t decryptedtext[AES_BLOCKLEN * 2];
+  struct AES_ctx ctx;
+
+  // 复制明文到密文缓冲区
+  memcpy(ciphertext, plaintext, AES_BLOCKLEN * 2);
+
+  // 加密
+  AES_init_ctx_iv(&ctx, key, iv);
+  AES_CBC_encrypt_buffer(&ctx, ciphertext, AES_BLOCKLEN * 2);
+
+  // 显示加密结果
+  printf("  Plaintext: %s\r\n", plaintext);
+  printf("  Ciphertext (hex): ");
+  for (int i = 0; i < AES_BLOCKLEN * 2; i++)
+  {
+    printf("%02X ", ciphertext[i]);
+  }
+  printf("\r\n");
+
+  // 解密
+  AES_init_ctx_iv(&ctx, key, iv);
+  memcpy(decryptedtext, ciphertext, AES_BLOCKLEN * 2);
+  AES_CBC_decrypt_buffer(&ctx, decryptedtext, AES_BLOCKLEN * 2);
+
+  // 显示解密结果
+  printf("  Decrypted text: %s\r\n", decryptedtext);
+
+  // 验证解密结果
+  if (memcmp(plaintext, decryptedtext, AES_BLOCKLEN * 2) == 0)
+  {
+    printf("  Verification successful! Decrypted text matches plaintext.\r\n");
+  }
+  else
+  {
+    printf("  Verification failed! Decrypted text does not match plaintext.\r\n");
+  }
+
+  printf("======================================\r\n\r\n");
+}
 
 /**
  * @brief  LED控制任务，实现2秒周期闪烁
@@ -390,6 +484,7 @@ static void show_sdcard_info(void)
     printf("  Used Space: %llu bytes\r\n", (uint64_t)(tot_sect - fre_sect) * 512);
     printf("================================\r\n\r\n");
     fatTest_ScanDir("0:/");
+    fatTest_WriteTXTFile("0:/text/test.txt", 2025, 8, 20);
     fatTest_ReadTXTFile("0:/text/test.txt");
   }
   else
@@ -524,6 +619,12 @@ static void power_on_check(void)
   // 显示SPI Flash信息
   show_spi_flash_info();
 
+  // 执行AES加密解密测试
+  if (sd_state == HAL_SD_CARD_TRANSFER)
+  {
+    aes_test();
+  }
+
   // 检查串口命令
   if (uart_wait_command(&cmd, UART_TIMEOUT) && cmd == 'M')
   {
@@ -561,9 +662,9 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 /* USER CODE END 4 */
 
 /**
-  * @brief  This function is executed in case of error occurrence.
-  * @retval None
-  */
+ * @brief  This function is executed in case of error occurrence.
+ * @retval None
+ */
 void Error_Handler(void)
 {
   /* USER CODE BEGIN Error_Handler_Debug */
@@ -575,14 +676,14 @@ void Error_Handler(void)
   /* USER CODE END Error_Handler_Debug */
 }
 
-#ifdef  USE_FULL_ASSERT
+#ifdef USE_FULL_ASSERT
 /**
-  * @brief  Reports the name of the source file and the source line number
-  *         where the assert_param error has occurred.
-  * @param  file: pointer to the source file name
-  * @param  line: assert_param error line source number
-  * @retval None
-  */
+ * @brief  Reports the name of the source file and the source line number
+ *         where the assert_param error has occurred.
+ * @param  file: pointer to the source file name
+ * @param  line: assert_param error line source number
+ * @retval None
+ */
 void assert_failed(uint8_t *file, uint32_t line)
 {
   /* USER CODE BEGIN 6 */

@@ -1567,6 +1567,11 @@
               <FileType>1</FileType>
               <FilePath>..\User\lfs_test.c</FilePath>
             </File>
+            <File>
+              <FileName>aes.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\aes.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
