@@ -401,7 +401,7 @@ static void aes_test(void)
     printf("  Verification failed! Decrypted text does not match plaintext.\r\n");
   }
 
-  printf("======================================\r\n\r\n");
+  printf("==============================================\r\n\r\n");
 }
 
 /**

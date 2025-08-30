@@ -65,6 +65,7 @@ void DeleteEntireFileSystem(void);
 /* Private defines -----------------------------------------------------------*/
 #define MAX_BIN_FILES 10          // 最大支持的bin文件数量
 #define BIN_FILE_EXTENSION ".bin" // bin文件扩展名
+#define AES_FILE_EXTENSION ".aes" // aes加密文件扩展名
 
 /* Private functions ---------------------------------------------------------*/
 
@@ -719,7 +720,7 @@ void DeleteStoredImage(void)
   }
 
   // 扫描LFS上的bin文件
-  Serial_PutString((uint8_t *)"Scanning LittleFS for bin files...\r\n");
+  Serial_PutString((uint8_t *)"Scanning LittleFS for bin and aes files...\r\n");
   err = lfs_dir_open(&lfs_instance, &dir, "/");
   if (err != LFS_ERR_OK)
   {
@@ -728,8 +729,8 @@ void DeleteStoredImage(void)
     return;
   }
 
-  // 列出所有bin文件
-  Serial_PutString((uint8_t *)"\r\nFound bin files in LittleFS:\r\n");
+  // 列出所有bin和aes文件
+  Serial_PutString((uint8_t *)"\r\nFound bin and aes files in LittleFS:\r\n");
   struct lfs_info info;
   while (lfs_dir_read(&lfs_instance, &dir, &info) > 0)
   {
@@ -737,7 +738,7 @@ void DeleteStoredImage(void)
     if (info.type == LFS_TYPE_REG)
     {
       char *ext = strrchr(info.name, '.');
-      if (ext != NULL && strcmp(ext, BIN_FILE_EXTENSION) == 0)
+      if (ext != NULL && (strcmp(ext, BIN_FILE_EXTENSION) == 0 || strcmp(ext, AES_FILE_EXTENSION) == 0))
       {
         if (bin_count < MAX_BIN_FILES)
         {
@@ -763,7 +764,7 @@ void DeleteStoredImage(void)
 
   if (bin_count == 0)
   {
-    Serial_PutString((uint8_t *)"No bin files found in LittleFS!\r\n");
+    Serial_PutString((uint8_t *)"No bin or aes files found in LittleFS!\r\n");
     lfs_spi_flash_unmount(NULL);
     return;
   }
@@ -875,8 +876,8 @@ void StoreFromTFCard(void)
     return;
   }
 
-  // 列出所有bin文件
-  Serial_PutString((uint8_t *)"\r\nFound bin files on TF card:\r\n");
+  // 列出所有bin和aes文件
+  Serial_PutString((uint8_t *)"\r\nFound bin and aes files on TF card:\r\n");
   while (1)
   {
     res = f_readdir(&dir, &fno);
@@ -885,11 +886,11 @@ void StoreFromTFCard(void)
       break;
     }
 
-    // 检查是否是bin文件
+    // 检查是否是bin或aes文件
     if (!(fno.fattrib & AM_DIR))
     {
       char *ext = strrchr(fno.fname, '.');
-      if (ext != NULL && strcmp(ext, BIN_FILE_EXTENSION) == 0)
+      if (ext != NULL && (strcmp(ext, BIN_FILE_EXTENSION) == 0 || strcmp(ext, AES_FILE_EXTENSION) == 0))
       {
         if (bin_count < MAX_BIN_FILES)
         {
@@ -910,14 +911,14 @@ void StoreFromTFCard(void)
 
   if (bin_count == 0)
   {
-    Serial_PutString((uint8_t *)"No bin files found on TF card!\r\n");
+    Serial_PutString((uint8_t *)"No bin or aes files found on TF card!\r\n");
     lfs_spi_flash_unmount(NULL);
     f_mount(NULL, "0:", 0);
     return;
   }
 
-  // 提示用户选择bin文件
-  Serial_PutString((uint8_t *)"\r\nPlease select a bin file (1-");
+  // 提示用户选择文件
+  Serial_PutString((uint8_t *)"\r\nPlease select a file (1-");
   Int2Str((uint8_t *)buffer, bin_count);
   Serial_PutString((uint8_t *)buffer);
   Serial_PutString((uint8_t *)") or press 'a' to abort: ");
@@ -1074,8 +1075,8 @@ void TFCard_Update(void)
     return;
   }
 
-  // 扫描TF卡上的bin文件
-  Serial_PutString((uint8_t *)"Scanning for bin files...\r\n");
+  // 扫描TF卡上的bin和aes文件
+  Serial_PutString((uint8_t *)"Scanning for bin and aes files...\r\n");
   res = f_opendir(&dir, "0:/");
   if (res != FR_OK)
   {
@@ -1084,8 +1085,8 @@ void TFCard_Update(void)
     return;
   }
 
-  // 列出所有bin文件
-  Serial_PutString((uint8_t *)"\r\nFound bin files:\r\n");
+  // 列出所有bin和aes文件
+  Serial_PutString((uint8_t *)"\r\nFound bin and aes files:\r\n");
   while (1)
   {
     res = f_readdir(&dir, &fno);
@@ -1094,11 +1095,11 @@ void TFCard_Update(void)
       break;
     }
 
-    // 检查是否是bin文件
+    // 检查是否是bin或aes文件
     if (!(fno.fattrib & AM_DIR))
     {
       char *ext = strrchr(fno.fname, '.');
-      if (ext != NULL && strcmp(ext, BIN_FILE_EXTENSION) == 0)
+      if (ext != NULL && (strcmp(ext, BIN_FILE_EXTENSION) == 0 || strcmp(ext, AES_FILE_EXTENSION) == 0))
       {
         if (bin_count < MAX_BIN_FILES)
         {
@@ -1119,13 +1120,13 @@ void TFCard_Update(void)
 
   if (bin_count == 0)
   {
-    Serial_PutString((uint8_t *)"No bin files found!\r\n");
+    Serial_PutString((uint8_t *)"No bin or aes files found!\r\n");
     f_mount(NULL, "0:", 0);
     return;
   }
 
-  // 提示用户选择bin文件
-  Serial_PutString((uint8_t *)"\r\nPlease select a bin file (1-");
+  // 提示用户选择文件
+  Serial_PutString((uint8_t *)"\r\nPlease select a file (1-");
   Int2Str((uint8_t *)buffer, bin_count);
   Serial_PutString((uint8_t *)buffer);
   Serial_PutString((uint8_t *)") or press 'a' to abort: ");
@@ -1305,15 +1306,15 @@ void LFS_Update(void)
   }
 
   // 列出所有bin文件
-  Serial_PutString((uint8_t *)"\r\nFound bin files in LittleFS:\r\n");
+  Serial_PutString((uint8_t *)"\r\nFound bin and aes files in LittleFS:\r\n");
   struct lfs_info info;
   while (lfs_dir_read(&lfs_instance, &dir, &info) > 0)
   {
-    // 检查是否是bin文件
+    // 检查是否是bin或aes文件
     if (info.type == LFS_TYPE_REG)
     {
       char *ext = strrchr(info.name, '.');
-      if (ext != NULL && strcmp(ext, BIN_FILE_EXTENSION) == 0)
+      if (ext != NULL && (strcmp(ext, BIN_FILE_EXTENSION) == 0 || strcmp(ext, AES_FILE_EXTENSION) == 0))
       {
         if (bin_count < MAX_BIN_FILES)
         {
@@ -1337,13 +1338,13 @@ void LFS_Update(void)
 
   if (bin_count == 0)
   {
-    Serial_PutString((uint8_t *)"No bin files found in LittleFS!\r\n");
+    Serial_PutString((uint8_t *)"No bin or aes files found in LittleFS!\r\n");
     lfs_spi_flash_unmount(NULL);
     return;
   }
 
   // 提示用户选择bin文件
-  Serial_PutString((uint8_t *)"\r\nPlease select a bin file (1-");
+  Serial_PutString((uint8_t *)"\r\nPlease select a file (1-");
   Int2Str((uint8_t *)buffer, bin_count);
   Serial_PutString((uint8_t *)buffer);
   Serial_PutString((uint8_t *)") or press 'a' to abort: ");
@@ -1528,34 +1529,38 @@ void ShowStoredImages(void)
   Serial_PutString((uint8_t *)"No.   Size (bytes)  Name\r\n");
   Serial_PutString((uint8_t *)"---------------------------------------\r\n");
 
-  // 遍历目录中的文件
+  // 遍历目录中的文件，只显示bin和aes文件
   while (lfs_dir_read(&lfs_instance, &dir, &info) > 0)
   {
     if (info.type == LFS_TYPE_REG) // 只处理普通文件
     {
-      file_count++;
-      total_size += info.size;
-
-      // 显示文件信息
-      Int2Str((uint8_t *)buffer, file_count);
-      Serial_PutString((uint8_t *)buffer);
-      Serial_PutString((uint8_t *)".  ");
-
-      // 格式化文件大小（右对齐，最大6位数字）
-      uint8_t size_str[16];
-      Int2Str((uint8_t *)size_str, info.size);
-      uint8_t size_len = strlen((char *)size_str);
-
-      // 添加前导空格使大小右对齐
-      for (uint8_t i = 0; i < 6 - size_len; i++)
+      char *ext = strrchr(info.name, '.');
+      if (ext != NULL && (strcmp(ext, BIN_FILE_EXTENSION) == 0 || strcmp(ext, AES_FILE_EXTENSION) == 0))
       {
-        Serial_PutString((uint8_t *)" ");
-      }
-      Serial_PutString((uint8_t *)size_str);
-      Serial_PutString((uint8_t *)"          ");
+        file_count++;
+        total_size += info.size;
 
-      Serial_PutString((uint8_t *)info.name);
-      Serial_PutString((uint8_t *)"\r\n");
+        // 显示文件信息
+        Int2Str((uint8_t *)buffer, file_count);
+        Serial_PutString((uint8_t *)buffer);
+        Serial_PutString((uint8_t *)".  ");
+
+        // 格式化文件大小（右对齐，最大6位数字）
+        uint8_t size_str[16];
+        Int2Str((uint8_t *)size_str, info.size);
+        uint8_t size_len = strlen((char *)size_str);
+
+        // 添加前导空格使大小右对齐
+        for (uint8_t i = 0; i < 6 - size_len; i++)
+        {
+          Serial_PutString((uint8_t *)" ");
+        }
+        Serial_PutString((uint8_t *)size_str);
+        Serial_PutString((uint8_t *)"          ");
+
+        Serial_PutString((uint8_t *)info.name);
+        Serial_PutString((uint8_t *)"\r\n");
+      }
     }
   }
 

@@ -1,17 +1,3 @@
-/*
- * lfs_spi_flash_adapter.c
- *
- * 立创开发板软硬件资料与相关扩展板软硬件资料官网全部开源
- * 开发板官网：www.lckfb.com
- * 技术支持常驻论坛，任何技术问题欢迎随时交流学习
- * 立创论坛：https://oshwhub.com/forum
- * 关注bilibili账号：【立创开发板】，掌握我们的最新动态！
- * 不靠卖板赚钱，以培养中国工程师为己任
- * Change Logs:
- * Date           Author       Notes
- * 2025-02-10     AI助手       first version
- */
-
 #include "lfs_spi_flash_adapter.h"
 #include <string.h>
 
@@ -25,9 +11,10 @@ static int lfs_spi_flash_read(const struct lfs_config *c, lfs_block_t block, lfs
 {
     // 计算实际地址
     uint32_t addr = block * SPI_FLASH_BLOCK_SIZE + off;
-    
+
     // 检查地址范围
-    if (block >= SPI_FLASH_BLOCK_COUNT || (off + size) > SPI_FLASH_BLOCK_SIZE) {
+    if (block >= SPI_FLASH_BLOCK_COUNT || (off + size) > SPI_FLASH_BLOCK_SIZE)
+    {
         return LFS_ERR_INVAL;
     }
 
@@ -42,9 +29,10 @@ static int lfs_spi_flash_prog(const struct lfs_config *c, lfs_block_t block, lfs
 {
     // 计算实际地址
     uint32_t addr = block * SPI_FLASH_BLOCK_SIZE + off;
-    
+
     // 检查地址范围
-    if (block >= SPI_FLASH_BLOCK_COUNT || (off + size) > SPI_FLASH_BLOCK_SIZE) {
+    if (block >= SPI_FLASH_BLOCK_COUNT || (off + size) > SPI_FLASH_BLOCK_SIZE)
+    {
         return LFS_ERR_INVAL;
     }
 
@@ -53,7 +41,7 @@ static int lfs_spi_flash_prog(const struct lfs_config *c, lfs_block_t block, lfs
     // 先发送写使能
     W25Q128_write_enable();
     W25Q128_wait_busy();
-    
+
     // 拉低CS端为低电平
     W25QXX_CS_ON(1);
     // 发送指令02h
@@ -81,10 +69,11 @@ static int lfs_spi_flash_prog(const struct lfs_config *c, lfs_block_t block, lfs
 static int lfs_spi_flash_erase(const struct lfs_config *c, lfs_block_t block)
 {
     // 检查块号范围
-    if (block >= SPI_FLASH_BLOCK_COUNT) {
+    if (block >= SPI_FLASH_BLOCK_COUNT)
+    {
         return LFS_ERR_INVAL;
     }
-    
+
     // 注意：W25Q128_erase_sector函数内部会将输入值乘以4096
     // 我们需要直接传递块号，而不是计算后的地址
     W25Q128_erase_sector(block);
@@ -97,7 +86,7 @@ static int lfs_spi_flash_sync(const struct lfs_config *c)
 {
     // 对于SPI Flash，确保所有操作都已完成
     W25Q128_wait_busy();
-    
+
     // 可选：执行额外的同步操作以确保元数据被正确提交
     return LFS_ERR_OK;
 }
